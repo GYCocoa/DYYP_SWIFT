@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="GYHomeCollectionCell" customModule="大鱼优品" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="148" height="197"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="148" height="197"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="image_nodata" translatesAutoresizingMaskIntoConstraints="NO" id="sxx-i9-PLO">
+                        <rect key="frame" x="0.0" y="0.0" width="148" height="148"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="sxx-i9-PLO" secondAttribute="height" multiplier="1:1" id="sHf-3R-oMs"/>
+                        </constraints>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DSc-9z-pGa">
+                        <rect key="frame" x="0.0" y="148" width="148" height="49"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="琅琊阁排行榜" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G25-FF-szI">
+                                <rect key="frame" x="0.0" y="0.0" width="148" height="24.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.058823529409999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥00.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9JR-44-JRk">
+                                <rect key="frame" x="0.0" y="24.5" width="148" height="24.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="0.99215686270000003" green="0.38823529410000002" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="G25-FF-szI" secondAttribute="trailing" id="HLB-KQ-U6w"/>
+                            <constraint firstItem="G25-FF-szI" firstAttribute="height" secondItem="DSc-9z-pGa" secondAttribute="height" multiplier="1/2" id="WUJ-nO-rRz"/>
+                            <constraint firstItem="9JR-44-JRk" firstAttribute="top" secondItem="G25-FF-szI" secondAttribute="bottom" id="hQx-gw-2nP"/>
+                            <constraint firstAttribute="trailing" secondItem="9JR-44-JRk" secondAttribute="trailing" id="mWO-Do-9ws"/>
+                            <constraint firstItem="G25-FF-szI" firstAttribute="leading" secondItem="DSc-9z-pGa" secondAttribute="leading" id="mbV-6I-1uV"/>
+                            <constraint firstItem="G25-FF-szI" firstAttribute="top" secondItem="DSc-9z-pGa" secondAttribute="top" id="oQ6-xO-UCX"/>
+                            <constraint firstAttribute="bottom" secondItem="9JR-44-JRk" secondAttribute="bottom" id="v7y-0y-P5k"/>
+                            <constraint firstItem="9JR-44-JRk" firstAttribute="leading" secondItem="DSc-9z-pGa" secondAttribute="leading" id="yBi-cF-KDR"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="DSc-9z-pGa" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="34D-HU-hhp"/>
+                <constraint firstAttribute="trailing" secondItem="DSc-9z-pGa" secondAttribute="trailing" id="WdT-SV-UIJ"/>
+                <constraint firstItem="DSc-9z-pGa" firstAttribute="top" secondItem="sxx-i9-PLO" secondAttribute="bottom" id="Xis-Qs-yiE"/>
+                <constraint firstAttribute="bottom" secondItem="DSc-9z-pGa" secondAttribute="bottom" id="bzF-zd-MXc"/>
+                <constraint firstItem="sxx-i9-PLO" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="eKB-TL-AIG"/>
+                <constraint firstItem="sxx-i9-PLO" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="rMt-WY-MJv"/>
+                <constraint firstAttribute="trailing" secondItem="sxx-i9-PLO" secondAttribute="trailing" id="zyL-t3-hH0"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="148" height="197"/>
+            <connections>
+                <outlet property="contentL" destination="G25-FF-szI" id="Wl8-t7-o3Z"/>
+                <outlet property="imgView" destination="sxx-i9-PLO" id="4ZX-br-BHZ"/>
+                <outlet property="priceL" destination="9JR-44-JRk" id="zyW-xc-0Ka"/>
+            </connections>
+            <point key="canvasLocation" x="-183" y="-26.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="image_nodata" width="170" height="170"/>
+    </resources>
+</document>
