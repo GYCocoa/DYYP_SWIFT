@@ -20,8 +20,6 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
         // Do any additional setup after loading the view.
         
         view.backgroundColor = UIColor.randomColor()
-
-        ///   获取自视图数据
         setupSubviews()
         
     }
