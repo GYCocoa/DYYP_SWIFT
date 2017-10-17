@@ -77,6 +77,7 @@ class GYSettingController: UIViewController,UITableViewDelegate,UITableViewDataS
         case 104:
             break
         case 105:
+            scoringAction()
             break
         case 106:
             break
@@ -85,6 +86,16 @@ class GYSettingController: UIViewController,UITableViewDelegate,UITableViewDataS
             break
         default:
             break
+        }
+    }
+    fileprivate func scoringAction() {
+        if #available(iOS 11.0, *) {
+            let itunesurl = "itms-apps://itunes.apple.com/cn/app/id1296698742?mt=8&action=write-review"
+//            let itunesurl = "itms-apps://itunes.apple.com/cn/app/id1296698742?mt=8"
+            UIApplication.shared.openURL(NSURL(string: itunesurl)! as URL)
+        }else {
+            let itunesurl = "http://itunes.apple.com/WebObjects/MZStore.woa/wa/viewContentsUserReviews?id=1296698742&pageNumber=0&sortOrdering=2&type=Purple+Software&mt=8"
+            UIApplication.shared.openURL(NSURL(string: itunesurl)! as URL)
         }
     }
     fileprivate func resetAccount() {
@@ -113,7 +124,7 @@ class GYSettingController: UIViewController,UITableViewDelegate,UITableViewDataS
 
     fileprivate lazy var dataSources: NSMutableArray = {
         var dataSources = NSMutableArray()
-        dataSources = [[["个人资料",""],["通用",""],["隐私",""],["账户与安全",""],["黑名单",""]],[["版本更新",""],["清空缓存","12.00MB"],["退出登录",""]]]
+        dataSources = [[["个人资料",""],["通用",""],["隐私",""],["账户与安全",""],["黑名单",""]],[["给APP评分",""],["清空缓存","12.00MB"],["退出登录",""]]]
         return dataSources
     }()
 }
