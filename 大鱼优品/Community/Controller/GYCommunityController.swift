@@ -36,7 +36,7 @@ class GYCommunityController: GYBaseViewController,UITabBarControllerDelegate {
     }
     fileprivate func requestTitleData() {
         /// 获取标题数据
-        GYNetworkTool.getCommunityTitlesData(fromViewController: String(describing:GYCommunityController.self), completionHandler: { (topicTitles, topicVCs) in
+        GYCommunityView.getCommunityTitlesData(fromViewController: String(describing:GYCommunityController.self), completionHandler: { (topicTitles, topicVCs) in
             self.reloadButton.isHidden = true
             for child in self.childViewControllers {
                 child.removeFromParentViewController()

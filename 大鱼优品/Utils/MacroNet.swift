@@ -57,16 +57,20 @@ let AU_SECKILL_PRODUCT     =                                                 SHO
 /// 活动专区
 let AU_ACTIVITY               =                                                          SHOPING_BASE + "activity-product"
 
-//MARK: -------------------------- 社区基础URL -------------------------
-let COMMUNITY_BASE =                                                              "http://api.deepbaytech.com/community/api/v0.0.1/"
-let COMMUNITY_TITLE =                                                              COMMUNITY_BASE + "cate/all"
-/// 商城轮播图
-let COM_COMMUNITY_BANNER           =                                    COMMUNITY_BASE + "home-rotation"
 //MARK: -------------------------- 相机搜索界面URL -------------------------
 let CAREMA_REAULT =                                                                 BASEURL + "search-picture"
 
 //MARK: -------------------------- 个人中心数据 -------------------------
 let MYSELF_DATA =                                                                        COMMUNITY_BASE + "myInfo"
+
+//MARK: -------------------------- 社区基础URL -------------------------
+let COMMUNITY_BASE =                                                              "http://api.deepbaytech.com/community/api/v0.0.1/"
+/// 社区title
+let COMMUNITY_TITLE =                                                              COMMUNITY_BASE + "cate/all"
+/// 社区轮播图
+let COM_COMMUNITY_BANNER           =                                    COMMUNITY_BASE + "home-rotation"
+/// 首页推荐内容
+let COMMUNITY_RECOMMEND     =                                                           COMMUNITY_BASE + "home-recommend"
 
 
 
