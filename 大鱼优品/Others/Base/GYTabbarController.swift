@@ -23,7 +23,7 @@ class GYTabbarController: UITabBarController {
         tabBar.backgroundColor = UIColor.white
         
         tabBar.tintColor = UIColor(red: 245 / 255, green: 90 / 255, blue: 93 / 255, alpha: 1/0)
-        
+        self.tabBar.frame = CGRect.init(x: 0, y: kHeight-kTabBarHeight, width: kWidth, height: kTabBarHeight)
         let bar = GYTabbar.init(frame: self.tabBar.bounds)
         
         self.setValue(bar, forKey: "tabBar")

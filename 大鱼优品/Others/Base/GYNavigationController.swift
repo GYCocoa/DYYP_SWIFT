@@ -18,9 +18,9 @@ class GYNavigationController: UINavigationController {
         navBar.barTintColor = UIColor.white
         navBar.tintColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.7);
         navBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
-        navBar.setBackgroundImage(UIImage(named: "nav_background_image"), for: UIBarMetrics.default)
+        navBar.setBackgroundImage(UIImage(named: kNavBar_Bg_Image), for: UIBarMetrics.default)
         navBar.shadowImage = UIImage()
-        
+         
         let navItem = UIBarButtonItem.appearance()
         let itemDict = NSMutableDictionary.init()
         itemDict[NSFontAttributeName] = UIFont.systemFont(ofSize: 13)

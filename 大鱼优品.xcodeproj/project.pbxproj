@@ -21,6 +21,7 @@
 		F50269C91F6FCEF2001CDA46 /* GYTabbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50269C81F6FCEF2001CDA46 /* GYTabbarController.swift */; };
 		F50269CB1F6FCF0E001CDA46 /* GYNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50269CA1F6FCF0E001CDA46 /* GYNavigationController.swift */; };
 		F50269D31F6FDCAD001CDA46 /* GYTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50269D21F6FDCAC001CDA46 /* GYTabbar.swift */; };
+		F51296861F96F67100EB78E6 /* MacroNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51296851F96F67100EB78E6 /* MacroNet.swift */; };
 		F5194AF61F7269FE008C5DBA /* GYUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5194AF51F7269FE008C5DBA /* GYUserModel.swift */; };
 		F51BD4EC1F8B659600EEFB07 /* NSObject+GYObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51BD4EB1F8B659600EEFB07 /* NSObject+GYObject.swift */; };
 		F51BD4EE1F8B77F300EEFB07 /* GYCaremaResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51BD4ED1F8B77F300EEFB07 /* GYCaremaResult.swift */; };
@@ -189,6 +190,7 @@
 		F50269C81F6FCEF2001CDA46 /* GYTabbarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTabbarController.swift; sourceTree = "<group>"; };
 		F50269CA1F6FCF0E001CDA46 /* GYNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYNavigationController.swift; sourceTree = "<group>"; };
 		F50269D21F6FDCAC001CDA46 /* GYTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTabbar.swift; sourceTree = "<group>"; };
+		F51296851F96F67100EB78E6 /* MacroNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroNet.swift; sourceTree = "<group>"; };
 		F5194AF51F7269FE008C5DBA /* GYUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYUserModel.swift; sourceTree = "<group>"; };
 		F51BD4EB1F8B659600EEFB07 /* NSObject+GYObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+GYObject.swift"; sourceTree = "<group>"; };
 		F51BD4ED1F8B77F300EEFB07 /* GYCaremaResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCaremaResult.swift; sourceTree = "<group>"; };
@@ -650,6 +652,7 @@
 			isa = PBXGroup;
 			children = (
 				F5555EA21F8DBAB7000034F7 /* ShareSDK-Bridging-header.h */,
+				F51296851F96F67100EB78E6 /* MacroNet.swift */,
 				F55D67051F70C2B700619ED9 /* Const.swift */,
 				F55D67091F71082800619ED9 /* enum.swift */,
 				F502696A1F6FCBB4001CDA46 /* Main.storyboard */,
@@ -1540,6 +1543,7 @@
 				F55D66FA1F70C09D00619ED9 /* UIColor+GYColor.swift in Sources */,
 				F565055C1F7CD83C002651AA /* GYRecommendTableCell.swift in Sources */,
 				F5370F121F78A915009FE727 /* GYMineHeaderView.swift in Sources */,
+				F51296861F96F67100EB78E6 /* MacroNet.swift in Sources */,
 				F50269C11F6FCE9B001CDA46 /* GYShoppingController.swift in Sources */,
 				F5555E121F8DB8BF000034F7 /* GYCuttingBoxController.swift in Sources */,
 				F5AA41AB1F7BAA0100B5740A /* GYShopping.swift in Sources */,

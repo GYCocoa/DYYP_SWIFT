@@ -49,13 +49,14 @@ class GYTabbar: UITabBar {
         super.layoutSubviews()
         
         let width = self.frame.size.width
-        let height = self.frame.size.height
+        let height:CGFloat = 49
+//        let height = self.frame.size.height
         button?.frame.size.width = (button?.currentBackgroundImage?.size.width)!
         button?.frame.size.height = (button?.currentBackgroundImage?.size.height)!
         button?.center = CGPoint.init(x: width * 0.5, y: height * 0.3)
         let Y = 0
         let W = width/5
-        let H = height;
+        let H = height
         var index:CGFloat = 0
         
         for control in self.subviews {
