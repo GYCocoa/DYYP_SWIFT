@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,11 +51,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c83-VC-I4m">
-                        <rect key="frame" x="16" y="364.5" width="36" height="18"/>
+                        <rect key="frame" x="16" y="364.5" width="35" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="SnM-IO-1Ev"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="5" maxY="0.0"/>
                         <state key="normal" title="0" image="talk">
@@ -66,7 +66,7 @@
                         </connections>
                     </button>
                     <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRr-6T-zLo">
-                        <rect key="frame" x="62" y="363.5" width="19" height="19"/>
+                        <rect key="frame" x="61" y="363.5" width="19" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="8yv-QR-Zio"/>
                         </constraints>
@@ -79,11 +79,11 @@
                         </connections>
                     </button>
                     <button opaque="NO" userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9VT-yY-2bc">
-                        <rect key="frame" x="357" y="363.5" width="36" height="19"/>
+                        <rect key="frame" x="358" y="363.5" width="35" height="19"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="19" id="Bfk-I8-Ciq"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
                         <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="5" maxY="0.0"/>
                         <state key="normal" title="0" image="zan">
@@ -98,7 +98,7 @@
                         <constraints>
                             <constraint firstAttribute="height" constant="14" id="i2J-nS-hJN"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>

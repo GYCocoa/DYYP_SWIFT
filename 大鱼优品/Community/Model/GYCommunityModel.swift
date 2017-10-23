@@ -25,6 +25,7 @@ class GYCommunityModel: NSObject {
     var uid:Int?
     var wid:Int?
     var isFollow:Int?
+    var height:CGFloat?
 
     
     init(dict:[String:AnyObject]) {
@@ -43,6 +44,7 @@ class GYCommunityModel: NSObject {
         uid = dict["uid"] as! Int?
         wid = dict["wid"] as! Int?
         isFollow = dict["isFollow"] as! Int?
+        height = dict["height"] as! CGFloat?
 
         
     }

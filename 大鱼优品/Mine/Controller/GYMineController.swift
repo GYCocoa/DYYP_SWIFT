@@ -119,7 +119,7 @@ class GYMineController: UIViewController,UITableViewDelegate,UITableViewDataSour
     fileprivate lazy var tableView: UITableView = {
         var tableView = UITableView()
         tableView.backgroundColor = UIColor.globalBackgroundColor()
-        tableView.frame = CGRect.init(x: 0, y: 0, width: kWidth, height: kHeight)
+        tableView.frame = CGRect.init(x: 0, y: kNavBarHeight, width: kWidth, height: kHeight-kNavBarHeight)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableHeaderView = self.headerView

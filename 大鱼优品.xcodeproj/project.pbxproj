@@ -133,6 +133,7 @@
 		F565055D1F7CD83C002651AA /* GYRecommendTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F565055B1F7CD83C002651AA /* GYRecommendTableCell.xib */; };
 		F56505601F7CDC6D002651AA /* GYDisplayTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565055E1F7CDC6D002651AA /* GYDisplayTableCell.swift */; };
 		F56505611F7CDC6D002651AA /* GYDisplayTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F565055F1F7CDC6D002651AA /* GYDisplayTableCell.xib */; };
+		F5655F7A1F98A02700065982 /* GYCommunityAncillaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5655F791F98A02700065982 /* GYCommunityAncillaryCell.swift */; };
 		F5A4AD8D1F7F3FCB00812E85 /* GYCaremaTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4AD8C1F7F3FCB00812E85 /* GYCaremaTopView.swift */; };
 		F5A4AD8F1F7F541D00812E85 /* GYCaremaResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4AD8E1F7F541D00812E85 /* GYCaremaResultController.swift */; };
 		F5A4AD921F7F989700812E85 /* GYCaremaCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4AD901F7F989700812E85 /* GYCaremaCollectionCell.swift */; };
@@ -140,6 +141,8 @@
 		F5AA419F1F7B47F300B5740A /* GYShopTopicController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AA419E1F7B47F300B5740A /* GYShopTopicController.swift */; };
 		F5AA41A91F7B488F00B5740A /* TopicTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AA41A81F7B488F00B5740A /* TopicTitle.swift */; };
 		F5AA41AB1F7BAA0100B5740A /* GYShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AA41AA1F7BAA0100B5740A /* GYShopping.swift */; };
+		F5AECB0D1F9DD0A10074E5B8 /* GYCommunityReUsersCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AECB0B1F9DD0A10074E5B8 /* GYCommunityReUsersCVCell.swift */; };
+		F5AECB0E1F9DD0A10074E5B8 /* GYCommunityReUsersCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5AECB0C1F9DD0A10074E5B8 /* GYCommunityReUsersCVCell.xib */; };
 		F5DB17261F7222BC00A4C4E7 /* NSObject+GYValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB17251F7222BC00A4C4E7 /* NSObject+GYValidation.swift */; };
 		F5DB172A1F725A9000A4C4E7 /* UIDevice+GYDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB17291F725A9000A4C4E7 /* UIDevice+GYDevice.swift */; };
 		F5DE93A21F7E398200F5E314 /* GYCommunityOtherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DE93A11F7E398200F5E314 /* GYCommunityOtherController.swift */; };
@@ -392,6 +395,7 @@
 		F565055B1F7CD83C002651AA /* GYRecommendTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYRecommendTableCell.xib; sourceTree = "<group>"; };
 		F565055E1F7CDC6D002651AA /* GYDisplayTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYDisplayTableCell.swift; sourceTree = "<group>"; };
 		F565055F1F7CDC6D002651AA /* GYDisplayTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYDisplayTableCell.xib; sourceTree = "<group>"; };
+		F5655F791F98A02700065982 /* GYCommunityAncillaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCommunityAncillaryCell.swift; sourceTree = "<group>"; };
 		F5A4AD8C1F7F3FCB00812E85 /* GYCaremaTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCaremaTopView.swift; sourceTree = "<group>"; };
 		F5A4AD8E1F7F541D00812E85 /* GYCaremaResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCaremaResultController.swift; sourceTree = "<group>"; };
 		F5A4AD901F7F989700812E85 /* GYCaremaCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCaremaCollectionCell.swift; sourceTree = "<group>"; };
@@ -399,6 +403,8 @@
 		F5AA419E1F7B47F300B5740A /* GYShopTopicController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopTopicController.swift; sourceTree = "<group>"; };
 		F5AA41A81F7B488F00B5740A /* TopicTitle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicTitle.swift; sourceTree = "<group>"; };
 		F5AA41AA1F7BAA0100B5740A /* GYShopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopping.swift; sourceTree = "<group>"; };
+		F5AECB0B1F9DD0A10074E5B8 /* GYCommunityReUsersCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCommunityReUsersCVCell.swift; sourceTree = "<group>"; };
+		F5AECB0C1F9DD0A10074E5B8 /* GYCommunityReUsersCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYCommunityReUsersCVCell.xib; sourceTree = "<group>"; };
 		F5DB17251F7222BC00A4C4E7 /* NSObject+GYValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+GYValidation.swift"; sourceTree = "<group>"; };
 		F5DB17291F725A9000A4C4E7 /* UIDevice+GYDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+GYDevice.swift"; sourceTree = "<group>"; };
 		F5DE93A11F7E398200F5E314 /* GYCommunityOtherController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCommunityOtherController.swift; sourceTree = "<group>"; };
@@ -809,6 +815,9 @@
 				F5DE93A91F7E3FBF00F5E314 /* CommunityTitleView.swift */,
 				F5F9F9731F908F0700623C8D /* GYCommunityHomeTableCell.swift */,
 				F5F9F9741F908F0700623C8D /* GYCommunityHomeTableCell.xib */,
+				F5655F791F98A02700065982 /* GYCommunityAncillaryCell.swift */,
+				F5AECB0B1F9DD0A10074E5B8 /* GYCommunityReUsersCVCell.swift */,
+				F5AECB0C1F9DD0A10074E5B8 /* GYCommunityReUsersCVCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1418,6 +1427,7 @@
 				F5F9F9761F908F0700623C8D /* GYCommunityHomeTableCell.xib in Resources */,
 				F5370F1C1F78B6B7009FE727 /* GYMineHeaderView.xib in Resources */,
 				F56505611F7CDC6D002651AA /* GYDisplayTableCell.xib in Resources */,
+				F5AECB0E1F9DD0A10074E5B8 /* GYCommunityReUsersCVCell.xib in Resources */,
 				F5555E831F8DB8DB000034F7 /* README.md in Resources */,
 				F5555E941F8DB8DB000034F7 /* ShareSDK.bundle in Resources */,
 				F535B65E1F7A352B00907209 /* GYHomeCollectionCell.xib in Resources */,
@@ -1509,10 +1519,12 @@
 				F5DB17261F7222BC00A4C4E7 /* NSObject+GYValidation.swift in Sources */,
 				F55D67081F70C41E00619ED9 /* GYLoginView.swift in Sources */,
 				F56505551F7CC756002651AA /* HomeTitleView.swift in Sources */,
+				F5655F7A1F98A02700065982 /* GYCommunityAncillaryCell.swift in Sources */,
 				F56505521F7CC756002651AA /* HomeCollectionViewCell.swift in Sources */,
 				F51BD4EE1F8B77F300EEFB07 /* GYCaremaResult.swift in Sources */,
 				F55D67031F70C16800619ED9 /* GYRegisterController.swift in Sources */,
 				F50269BF1F6FCE8F001CDA46 /* GYHomeController.swift in Sources */,
+				F5AECB0D1F9DD0A10074E5B8 /* GYCommunityReUsersCVCell.swift in Sources */,
 				F512968A1F9738ED00EB78E6 /* GYCommunityModel.swift in Sources */,
 				F5DE93A41F7E3DB800F5E314 /* CommunityPageView.swift in Sources */,
 				F5DE93A21F7E398200F5E314 /* GYCommunityOtherController.swift in Sources */,

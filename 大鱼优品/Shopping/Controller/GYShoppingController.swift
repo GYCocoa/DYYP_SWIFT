@@ -83,9 +83,9 @@ class GYShoppingController: GYBaseViewController,ScrollTopicTitleDelegate,SDCycl
     //MARK: -------------------------- 实时修改高度 -------------------------
     func scrollTopicTitle(height: CGFloat) {
 //        print(height)
-        let H = height >= 100 ? 100 : (height <= 0 ? 0 : height)
-        pageView.y = kNavBarHeight + 100 - H
-        cycleScrollView.y = -H
+        let H = height >= 100 + kNavStatusHeight ? 100 + kNavStatusHeight : (height <= 0 ? 0 : height)
+        pageView.y = kNavBarHeight + 100 - H + kNavStatusHeight
+        cycleScrollView.y = -H + kNavStatusHeight
         self.navigationController?.navigationBar.backgroundColor = UIColor.colorConversion(Color_Value: "ffffff", alpha: H/100)
         searchBar.backgroundColor = height<=0 ? UIColor.colorConversion(Color_Value: "ffffff", alpha: 0.85) : UIColor.colorConversion(Color_Value: "ececec", alpha: 1)
     }
@@ -104,7 +104,7 @@ class GYShoppingController: GYBaseViewController,ScrollTopicTitleDelegate,SDCycl
     }()
     /// 无线轮播图
     lazy var cycleScrollView : SDCycleScrollView = {
-        var cycleScrollView = SDCycleScrollView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: kNavBarHeight+100), delegate: self, placeholderImage: UIImage(named: "community_nodata"))
+        var cycleScrollView = SDCycleScrollView.init(frame: CGRect.init(x: 0, y: kNavStatusHeight, width: kWidth, height: kNavBarHeight+100), delegate: self, placeholderImage: UIImage(named: "community_nodata"))
         cycleScrollView?.pageControlAliment = SDCycleScrollViewPageContolAlimentCenter
         cycleScrollView?.currentPageDotColor = UIColor.white
         cycleScrollView?.pageDotColor = UIColor.init(red: 202/255.0, green: 202/255.0, blue: 195/255.0, alpha: 1.0)
@@ -145,7 +145,7 @@ extension GYShoppingController {
         view.addSubview(pageView)
         pageView.snp.makeConstraints { (make) in
             make.left.right.equalTo(view)
-            make.top.equalTo(view).offset(kNavBarHeight+100)
+            make.top.equalTo(view).offset(kNavBarHeight + kNavStatusHeight + 100)
             make.bottom.equalTo(view).offset(100)
         }
     }

@@ -44,7 +44,7 @@ class GYTabbarController: UITabBarController {
     }
     
     private func addChildViewControllers(childController:UIViewController,title:String,imageNamed:String,selectImageNamed:String) {
-        childController.title = title
+        childController.tabBarItem.title = title
         childController.tabBarItem.image = UIImage(named:imageNamed)
         childController.tabBarItem.selectedImage = UIImage(named:selectImageNamed)
         let nav = GYNavigationController.init(rootViewController: childController)
