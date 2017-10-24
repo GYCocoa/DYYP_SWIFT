@@ -213,5 +213,9 @@ extension GYShopTopicController: UITableViewDelegate,UITableViewDataSource{
             delegate?.scrollTopicTitle(height: scrollView.contentOffset.y)
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let view = GYShopingDetailController()
+        self.navigationController?.pushViewController(view, animated: true)
+    }
 }
 
