@@ -25,7 +25,7 @@ class GYCommunityController: GYBaseViewController,UITabBarControllerDelegate {
     fileprivate func setupNavigationBar() {
         self.titleView.frame = CGRect.init(x: 0, y: 0, width: kWidth, height: 30)
         self.navigationItem.titleView = self.titleView
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "white")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: UIBarButtonItemStyle.done, target: self, action: #selector(categoryPostAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "post_img")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: UIBarButtonItemStyle.done, target: self, action: #selector(categoryPostAction))
         self.titleView.addTarget(self, action: #selector(categorySearchAction), for: UIControlEvents.touchUpInside)
     }
     @objc fileprivate func categorySearchAction() {

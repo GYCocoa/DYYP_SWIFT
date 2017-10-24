@@ -70,9 +70,11 @@ let COMMUNITY_TITLE =                                                           
 /// 社区轮播图
 let COM_COMMUNITY_BANNER           =                                    COMMUNITY_BASE + "home-rotation"
 /// 首页推荐内容
-let COMMUNITY_RECOMMEND     =                                                           COMMUNITY_BASE + "home-recommend"
-
-
-
-
+let COMMUNITY_RECOMMEND     =                                            COMMUNITY_BASE + "home-recommend"
+/// 其他最新内容
+let COM_CATEGORY_NEW     =                                                      COMMUNITY_BASE + "cate/new"
+/// 话题全部
+let COM_TOPIC_ALL                =                                                       COMMUNITY_BASE + "topic/all"
+/// 精选
+let COM_CHOOSE_COMMEND   =                                                   COMMUNITY_BASE + "cate/chosen"
 

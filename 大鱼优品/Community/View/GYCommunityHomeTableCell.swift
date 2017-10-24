@@ -54,10 +54,11 @@ class GYCommunityHomeTableCell: UITableViewCell {
      */
     var communityModel:GYCommunityModel? {
         didSet {
-
-            let content = NSString(string: (communityModel?.content)! + "#" + (communityModel?.tname)! + "#")
+            let con = communityModel?.content  != nil ? communityModel?.content : ""
+            let tn = communityModel?.tname  != nil ? communityModel?.tname : ""
+            let content = NSString(string: (con)! + "#" + (tn)! + "#")
             let attri = NSMutableAttributedString.init(string: content as String)
-            let s = NSString(string: "#\(communityModel!.tname!)#")
+            let s = NSString(string: "#\(tn!)#")
             let range = content.range(of: s as String)
             attri.addAttribute(NSForegroundColorAttributeName, value: UIColor.globalMainColor(), range: range)
             contentL.attributedText = attri

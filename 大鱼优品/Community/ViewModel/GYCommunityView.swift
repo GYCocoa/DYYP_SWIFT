@@ -15,30 +15,57 @@ protocol CommunityToolProtocol {
     //MARK: -------------------------- 获取社区标题 -------------------------
     static func getCommunityTitlesData(fromViewController: String, completionHandler: @escaping ([TopicTitle], [GYCommunityOtherController]) -> (), errorCode: @escaping (NSDictionary) -> ())
     //MARK: -------------------------- 获取社区轮播图 -------------------------
-    static func getCommunityBannersData(completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSDictionary) -> ())
+    static func getCommunityBannersData(completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSError) -> ())
     //MARK: -------------------------- 获取社区推荐和最新数据 -------------------------
-    static func getCommunityRecommendData(pageId:Int,completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSDictionary) -> ())
-
+    static func getCommunityRecommendData(url:String,pageId:Int,param:NSMutableDictionary,isRecomment:Bool,completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSError) -> ())
+    //MARK: -------------------------- 获取社区全部话题 -------------------------
+    static func getCommunityAllTopicData(cId:Int,completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSError) -> ())
+    //MARK: -------------------------- 获取社区精选数据 -------------------------
+    static func getCommunityChooseData(cId:Int,pageId:Int,completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSError) -> ())
 }
 
 class GYCommunityView: CommunityToolProtocol {
-    //MARK: -------------------------- 获取社区推荐和最新数据 -------------------------
-    static func getCommunityRecommendData(pageId: Int, completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSDictionary) -> ()) {
-        let param = ["pageId":pageId]
-        GYNetworkTool.getRequest(urlString: COMMUNITY_RECOMMEND, params: param, success: { (response) in
+    //MARK: -------------------------- 获取社区精选数据 -------------------------
+    static func getCommunityChooseData(cId: Int, pageId: Int, completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSError) -> ()) {
+        let param = ["pageId":pageId,"cid":cId]
+        GYNetworkTool.getRequest(urlString: COM_CHOOSE_COMMEND, params: param, success: { (response) in
             completionHandler(response)
         }) { (error) in
-            errorCode(error as! NSDictionary)
+            errorCode(error as NSError)
+        }
+    }
+    
+    //MARK: -------------------------- 获取社区全部话题 -------------------------
+    static func getCommunityAllTopicData(cId: Int, completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSError) -> ()) {
+        GYNetworkTool.getRequest(urlString: COM_TOPIC_ALL, params: ["cid":cId], success: { (response) in
+            completionHandler(response)
+        }) { (error) in
+            errorCode(error as NSError)
+        }
+    }
+    
+    //MARK: -------------------------- 获取社区推荐和最新数据 -------------------------
+    static func getCommunityRecommendData(url:String,pageId:Int,param:NSMutableDictionary,isRecomment:Bool, completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSError) -> ()) {
+        var params = NSMutableDictionary()
+        if isRecomment { /// 推荐
+            params = ["pageId":pageId]
+        }else{  /// 最新
+            params = NSMutableDictionary.init(dictionary: param)
+        }
+        GYNetworkTool.getRequest(urlString: url, params: params as! [String : Any], success: { (response) in
+            completionHandler(response)
+        }) { (error) in
+            errorCode(error as NSError)
         }
     }
     
     //MARK: -------------------------- 获取社区轮播图 -------------------------
-    static func getCommunityBannersData(completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSDictionary) -> ()) {
+    static func getCommunityBannersData(completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSError) -> ()) {
         GYNetworkTool.getRequest(urlString: COM_COMMUNITY_BANNER, params:[:], success: { (response) in
 //            print(response)
             completionHandler(response)
         }) { (error) in
-            errorCode(error as! NSDictionary)
+            errorCode(error as NSError)
         }
     }
     

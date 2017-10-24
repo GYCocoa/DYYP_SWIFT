@@ -12,41 +12,93 @@ import SVProgressHUD
 import MJRefresh
 
 fileprivate let GYHomeAncillaryCellId = "GYHomeAncillaryCellId"
+fileprivate let GYCommunityTopicTableCellId = "GYCommunityTopicTableCellId"
+fileprivate let GYCommunityChooseTableCellId = "GYCommunityChooseTableCellId"
 class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate {
 
     var topicTitle: TopicTitle?
     fileprivate var pageId:Int = 1
+    fileprivate var choosePageId:Int = 1
     fileprivate var currentIndex:Int = 0
-
+    var isTopScroll:Bool?
+    var contentOfSet_Y:CGFloat = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor.randomColor()
+        view.addSubview(tableView)
+
         if topicTitle?.cname == "推荐" {
-            setupSubviews()
+            setupSubviews(isRecomment: true)
         }else{
-            
+            setupSubviews(isRecomment: false)
+            setupCategory()
+            requestTopicData()
+            requestChooseData()
         }
     }
-
-    fileprivate func setupSubviews() {
-        
-        view.addSubview(tableView)
+    fileprivate func setupSubviews(isRecomment: Bool) {
         self.tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: {
             /// 获取banner数据
             self.pageId = 1
-            self.getBannerdata()
-            self.getRecommendData()
+            if isRecomment {
+                self.getBannerdata()
+            }else{
+                self.requestTopicData()
+                self.requestChooseData()
+            }
+            self.getRecommendData(isRecomment: isRecomment)
         })
         self.tableView.mj_header.beginRefreshing()
         
         self.tableView.mj_footer = MJRefreshBackNormalFooter(refreshingBlock: {
             self.pageId += 1
-            self.getRecommendData()
+            self.getRecommendData(isRecomment: isRecomment)
         })
     }
-    
+    /// 获取精选数据
+    fileprivate func requestChooseData() {
+        GYCommunityView.getCommunityChooseData(cId: (topicTitle?.cid)!, pageId: choosePageId, completionHandler: { (response) in
+            print(response)
+            self.chooseArray.removeAllObjects()
+            if GYNetworkTool.success(response: response) {
+                if let data = response["data"] {
+                    let datas = data as? NSDictionary
+                    if let item = datas!["items"] {
+                        let items = item as? NSArray
+                        for (_,enums) in (items?.enumerated())!{
+                            let model = GYCommunityModel.init(dict: enums as! [String : AnyObject])
+                            self.chooseArray.add(model)
+                        }
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        }) { (error) in
+            print(error)
+        }
+    }
+    /// 获取话题数据
+    fileprivate func requestTopicData() {
+        GYCommunityView.getCommunityAllTopicData(cId: (topicTitle?.cid)!, completionHandler: { (response) in
+//            print(response)
+            self.topicArray.removeAllObjects()
+            if GYNetworkTool.success(response: response) {
+                if let data = response["data"] {
+                    let item = data as? NSArray
+                    for (_,enums) in (item?.enumerated())!{
+                        let model = GYCommunityModel.init(dict: enums as! [String : AnyObject])
+                        self.topicArray.add(model)
+                    }
+                }
+            }
+            self.tableView.reloadData()
+        }) { (error) in
+            print(error)
+        }
+    }
     fileprivate func getBannerdata() {
         tableView.tableHeaderView = self.cycleScrollView
         /// 给轮播图赋值
@@ -68,8 +120,18 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
         })
     }
     
-    fileprivate func getRecommendData() {
-        GYCommunityView.getCommunityRecommendData(pageId: self.pageId, completionHandler: { (response) in
+    fileprivate func getRecommendData(isRecomment:Bool) {
+        var url = ""
+        var param = NSMutableDictionary()
+        if isRecomment {
+            url = COMMUNITY_RECOMMEND
+            param = [:]
+        }else{
+            url = COM_CATEGORY_NEW
+            param = ["pageId":pageId,"id":topicTitle!.cid!,
+                     "type":"1"]
+        }
+        GYCommunityView.getCommunityRecommendData(url: url, pageId: self.pageId, param:param, isRecomment: isRecomment, completionHandler: { (response) in
             print(response)
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
@@ -95,7 +157,10 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
                                 if model.picture != nil {
                                     let H = model.picture!["height"] as? CGFloat
                                     let W = model.picture!["width"] as? CGFloat
-                                    let height = (kWidth-32)*(H! / W!)
+                                    var height = (kWidth-32)*(H! / W!)
+                                    if height > (kWidth - 32) {
+                                        height = kWidth-32
+                                    }
                                     model.height = height
                                 }else{
                                     model.height = 0
@@ -121,6 +186,10 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
             self.tableView.mj_footer.endRefreshing()
             print(error)
         }
+    }
+    
+    fileprivate func setupCategory() {
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -153,21 +222,32 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
         var recommendUsers = NSMutableArray()
         return recommendUsers
     }()
-    
+    fileprivate lazy var topicArray: NSMutableArray = {
+        var topicArray = NSMutableArray()
+        return topicArray
+    }()
+    fileprivate lazy var chooseArray: NSMutableArray = {
+        var chooseArray = NSMutableArray()
+        return chooseArray
+    }()
     lazy var tableView:UITableView = {
-        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: kHeight-152), style: UITableViewStyle.grouped)
+        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: kHeight-kNavBarHeight-kTabBarHeight - 40), style: UITableViewStyle.grouped)
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none; /// 去掉cell下划线
-        tableView.tableFooterView = UIView() /// 去掉cell多余的下划线
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: kWidth, height: 0.01)) /// 去掉cell多余的下划线
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: kWidth, height: 0.01))
         tableView.estimatedRowHeight = 0
         tableView.estimatedSectionHeaderHeight = 0
         tableView.estimatedSectionFooterHeight = 0
         tableView.register(UINib(nibName: String(describing: GYCommunityHomeTableCell.self), bundle: nil), forCellReuseIdentifier: String(describing: GYCommunityHomeTableCell.self))
-        tableView.register(GYCommunityAncillaryCell.self, forCellReuseIdentifier: GYHomeAncillaryCellId)
+        tableView.register(GYCommunityAncillaryCell.self, forCellReuseIdentifier: GYHomeAncillaryCellId) /// 推荐用户
+        tableView.register(GYCommunityTopicTableCell.self, forCellReuseIdentifier: GYCommunityTopicTableCellId) /// 话题
+        tableView.register(GYCommunityChooseTableCell.self, forCellReuseIdentifier: GYCommunityChooseTableCellId) /// 精选
 
+        
         return tableView
     }()
 
@@ -211,6 +291,12 @@ extension GYCommunityOtherController:UITableViewDelegate,UITableViewDataSource {
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 let model = self.dataArray.subarray(with: NSRange(location: 0, length: self.currentIndex))[indexPath.row] as? GYCommunityModel
                 cell.communityModel = model
+                if (isTopScroll)!{
+                    if ((indexPath.row-(self.pageId-1)*10) == 0 || (indexPath.row-(self.pageId-1)*10) == 1 || self.pageId == 1) {
+                        self.pageId += 1
+                        getRecommendData(isRecomment: true)
+                    }
+                }
                 return cell
             }else if indexPath.section == 1{
                 let homeSpecial = tableView.dequeueReusableCell(withIdentifier: GYHomeAncillaryCellId) as! GYCommunityAncillaryCell
@@ -221,14 +307,56 @@ extension GYCommunityOtherController:UITableViewDelegate,UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYCommunityHomeTableCell.self), for: indexPath) as! GYCommunityHomeTableCell
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
                 let model = self.dataArray.subarray(with: NSRange(location: self.currentIndex, length: self.dataArray.count-self.currentIndex))[indexPath.row] as? GYCommunityModel
+                if (isTopScroll)!{
+                    if ((indexPath.row-(self.pageId-1)*10) == 0 || (indexPath.row-(self.pageId-1)*10) == 1 || self.pageId == 1) {
+                        self.pageId += 1
+                        getRecommendData(isRecomment: true)
+                    }
+                }
                 cell.communityModel = model
                 return cell
             }
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYCommunityHomeTableCell.self), for: indexPath) as! GYCommunityHomeTableCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
-
-            return cell
+            if indexPath.section == 0 {
+                let topic = tableView.dequeueReusableCell(withIdentifier: GYCommunityTopicTableCellId) as! GYCommunityTopicTableCell
+                topic.selectionStyle = UITableViewCellSelectionStyle.none
+                topic.dataArray = self.topicArray
+                return topic
+            }else if indexPath.section == 1 {
+                let choose = tableView.dequeueReusableCell(withIdentifier: GYCommunityChooseTableCellId) as! GYCommunityChooseTableCell
+                choose.selectionStyle = UITableViewCellSelectionStyle.none
+                choose.dataArray = self.chooseArray
+                return choose
+            }else if indexPath.section == 2 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYCommunityHomeTableCell.self), for: indexPath) as! GYCommunityHomeTableCell
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                let model = self.dataArray.subarray(with: NSRange(location: 0, length: self.currentIndex))[indexPath.row] as? GYCommunityModel
+                cell.communityModel = model
+                if (isTopScroll)!{
+                    if ((indexPath.row-(self.pageId-1)*10) == 0 || (indexPath.row-(self.pageId-1)*10) == 1 || self.pageId == 1) {
+                        self.pageId += 1
+                        getRecommendData(isRecomment: false)
+                    }
+                }
+                return cell
+            }else if indexPath.section == 3 {
+                let anc = tableView.dequeueReusableCell(withIdentifier: GYHomeAncillaryCellId) as! GYCommunityAncillaryCell
+                anc.selectionStyle = UITableViewCellSelectionStyle.none
+                anc.dataArray = self.recommendUsers
+                return anc
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYCommunityHomeTableCell.self), for: indexPath) as! GYCommunityHomeTableCell
+                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                let model = self.dataArray.subarray(with: NSRange(location: self.currentIndex, length: self.dataArray.count-self.currentIndex))[indexPath.row] as? GYCommunityModel
+                cell.communityModel = model
+                if (isTopScroll)!{
+                    if ((indexPath.row-(self.pageId-1)*10) == 0 || (indexPath.row-(self.pageId-1)*10) == 1 || self.pageId == 1) {
+                        self.pageId += 1
+                        getRecommendData(isRecomment: false)
+                    }
+                }
+                return cell
+            }
         }
     }
     
@@ -244,7 +372,19 @@ extension GYCommunityOtherController:UITableViewDelegate,UITableViewDataSource {
                 return 132 + (model?.height)!
             }
         }else{
-            return 132 + 250
+            if indexPath.section == 0 {
+                return 95
+            }else if indexPath.section == 1{
+                return self.chooseArray.count > 2 ? 430 : (self.chooseArray.count > 0 ? 220 : 0)
+            }else if indexPath.section == 2{
+                let model = self.dataArray.subarray(with: NSRange(location: 0, length: self.currentIndex))[indexPath.row] as? GYCommunityModel
+                return 132 + (model?.height)!
+            }else if indexPath.section == 3{
+                return 227
+            }else{
+                let model = self.dataArray.subarray(with: NSRange(location: self.currentIndex, length: self.dataArray.count-self.currentIndex))[indexPath.row] as? GYCommunityModel
+                return 132 + (model?.height)!
+            }
         }
     }
     
@@ -260,5 +400,13 @@ extension GYCommunityOtherController:UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > contentOfSet_Y {
+            isTopScroll = true
+        }else{
+            isTopScroll = false
+        }
+        contentOfSet_Y = scrollView.contentOffset.y
+    }
     
 }
