@@ -12,15 +12,19 @@ import SDCycleScrollView
 class GYShoppingController: GYBaseViewController,ScrollTopicTitleDelegate,SDCycleScrollViewDelegate,UITabBarControllerDelegate {
     
     fileprivate var topView:UIView?
+    fileprivate var currentH:CGFloat = 0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.tabBarController?.delegate = self
         setNavigationTopBar()
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+//        print(currentH)
+//        self.scrollTopicTitle(height: currentH)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(true)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(named: kNavBar_Bg_Image), for: UIBarMetrics.default)
         UIApplication.shared.keyWindow?.viewWithTag(0x186A0)?.removeFromSuperview()
     }
     override func viewDidLoad() {
@@ -84,6 +88,7 @@ class GYShoppingController: GYBaseViewController,ScrollTopicTitleDelegate,SDCycl
     func scrollTopicTitle(height: CGFloat) {
 //        print(height)
         let H = height >= 100 + kNavStatusHeight ? 100 + kNavStatusHeight : (height <= 0 ? 0 : height)
+        currentH =  H
         pageView.y = kNavBarHeight + 100 - H + kNavStatusHeight
         cycleScrollView.y = -H + kNavStatusHeight
         self.navigationController?.navigationBar.backgroundColor = UIColor.colorConversion(Color_Value: "ffffff", alpha: H/100)
@@ -143,11 +148,7 @@ extension GYShoppingController {
     fileprivate func setupUI() {
         pageView.removeFromSuperview()
         view.addSubview(pageView)
-        pageView.snp.makeConstraints { (make) in
-            make.left.right.equalTo(view)
-            make.top.equalTo(view).offset(kNavBarHeight + kNavStatusHeight + 100)
-            make.bottom.equalTo(view).offset(100)
-        }
+        pageView.frame = CGRect.init(x: 0, y: (kNavBarHeight + 100 + kNavStatusHeight), width: kWidth, height: kHeight - (kNavBarHeight + kNavStatusHeight))
     }
 }
 extension GYShoppingController {
