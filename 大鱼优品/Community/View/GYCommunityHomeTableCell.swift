@@ -75,14 +75,14 @@ class GYCommunityHomeTableCell: UITableViewCell {
             commentBtn.setTitle("\(communityModel!.comments!)", for: UIControlState.normal)
             pariseBtn.setTitle("\(communityModel!.likes!)", for: UIControlState.normal)
             if communityModel?.isKeep == 0 { // not colletion
-                collectionBtn.setImage(UIImage.init(named: "arrow_collection"), for: UIControlState.normal)
+                collectionBtn.setImage(UIImage.init(named: "commond_love"), for: UIControlState.normal)
             }else{
                 collectionBtn.setImage(UIImage.init(named: "commond_inlove"), for: UIControlState.normal)
             }
             if communityModel?.isLike == 0 { // not praise
-                pariseBtn.setImage(UIImage.init(named: "zan"), for: UIControlState.normal)
+                pariseBtn.setImage(UIImage.init(named: "blackzan"), for: UIControlState.normal)
             }else{
-                pariseBtn.setImage(UIImage.init(named: "inzan"), for: UIControlState.normal)
+                pariseBtn.setImage(UIImage.init(named: "bigzan"), for: UIControlState.normal)
             }
         }
     }

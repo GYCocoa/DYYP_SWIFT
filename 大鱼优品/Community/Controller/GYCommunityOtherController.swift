@@ -393,7 +393,16 @@ extension GYCommunityOtherController:UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 6
+        if topicTitle?.cname == "推荐" {
+            if section == 1 {
+                return 7
+            }
+        }else{
+            if section == 0 || section == 1 || section == 3 {
+                return 7
+            }
+        }
+        return 0.01
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
