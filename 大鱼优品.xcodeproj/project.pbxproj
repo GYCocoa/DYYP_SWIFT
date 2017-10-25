@@ -22,6 +22,7 @@
 		F50269CB1F6FCF0E001CDA46 /* GYNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50269CA1F6FCF0E001CDA46 /* GYNavigationController.swift */; };
 		F50269D31F6FDCAD001CDA46 /* GYTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50269D21F6FDCAC001CDA46 /* GYTabbar.swift */; };
 		F504D0E71F9F42D0004BD0E8 /* GYShopingDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F504D0E61F9F42D0004BD0E8 /* GYShopingDetailController.swift */; };
+		F50CBB7D1FA07E3B00B4D419 /* UIImage+GYImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F50CBB7C1FA07E3B00B4D419 /* UIImage+GYImage.swift */; };
 		F51296861F96F67100EB78E6 /* MacroNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51296851F96F67100EB78E6 /* MacroNet.swift */; };
 		F51296881F9704EF00EB78E6 /* GYCommunityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51296871F9704EF00EB78E6 /* GYCommunityView.swift */; };
 		F512968A1F9738ED00EB78E6 /* GYCommunityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F51296891F9738ED00EB78E6 /* GYCommunityModel.swift */; };
@@ -202,6 +203,7 @@
 		F50269CA1F6FCF0E001CDA46 /* GYNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYNavigationController.swift; sourceTree = "<group>"; };
 		F50269D21F6FDCAC001CDA46 /* GYTabbar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYTabbar.swift; sourceTree = "<group>"; };
 		F504D0E61F9F42D0004BD0E8 /* GYShopingDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopingDetailController.swift; sourceTree = "<group>"; };
+		F50CBB7C1FA07E3B00B4D419 /* UIImage+GYImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+GYImage.swift"; sourceTree = "<group>"; };
 		F51296851F96F67100EB78E6 /* MacroNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroNet.swift; sourceTree = "<group>"; };
 		F51296871F9704EF00EB78E6 /* GYCommunityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCommunityView.swift; sourceTree = "<group>"; };
 		F51296891F9738ED00EB78E6 /* GYCommunityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCommunityModel.swift; sourceTree = "<group>"; };
@@ -655,6 +657,7 @@
 				F5DB17251F7222BC00A4C4E7 /* NSObject+GYValidation.swift */,
 				F5DB17291F725A9000A4C4E7 /* UIDevice+GYDevice.swift */,
 				F51BD4EB1F8B659600EEFB07 /* NSObject+GYObject.swift */,
+				F50CBB7C1FA07E3B00B4D419 /* UIImage+GYImage.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1566,6 +1569,7 @@
 				F5AEF9B91F9EE33E00B3D4B4 /* GYCommunityChooseTableCell.swift in Sources */,
 				F5555EF91F8DD555000034F7 /* Base64.m in Sources */,
 				F50269D31F6FDCAD001CDA46 /* GYTabbar.swift in Sources */,
+				F50CBB7D1FA07E3B00B4D419 /* UIImage+GYImage.swift in Sources */,
 				F50269C91F6FCEF2001CDA46 /* GYTabbarController.swift in Sources */,
 				F5555F001F8DF8A4000034F7 /* GYBindLoginView.swift in Sources */,
 				F50269C31F6FCEA6001CDA46 /* GYCaremaController.swift in Sources */,

@@ -122,10 +122,12 @@ extension GYShopTopicController: UITableViewDelegate,UITableViewDataSource{
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYSnapUpTableCell.self), for: indexPath) as! GYSnapUpTableCell
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.superController = self
                 return cell
             }else if indexPath.section == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYRecommendTableCell.self), for: indexPath) as! GYRecommendTableCell
                 cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.superController = self
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYDisplayTableCell.self), for: indexPath) as! GYDisplayTableCell

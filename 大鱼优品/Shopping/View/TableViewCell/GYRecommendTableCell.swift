@@ -10,6 +10,7 @@ import UIKit
 
 let RecommendCollectionCellId = "RecommendCollectionCellId"
 class GYRecommendTableCell: UITableViewCell {
+    var superController:UIViewController?
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -75,7 +76,8 @@ extension GYRecommendTableCell: UICollectionViewDelegate,UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let view = GYShopingDetailController()
+        superController?.navigationController?.pushViewController(view, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return  CGSize(width: (kWidth-40)/3, height: self.collectionView.height)

@@ -18,9 +18,10 @@ class GYShoppingController: GYBaseViewController,ScrollTopicTitleDelegate,SDCycl
         super.viewWillAppear(true)
         self.tabBarController?.delegate = self
         setNavigationTopBar()
+        if currentH > 0 {
+            self.navigationController?.navigationBar.backgroundColor = UIColor.colorConversion(Color_Value: "ffffff", alpha: currentH/100)
+        }
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        print(currentH)
-//        self.scrollTopicTitle(height: currentH)
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -88,7 +89,7 @@ class GYShoppingController: GYBaseViewController,ScrollTopicTitleDelegate,SDCycl
     func scrollTopicTitle(height: CGFloat) {
 //        print(height)
         let H = height >= 100 + kNavStatusHeight ? 100 + kNavStatusHeight : (height <= 0 ? 0 : height)
-        currentH =  H
+        currentH = H
         pageView.y = kNavBarHeight + 100 - H + kNavStatusHeight
         cycleScrollView.y = -H + kNavStatusHeight
         self.navigationController?.navigationBar.backgroundColor = UIColor.colorConversion(Color_Value: "ffffff", alpha: H/100)

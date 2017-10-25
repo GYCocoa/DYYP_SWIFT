@@ -11,6 +11,8 @@ import UIKit
 let SnapCollectionCellId = "SnapCollectionCellId"
 class GYSnapUpTableCell: UITableViewCell {
 
+    var superController:UIViewController?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -82,7 +84,8 @@ extension GYSnapUpTableCell: UICollectionViewDelegate,UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        let view = GYShopingDetailController()
+        superController?.navigationController?.pushViewController(view, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return  CGSize(width: (kWidth-40)/3, height: self.collectionView.height)
