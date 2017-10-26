@@ -62,7 +62,7 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
             originalPriceL?.font = UIFont.systemFont(ofSize: 10)
             originalPriceL?.textColor = UIColor.colorConversion(Color_Value: "#999999", alpha: 1)
             self.addSubview(originalPriceL!)
-            let str = "￥100"
+            let str = "￥100  "
             let attri = NSMutableAttributedString.init(string: str)
             attri.addAttribute(NSStrikethroughStyleAttributeName, value: UInt8(NSUnderlineStyle.patternSolid.rawValue) | UInt8(NSUnderlineStyle.styleSingle.rawValue), range: NSRange(location: 0, length: str.characters.count))
             attri.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.colorConversion(Color_Value: "#666666", alpha: 1), range: NSRange(location: 0, length: str.characters.count))

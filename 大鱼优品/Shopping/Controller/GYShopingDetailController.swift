@@ -44,13 +44,14 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         headerView.delegate = self
         tableView.tableHeaderView = headerView
         headerView.dataArray = []
+        self.view.addSubview(bottomView)
     }
     func updateShopDetailHeaderHeight(height: CGFloat) {
         headerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: height)
     }
     
     fileprivate lazy var tableView:UITableView = {
-        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: kNavBarHeight, width: kWidth, height: kHeight - kNavBarHeight), style: UITableViewStyle.grouped)
+        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: kNavBarHeight, width: kWidth, height: kHeight - kNavBarHeight - 85), style: UITableViewStyle.grouped)
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         tableView.delegate = self
         tableView.dataSource = self
@@ -61,15 +62,20 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none; /// 去掉cell下划线
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: kWidth, height: 0)) /// 去掉cell多余的下划线
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: kWidth, height: 0)) /// 去掉cell多余的下划线
-//        tableView.register(UINib(nibName: String(describing: GYHomeShopRecommendCell.self), bundle: nil), forCellReuseIdentifier: String(describing: GYHomeShopRecommendCell.self))
+        tableView.register(UINib(nibName: String(describing: GYShopDetailTableCell.self), bundle: nil), forCellReuseIdentifier: String(describing: GYShopDetailTableCell.self))
         
         return tableView
     }()
-
     fileprivate lazy var headerView: GYShopDetailHeaderView = {
         var headerView = GYShopDetailHeaderView()
         return headerView
     }()
+    fileprivate lazy var bottomView: GYShopDetailBottomView = {
+        var bottomView = GYShopDetailBottomView.bottomView()
+        bottomView.frame = CGRect.init(x: 0, y: kHeight - 85, width: kWidth, height: 50)
+        return bottomView
+    }()
+    
 }
 
 extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
@@ -83,13 +89,19 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell")
-        if cell == nil {
-            cell = UITableViewCell.init(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        }
-        cell?.textLabel?.text = "测试"
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYShopDetailTableCell.self), for: indexPath) as! GYShopDetailTableCell
+        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.indexPathRow = indexPath.row
         
-        return cell!
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            /// 原内容固定高度 + 自适应
+            return  65 + 10
+        }
+        /// 原内容固定高度 + 自适应 + 追评固定高度 + 自适应
+        return 65 + 10 + 45 + 10
     }
     
 }
@@ -101,19 +113,5 @@ extension GYShopingDetailController {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
