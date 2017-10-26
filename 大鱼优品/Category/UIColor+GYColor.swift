@@ -36,8 +36,9 @@ extension UIColor {
     class func globalBackgroundColor() -> UIColor {
         return UIColor(r: 248, g: 249, b: 247)
     }
+    /// 主浅灰色
     class func globalGrayColor() -> UIColor {
-        return UIColor(r: 234, g: 234, b: 234)
+        return UIColor.RGBColor(r: 234, g: 234, b: 234, a: 0.4)
     }
     /// 背景蓝色
     class func globalBlueColor() -> UIColor {
@@ -53,7 +54,7 @@ extension UIColor {
     class func globalRedColor() -> UIColor {
         return UIColor(r: 210, g: 63, b: 66)
     }
-    /// 主颜色
+    /// 主颜色  橘红色
     class func globalMainColor() -> UIColor {
         return UIColor.colorConversion(Color_Value: "fd6363", alpha: 1)
     }

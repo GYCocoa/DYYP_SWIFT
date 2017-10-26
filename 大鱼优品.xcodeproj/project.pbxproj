@@ -136,6 +136,7 @@
 		F56505601F7CDC6D002651AA /* GYDisplayTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565055E1F7CDC6D002651AA /* GYDisplayTableCell.swift */; };
 		F56505611F7CDC6D002651AA /* GYDisplayTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F565055F1F7CDC6D002651AA /* GYDisplayTableCell.xib */; };
 		F5655F7A1F98A02700065982 /* GYCommunityAncillaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5655F791F98A02700065982 /* GYCommunityAncillaryCell.swift */; };
+		F5A114C61FA19A160044BFD1 /* GYShopDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A114C51FA19A160044BFD1 /* GYShopDetailHeaderView.swift */; };
 		F5A4AD8D1F7F3FCB00812E85 /* GYCaremaTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4AD8C1F7F3FCB00812E85 /* GYCaremaTopView.swift */; };
 		F5A4AD8F1F7F541D00812E85 /* GYCaremaResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4AD8E1F7F541D00812E85 /* GYCaremaResultController.swift */; };
 		F5A4AD921F7F989700812E85 /* GYCaremaCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A4AD901F7F989700812E85 /* GYCaremaCollectionCell.swift */; };
@@ -406,6 +407,7 @@
 		F565055E1F7CDC6D002651AA /* GYDisplayTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYDisplayTableCell.swift; sourceTree = "<group>"; };
 		F565055F1F7CDC6D002651AA /* GYDisplayTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYDisplayTableCell.xib; sourceTree = "<group>"; };
 		F5655F791F98A02700065982 /* GYCommunityAncillaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCommunityAncillaryCell.swift; sourceTree = "<group>"; };
+		F5A114C51FA19A160044BFD1 /* GYShopDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopDetailHeaderView.swift; sourceTree = "<group>"; };
 		F5A4AD8C1F7F3FCB00812E85 /* GYCaremaTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCaremaTopView.swift; sourceTree = "<group>"; };
 		F5A4AD8E1F7F541D00812E85 /* GYCaremaResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCaremaResultController.swift; sourceTree = "<group>"; };
 		F5A4AD901F7F989700812E85 /* GYCaremaCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCaremaCollectionCell.swift; sourceTree = "<group>"; };
@@ -1325,6 +1327,7 @@
 			children = (
 				F56505501F7CC756002651AA /* HomePageView.swift */,
 				F56505511F7CC756002651AA /* HomeTitleView.swift */,
+				F5A114C51FA19A160044BFD1 /* GYShopDetailHeaderView.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1562,6 +1565,7 @@
 				F5555EA41F8DBC13000034F7 /* AppDelegate+ShareSDK.swift in Sources */,
 				F535B6601F7A3C9C00907209 /* GYHomeModel.swift in Sources */,
 				F55D670E1F711AA900619ED9 /* GYPhoneLogin.swift in Sources */,
+				F5A114C61FA19A160044BFD1 /* GYShopDetailHeaderView.swift in Sources */,
 				F5DB172A1F725A9000A4C4E7 /* UIDevice+GYDevice.swift in Sources */,
 				F5555EFE1F8DF3CF000034F7 /* GYBindPhoneController.swift in Sources */,
 				F535B6571F7A347200907209 /* GYHomeRecommendCell.swift in Sources */,
