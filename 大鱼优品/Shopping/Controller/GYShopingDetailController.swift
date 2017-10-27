@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import MJRefresh
 
 class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeightDelegate {
     
@@ -44,7 +45,17 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         headerView.delegate = self
         tableView.tableHeaderView = headerView
         headerView.dataArray = []
+        self.setupFooterView()
+        tableView.tableFooterView = footerView
+        footerView.backgroundColor = UIColor.orange
         self.view.addSubview(bottomView)
+        
+        let fresh = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(headerAction))
+        self.tableView.mj_header = fresh
+    }
+    @objc fileprivate func headerAction() {
+        
+        self.tableView.mj_header.endRefreshing()
     }
     func updateShopDetailHeaderHeight(height: CGFloat) {
         headerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: height)
@@ -69,6 +80,10 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
     fileprivate lazy var headerView: GYShopDetailHeaderView = {
         var headerView = GYShopDetailHeaderView()
         return headerView
+    }()
+    fileprivate lazy var footerView: GYShopDetailFooterView = {
+        var footerView = GYShopDetailFooterView()
+        return footerView
     }()
     fileprivate lazy var bottomView: GYShopDetailBottomView = {
         var bottomView = GYShopDetailBottomView.bottomView()
@@ -104,12 +119,48 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
         return 65 + 10 + 45 + 10
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: 30))
+        view.backgroundColor = UIColor.white
+        let button = UIButton(type: UIButtonType.custom)
+        button.setTitle("评价晒单(20)", for: UIControlState.normal)
+        button.setTitleColor(UIColor.colorConversion(Color_Value: "#444444", alpha: 1), for: UIControlState.normal)
+        button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.frame = CGRect(x: 10, y: 0, width: kWidth - 20, height: 30)
+        view .addSubview(button)
+        return view
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: 30))
+        view.backgroundColor = UIColor.white
+        let button = UIButton(type: UIButtonType.custom)
+        button.setTitle("全部评论", for: UIControlState.normal)
+        button.setTitleColor(UIColor.colorConversion(Color_Value: "#444444", alpha: 1), for: UIControlState.normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+        button.frame = CGRect(x: 10, y: 0, width: kWidth - 20, height: 30)
+        button.setImage(UIImage.init(named: "au_smoregree"), for: UIControlState.normal)
+        button.imageEdgeInsets = UIEdgeInsetsMake(0, 45, 0, -45)
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 20)
+        view .addSubview(button)
+        return view
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
 }
 
 extension GYShopingDetailController {
     
     fileprivate func setupHeaderView() {
         headerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight - 150)
+    }
+    fileprivate func setupFooterView() {
+        footerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight)
     }
     
 }

@@ -121,8 +121,16 @@
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GEr-1M-FvC">
+                        <rect key="frame" x="10" y="128.5" width="394" height="1"/>
+                        <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="0jD-eN-1uX"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
+                    <constraint firstAttribute="bottom" secondItem="GEr-1M-FvC" secondAttribute="bottom" id="0z8-5V-aZM"/>
                     <constraint firstItem="Y2B-HS-KlY" firstAttribute="leading" secondItem="vHf-dA-GAx" secondAttribute="trailing" constant="10" id="5dZ-pA-QHV"/>
                     <constraint firstItem="vHf-dA-GAx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="BHg-2i-cC4"/>
                     <constraint firstItem="iU3-4c-GRr" firstAttribute="leading" secondItem="Y2B-HS-KlY" secondAttribute="trailing" constant="15" id="Dzu-HJ-kTn"/>
@@ -136,10 +144,12 @@
                     <constraint firstItem="aqC-Ie-7ZI" firstAttribute="top" secondItem="Y2B-HS-KlY" secondAttribute="bottom" constant="10" id="VZ9-ZU-bPr"/>
                     <constraint firstAttribute="trailing" secondItem="ept-09-HSp" secondAttribute="trailing" id="WO8-fD-rmz"/>
                     <constraint firstItem="vHf-dA-GAx" firstAttribute="top" secondItem="ept-09-HSp" secondAttribute="bottom" constant="10" id="YII-er-FP3"/>
+                    <constraint firstAttribute="trailing" secondItem="GEr-1M-FvC" secondAttribute="trailing" id="Zac-Pi-S8s"/>
                     <constraint firstAttribute="trailing" secondItem="TgP-sE-UiQ" secondAttribute="trailing" constant="10" id="asz-Xj-OEz"/>
                     <constraint firstAttribute="trailing" secondItem="6DJ-fv-E96" secondAttribute="trailing" constant="10" id="bvx-JV-nSy"/>
                     <constraint firstItem="ept-09-HSp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="iyY-UD-sgk"/>
                     <constraint firstItem="l31-A8-e6V" firstAttribute="top" secondItem="aqC-Ie-7ZI" secondAttribute="bottom" constant="10" id="nyv-TW-Gxm"/>
+                    <constraint firstItem="GEr-1M-FvC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="qWH-mU-UYc"/>
                     <constraint firstItem="iU3-4c-GRr" firstAttribute="top" secondItem="ept-09-HSp" secondAttribute="bottom" constant="15" id="ths-q2-E6T"/>
                     <constraint firstAttribute="trailing" secondItem="aqC-Ie-7ZI" secondAttribute="trailing" constant="10" id="v0l-rZ-l8N"/>
                     <constraint firstItem="ept-09-HSp" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="z98-Oj-z5s"/>
