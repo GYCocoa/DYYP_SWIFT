@@ -270,7 +270,7 @@ extension GYNetworkTool {
     /// 异地登录
     class func longDistance(response:NSDictionary)-> Bool {
         let json = JSON(response)
-        if json["state"].intValue == 6 {
+        if json["state"].intValue == 10 {
             return true
         }
         return false

@@ -44,7 +44,7 @@ class GYBindPhoneController: UIViewController,bindLoginSureButtonDelegate {
     func bindLoginSureButtonAction() {
         /// RSA 加密
         let crsa = CRSA()
-        crsa.writePrk(withKey: PubKey)
+        crsa.writePuk(withKey: PubKey)
         let phone:String = (bindView?.phoneTF?.text)!
         let code:String = (bindView?.pwdTF?.text)!
         let id = openId

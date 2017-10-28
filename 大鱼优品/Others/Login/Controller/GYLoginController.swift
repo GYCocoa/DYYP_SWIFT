@@ -86,10 +86,9 @@ class GYLoginController: UIViewController {
                 let icon = user?.icon
                 let gender = user?.gender
                 let os = NSObject.getDevice()
-                
                 /// RSA 加密
                 let crsa = CRSA()
-                crsa.writePrk(withKey: PubKey)
+                crsa.writePuk(withKey: PubKey)
                 let loginToken:String = crsa.encryptByRsa(with: "\(type)##\(openId)##\(token)", keyType: KeyTypePublic)
                 /// 登录参数
                 let params = ["loginToken":loginToken,
@@ -131,7 +130,7 @@ class GYLoginController: UIViewController {
                 bind.loginType = loginType
                 self.navigationController?.pushViewController(bind, animated: true)
             }else{
-                SVProgressHUD.show(withStatus: json["stateMsg"].stringValue)
+                SVProgressHUD.showInfo(withStatus: json["stateMsg"].stringValue)
             }
 
         }) { (error) in
