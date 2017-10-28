@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class GYTabbar: UITabBar {
     
@@ -70,6 +71,20 @@ class GYTabbar: UITabBar {
     }
     
     @objc private func buttonAction(sender:UIButton) {
+        /*
+         AVAuthorizationStatus authStatus =  [AVCaptureDevice authorizationStatusForMediaType:AVMediaTypeVideo];
+         if (authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied)
+         {
+         */
+        let authStatus:AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        if authStatus == AVAuthorizationStatus.restricted || authStatus == AVAuthorizationStatus.denied {
+            let alert = GYAlertView.alertOriginalViewWithTitle(title: "请打开相机权限", cancel: "取消", sure: "打开", cancelClick: {
+            }, sureClick: {
+                UIApplication.shared.openURL(NSURL(string: UIApplicationOpenSettingsURLString)! as URL)
+            })
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            return
+        }
         let vc = GYCaremaController()
         UIApplication.shared.keyWindow?.rootViewController?.present(vc, animated: true, completion: nil)
     }
