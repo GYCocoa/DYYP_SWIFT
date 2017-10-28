@@ -56,6 +56,8 @@ let kNavStatusHeight: CGFloat = is_IPhoneX ?44 :20
 let kNavBarHeight: CGFloat = is_IPhoneX ?88 :64
 // 导航栏高度
 let kTabBarHeight: CGFloat = is_IPhoneX ? 83 :49
+// 商城详情页面底部功能
+let kShopBottomHeight: CGFloat = is_IPhoneX ? 83 :50
 /// 导航栏背景图片
 let kNavBar_Bg_Image    =   (is_IPhoneX ? "iphoneX_nav_bg_image" :"nav_background_image")
 /// 状态栏高度

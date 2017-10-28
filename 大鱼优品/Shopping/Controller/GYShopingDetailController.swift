@@ -62,7 +62,7 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
     }
     
     fileprivate lazy var tableView:UITableView = {
-        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: kNavBarHeight, width: kWidth, height: kHeight - kNavBarHeight - 85), style: UITableViewStyle.grouped)
+        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: kNavBarHeight, width: kWidth, height: kHeight - kNavBarHeight - kShopBottomHeight), style: UITableViewStyle.grouped)
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         tableView.delegate = self
         tableView.dataSource = self
@@ -87,7 +87,7 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
     }()
     fileprivate lazy var bottomView: GYShopDetailBottomView = {
         var bottomView = GYShopDetailBottomView.bottomView()
-        bottomView.frame = CGRect.init(x: 0, y: kHeight - 85, width: kWidth, height: 50)
+        bottomView.frame = CGRect.init(x: 0, y: kHeight - kShopBottomHeight, width: kWidth, height: 50)
         return bottomView
     }()
     
@@ -120,28 +120,28 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: 30))
+        let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: 40))
         view.backgroundColor = UIColor.white
         let button = UIButton(type: UIButtonType.custom)
         button.setTitle("评价晒单(20)", for: UIControlState.normal)
         button.setTitleColor(UIColor.colorConversion(Color_Value: "#444444", alpha: 1), for: UIControlState.normal)
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.frame = CGRect(x: 10, y: 0, width: kWidth - 20, height: 30)
+        button.frame = CGRect(x: 10, y: 0, width: kWidth - 20, height: 40)
         view .addSubview(button)
         return view
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 30
+        return 40
     }
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: 30))
+        let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: 40))
         view.backgroundColor = UIColor.white
         let button = UIButton(type: UIButtonType.custom)
         button.setTitle("全部评论", for: UIControlState.normal)
         button.setTitleColor(UIColor.colorConversion(Color_Value: "#444444", alpha: 1), for: UIControlState.normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-        button.frame = CGRect(x: 10, y: 0, width: kWidth - 20, height: 30)
+        button.frame = CGRect(x: 10, y: 0, width: kWidth - 20, height: 40)
         button.setImage(UIImage.init(named: "au_smoregree"), for: UIControlState.normal)
         button.imageEdgeInsets = UIEdgeInsetsMake(0, 45, 0, -45)
         button.titleEdgeInsets = UIEdgeInsetsMake(0, -20, 0, 20)
@@ -149,7 +149,7 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
         return view
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 30
+        return 40
     }
     
 }

@@ -182,10 +182,10 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
             make.top.equalTo(tipsView!.snp.bottom).offset(0)
             make.left.equalTo(10)
             make.width.equalTo(100)
-            make.height.equalTo(30)
+            make.height.equalTo(40)
         })
         arrowImg?.snp.makeConstraints({ (make) in
-            make.top.equalTo(tipsView!.snp.bottom).offset(5)
+            make.top.equalTo(tipsView!.snp.bottom).offset(10)
             make.right.equalTo(-5)
             make.width.height.equalTo(20)
         })
@@ -196,7 +196,7 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
         })
         // 10 + nameSize.height + 10 + priceSize.height + 10 + 10 + 10 + descriptionSize.height + 10 + 60 + 5   /// 125
         if delegate != nil {   /// 修改header的高度
-            delegate?.updateShopDetailHeaderHeight(height: ((kHeight - 150) / 2 + nameSize.height + priceSize.height + descriptionSize.height + 130))
+            delegate?.updateShopDetailHeaderHeight(height: ((kHeight - 150) / 2 + nameSize.height + priceSize.height + descriptionSize.height + 140))
         }
         
     }
