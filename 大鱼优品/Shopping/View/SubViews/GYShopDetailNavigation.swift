@@ -38,11 +38,13 @@ class GYShopDetailNavigation: UIView {
             backItem?.setImage(UIImage.init(named: "au_fanhui"), for: UIControlState.normal)
             shareItem?.setImage(UIImage.init(named: "au_fenxiang"), for: UIControlState.normal)
             backgroundColor = UIColor.colorConversion(Color_Value: "#ffffff", alpha: offSet/90)
+            itemName?.isHidden = true
         }else{
             UIApplication.shared.statusBarStyle = .lightContent
             backItem?.setImage(UIImage.init(named: "au_bigback"), for: UIControlState.normal)
             shareItem?.setImage(UIImage.init(named: "au_bigshare"), for: UIControlState.normal)
             backgroundColor = UIColor.colorConversion(Color_Value: "#ffffff", alpha: 1)
+            itemName?.isHidden = false
         }
     }
     
