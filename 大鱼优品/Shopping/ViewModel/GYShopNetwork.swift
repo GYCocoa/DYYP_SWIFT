@@ -12,7 +12,7 @@ import SVProgressHUD
 
 protocol GYShopNetworkProtocal {
     //MARK: -------------------------- 获取商品详情页面 -------------------------
-    static func getShopDetailData(goodId: Int, completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSError) -> ())
+    static func getShopDetailData(goodId: Int, completionHandler: @escaping (_ data:NSDictionary) -> (), errorCode: @escaping (_ error:NSError) -> ())
     
     
     
@@ -23,6 +23,7 @@ class GYShopNetwork: GYShopNetworkProtocal {
     static func getShopDetailData(goodId: Int, completionHandler: @escaping (NSDictionary) -> (), errorCode: @escaping (NSError) -> ()) {
         let param = ["productId":goodId]
         GYNetworkTool.getRequest(urlString: AU_PRODUCT_DETAIL, params: param, success: { (response) in
+            print(response)
             completionHandler(response)
         }) { (error) in
             errorCode(error as NSError)

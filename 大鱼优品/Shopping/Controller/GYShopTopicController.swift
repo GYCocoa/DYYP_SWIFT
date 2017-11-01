@@ -172,8 +172,6 @@ extension GYShopTopicController: UITableViewDelegate,UITableViewDataSource{
             view.goodId = homeModel?.productId
             self.navigationController?.pushViewController(view, animated: true)
         }
-        let view = GYShopingDetailController()
-        self.navigationController?.pushViewController(view, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if topicTitle?.categoryName == "首页" {
