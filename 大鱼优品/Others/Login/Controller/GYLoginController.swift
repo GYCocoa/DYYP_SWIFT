@@ -17,9 +17,9 @@ class GYLoginController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.view.backgroundColor = UIColor.white
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: "关闭", style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString("close", comment: "close"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelAction))
         createSubviews()
     }
     
