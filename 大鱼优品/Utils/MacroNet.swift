@@ -56,6 +56,9 @@ let AU_SNAP_UP           =                                                      
 let AU_SECKILL_PRODUCT     =                                                 SHOPING_BASE + "seckill-product"
 /// 活动专区
 let AU_ACTIVITY               =                                                          SHOPING_BASE + "activity-product"
+/// 商品详情
+let AU_PRODUCT_DETAIL         =                                                SHOPING_BASE + "product-detail"
+
 
 //MARK: -------------------------- 相机搜索界面URL -------------------------
 let CAREMA_REAULT =                                                                 BASEURL + "search-picture"

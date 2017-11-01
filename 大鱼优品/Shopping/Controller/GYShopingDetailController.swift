@@ -12,15 +12,28 @@ import MJRefresh
 
 class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeightDelegate {
     
+    var goodId:Int?
+    var shopNav:GYShopDetailNavigation?
+    var viewDid:Bool?
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = true
+        UIApplication.shared.statusBarStyle = .default
+        viewDid = false
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.navigationBar.isHidden = false
+        viewDid = true
     }
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if viewDid! {
+            UIApplication.shared.statusBarStyle = .lightContent
+        }
+
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +61,7 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
     
     fileprivate func setupSubviews() {
         view.addSubview(tableView)
+        self.shopNav = GYShopDetailNavigation.init(frame: CGRect(x: 0, y: 0, width: kWidth, height: kNavBarHeight), superController: self)        
         self.setupHeaderView()
         headerView.backgroundColor = UIColor.white
         headerView.delegate = self
@@ -70,14 +84,17 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         headerView.dataArray = []
         footerView.dataArray = []
         
-        
+        GYShopNetwork.getShopDetailData(goodId: goodId!, completionHandler: { (response) in
+            print(response)
+            
+        }) { (error) in
+            print(error)
+        }
         
     }
-    
     func updateShopDetailHeaderHeight(height: CGFloat) {
         headerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: height)
     }
-    
     fileprivate lazy var tableView:UITableView = {
         var tableView = UITableView.init(frame: CGRect.init(x: 0, y: -kNavStatusHeight, width: kWidth, height: kHeight - kShopBottomHeight + kNavStatusHeight), style: UITableViewStyle.grouped)
         tableView.backgroundColor = UIColor.globalBackgroundColor()
@@ -91,7 +108,6 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: kWidth, height: 0)) /// 去掉cell多余的下划线
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: kWidth, height: 0)) /// 去掉cell多余的下划线
         tableView.register(UINib(nibName: String(describing: GYShopDetailTableCell.self), bundle: nil), forCellReuseIdentifier: String(describing: GYShopDetailTableCell.self))
-        
         return tableView
     }()
     fileprivate lazy var headerView: GYShopDetailHeaderView = {
@@ -115,11 +131,9 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYShopDetailTableCell.self), for: indexPath) as! GYShopDetailTableCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
@@ -135,7 +149,9 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
         /// 原内容固定高度 + 自适应 + 追评固定高度 + 自适应
         return 65 + 10 + 45 + 10
     }
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.shopNav?.scrollContentOffSet(offSet: self.tableView.contentOffset.y)
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: 40))
         view.backgroundColor = UIColor.white
@@ -168,11 +184,9 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 40
     }
-    
 }
 
 extension GYShopingDetailController {
-    
     fileprivate func setupHeaderView() {
         headerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight - 150)
     }

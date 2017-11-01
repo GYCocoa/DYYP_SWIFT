@@ -27,6 +27,9 @@ class GYNavigationController: UINavigationController {
         itemDict[NSForegroundColorAttributeName] = UIColor.black
         navItem.setTitleTextAttributes(itemDict as? [String : Any], for: UIControlState.normal)
 
+        UIApplication.shared.statusBarStyle = .lightContent
+
+        
         // 创建全局手势
         initGlobalPan()
     }

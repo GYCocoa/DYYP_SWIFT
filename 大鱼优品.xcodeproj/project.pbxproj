@@ -138,6 +138,8 @@
 		F56505611F7CDC6D002651AA /* GYDisplayTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F565055F1F7CDC6D002651AA /* GYDisplayTableCell.xib */; };
 		F5655F7A1F98A02700065982 /* GYCommunityAncillaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5655F791F98A02700065982 /* GYCommunityAncillaryCell.swift */; };
 		F57825691FA984AD00637634 /* GYShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57825681FA984AD00637634 /* GYShopping.swift */; };
+		F578256B1FA9859B00637634 /* GYShopNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F578256A1FA9859B00637634 /* GYShopNetwork.swift */; };
+		F578256D1FA9B53000637634 /* GYShopDetailNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F578256C1FA9B53000637634 /* GYShopDetailNavigation.swift */; };
 		F5A114C61FA19A160044BFD1 /* GYShopDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A114C51FA19A160044BFD1 /* GYShopDetailHeaderView.swift */; };
 		F5A114C91FA1DA9A0044BFD1 /* GYShopDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5A114C71FA1DA9A0044BFD1 /* GYShopDetailTableCell.swift */; };
 		F5A114CA1FA1DA9A0044BFD1 /* GYShopDetailTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5A114C81FA1DA9A0044BFD1 /* GYShopDetailTableCell.xib */; };
@@ -417,6 +419,8 @@
 		F565055F1F7CDC6D002651AA /* GYDisplayTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYDisplayTableCell.xib; sourceTree = "<group>"; };
 		F5655F791F98A02700065982 /* GYCommunityAncillaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCommunityAncillaryCell.swift; sourceTree = "<group>"; };
 		F57825681FA984AD00637634 /* GYShopping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYShopping.swift; sourceTree = "<group>"; };
+		F578256A1FA9859B00637634 /* GYShopNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopNetwork.swift; sourceTree = "<group>"; };
+		F578256C1FA9B53000637634 /* GYShopDetailNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopDetailNavigation.swift; sourceTree = "<group>"; };
 		F5A114C51FA19A160044BFD1 /* GYShopDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopDetailHeaderView.swift; sourceTree = "<group>"; };
 		F5A114C71FA1DA9A0044BFD1 /* GYShopDetailTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopDetailTableCell.swift; sourceTree = "<group>"; };
 		F5A114C81FA1DA9A0044BFD1 /* GYShopDetailTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYShopDetailTableCell.xib; sourceTree = "<group>"; };
@@ -773,6 +777,7 @@
 		F50269A81F6FCD5A001CDA46 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				F578256A1FA9859B00637634 /* GYShopNetwork.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1360,6 +1365,7 @@
 				F507DDAE1FA33D9300EB0E1D /* GYShopDetailFooterView.swift */,
 				F5A114CB1FA1DE0B0044BFD1 /* GYShopDetailBottomView.swift */,
 				F5A114CD1FA1DE160044BFD1 /* GYShopDetailBottomView.xib */,
+				F578256C1FA9B53000637634 /* GYShopDetailNavigation.swift */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1603,6 +1609,7 @@
 				F5A4AD8D1F7F3FCB00812E85 /* GYCaremaTopView.swift in Sources */,
 				F5F9F9751F908F0700623C8D /* GYCommunityHomeTableCell.swift in Sources */,
 				F5555EA41F8DBC13000034F7 /* AppDelegate+ShareSDK.swift in Sources */,
+				F578256D1FA9B53000637634 /* GYShopDetailNavigation.swift in Sources */,
 				F535B6601F7A3C9C00907209 /* GYHomeModel.swift in Sources */,
 				F55D670E1F711AA900619ED9 /* GYPhoneLogin.swift in Sources */,
 				F5A114C61FA19A160044BFD1 /* GYShopDetailHeaderView.swift in Sources */,
@@ -1613,6 +1620,7 @@
 				F5AEF9B91F9EE33E00B3D4B4 /* GYCommunityChooseTableCell.swift in Sources */,
 				F5555EF91F8DD555000034F7 /* Base64.m in Sources */,
 				F50269D31F6FDCAD001CDA46 /* GYTabbar.swift in Sources */,
+				F578256B1FA9859B00637634 /* GYShopNetwork.swift in Sources */,
 				F50CBB7D1FA07E3B00B4D419 /* UIImage+GYImage.swift in Sources */,
 				F50269C91F6FCEF2001CDA46 /* GYTabbarController.swift in Sources */,
 				F5555F001F8DF8A4000034F7 /* GYBindLoginView.swift in Sources */,

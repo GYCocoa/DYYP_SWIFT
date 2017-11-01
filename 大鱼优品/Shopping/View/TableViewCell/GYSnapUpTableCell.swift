@@ -85,6 +85,8 @@ extension GYSnapUpTableCell: UICollectionViewDelegate,UICollectionViewDataSource
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let view = GYShopingDetailController()
+        let model = self.dataArray[indexPath.row] as? GYSnapupModel
+        view.goodId = model?.productId
         superController?.navigationController?.pushViewController(view, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

@@ -158,6 +158,23 @@ extension GYShopTopicController: UITableViewDelegate,UITableViewDataSource{
             return cell
         }
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if topicTitle?.categoryName == "首页" {
+            if indexPath.section == 2 {
+                let homeModel = self.dataArray[indexPath.row] as? CategoryModel
+                let view = GYShopingDetailController()
+                view.goodId = homeModel?.productId
+                self.navigationController?.pushViewController(view, animated: true)
+            }
+        }else{
+            let homeModel = self.dataArray[indexPath.row] as? CategoryModel
+            let view = GYShopingDetailController()
+            view.goodId = homeModel?.productId
+            self.navigationController?.pushViewController(view, animated: true)
+        }
+        let view = GYShopingDetailController()
+        self.navigationController?.pushViewController(view, animated: true)
+    }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if topicTitle?.categoryName == "首页" {
             if indexPath.section == 0 {
@@ -215,9 +232,6 @@ extension GYShopTopicController: UITableViewDelegate,UITableViewDataSource{
             delegate?.scrollTopicTitle(height: scrollView.contentOffset.y)
         }
     }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let view = GYShopingDetailController()
-        self.navigationController?.pushViewController(view, animated: true)
-    }
+
 }
 

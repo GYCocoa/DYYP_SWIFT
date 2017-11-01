@@ -77,6 +77,8 @@ extension GYRecommendTableCell: UICollectionViewDelegate,UICollectionViewDataSou
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let view = GYShopingDetailController()
+        let hotModel = self.dataArray[indexPath.row] as? GYSnapupModel
+        view.goodId = hotModel?.productId
         superController?.navigationController?.pushViewController(view, animated: true)
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
