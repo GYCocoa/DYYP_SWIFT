@@ -14,11 +14,11 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(true)
-//        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     
@@ -26,9 +26,17 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let traget = self.navigationController?.interactivePopGestureRecognizer?.delegate
+        let pan = UIPanGestureRecognizer.init(target: traget, action: nil)
+        self.view.addGestureRecognizer(pan)
+        
         self.navigationItem.title = "商品详情"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "au_bigshare"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(shareAction))
         setupSubviews()
+        /// 获取系统本地语言   数组第一个是当前的语言
+        //        let arr = UserDefaults.standard.object(forKey: "AppleLanguages")
+        /// 获取系统所有的语言
+        //        let arr = NSLocale.availableLocaleIdentifiers
     }
     @objc fileprivate func shareAction() {
         print("分享")
@@ -44,25 +52,34 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         headerView.backgroundColor = UIColor.white
         headerView.delegate = self
         tableView.tableHeaderView = headerView
-        headerView.dataArray = []
         self.setupFooterView()
         tableView.tableFooterView = footerView
         footerView.backgroundColor = UIColor.orange
         self.view.addSubview(bottomView)
-        
         let fresh = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(headerAction))
         self.tableView.mj_header = fresh
+        
+        requestData()
     }
     @objc fileprivate func headerAction() {
         
         self.tableView.mj_header.endRefreshing()
     }
+    
+    fileprivate func requestData() {
+        headerView.dataArray = []
+        footerView.dataArray = []
+        
+        
+        
+    }
+    
     func updateShopDetailHeaderHeight(height: CGFloat) {
         headerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: height)
     }
     
     fileprivate lazy var tableView:UITableView = {
-        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: kNavBarHeight, width: kWidth, height: kHeight - kNavBarHeight - kShopBottomHeight), style: UITableViewStyle.grouped)
+        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: -kNavStatusHeight, width: kWidth, height: kHeight - kShopBottomHeight + kNavStatusHeight), style: UITableViewStyle.grouped)
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         tableView.delegate = self
         tableView.dataSource = self

@@ -10,10 +10,6 @@ import UIKit
 
 class GYShopDetailBottomView: UIView {
 
-
-    
-    
-    
     
     class func bottomView() -> GYShopDetailBottomView {
         return Bundle.main.loadNibNamed(String(describing: self), owner: nil, options: nil)?.last as! GYShopDetailBottomView

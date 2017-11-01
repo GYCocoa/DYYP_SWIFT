@@ -65,8 +65,8 @@ extension GYNavigationController:UIGestureRecognizerDelegate {
     }
     /// 什么时候支持全屏手势
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        return false
-//        return self.childViewControllers.count != 1
+//        return false
+        return self.childViewControllers.count != 1
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{

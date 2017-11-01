@@ -20,7 +20,14 @@ class GYShopDetailFooterView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var dataArray:NSArray? {
+        didSet {
+            layoutConstraints()
+        }
+    }
     
-    
+    fileprivate func layoutConstraints() {
+        
+    }
 
 }
