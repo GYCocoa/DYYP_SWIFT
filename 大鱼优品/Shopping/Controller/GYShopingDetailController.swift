@@ -158,11 +158,11 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65 + 10 + 45 + 10 + (kWidth - 60) / 6 * 2
         if self.commentArray.count > 0 {
             var imgH:CGFloat = 0
             var replyImgH:CGFloat = 0
             let model:GYShopDetailComment = self.commentArray[indexPath.row] as! GYShopDetailComment
-            print(model.imgs?.count)
             if model.imgs != nil && model.imgs!.count > 0 {
                 imgH = 65 + 10 + (kWidth - 60)*1.2 / 6
             }else{

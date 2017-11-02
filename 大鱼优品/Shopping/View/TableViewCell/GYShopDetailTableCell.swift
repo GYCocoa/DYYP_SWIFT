@@ -8,18 +8,10 @@
 
 import UIKit
 
+fileprivate let shopDetailCVId = "shopDetailCVId"
+fileprivate let shopDetailReplyCVId = "shopDetailReplyCVId"
+
 class GYShopDetailTableCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
     
     @IBOutlet weak var headerImg: UIImageView!
     @IBOutlet weak var nickNameL: UILabel!
@@ -36,6 +28,27 @@ class GYShopDetailTableCell: UITableViewCell {
     
     @IBOutlet weak var styleL: UILabel!
     
+    var commentLayout:UICollectionViewFlowLayout?
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+        
+        commentCollectionView.register(UINib.init(nibName: "GYShopDetailCommentCVCell", bundle: nil), forCellWithReuseIdentifier: shopDetailCVId)
+        commentCollectionView.delegate = self
+        commentCollectionView.dataSource = self
+        
+                replyCommentCollectionView.register(UINib.init(nibName: "GYShopDetailCommentCVCell", bundle: nil), forCellWithReuseIdentifier: shopDetailReplyCVId)
+                replyCommentCollectionView.delegate = self
+                replyCommentCollectionView.dataSource = self
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        // Configure the view for the selected state
+    }
+    
     var model:GYShopDetailComment? {
         didSet {
             if model?.userIcon != nil {
@@ -45,14 +58,16 @@ class GYShopDetailTableCell: UITableViewCell {
             contentL.text = model?.content
             timeL.text = model?.evaluateData
             if model?.imgs?.count == 0 || model?.imgs == nil {
-                commentCVLeft.constant = kWidth
+                commentCVLeft.constant = kWidth/2
+                commentCollectionView.isHidden = true
             }
             if model?.appendCommentTime == nil {
                 replyView.isHidden = true
             }else{
                 replyView.isHidden = false
                 if model?.appendImgs?.count == 0 || model?.appendImgs == nil {
-                    replyCVLeft.constant = kWidth
+                    replyCVLeft.constant = kWidth/2
+                    replyCommentCollectionView.isHidden = true
                 }
                 commentTimeL.text = model?.appendCommentTime
                 replyContentL.text = model?.appendComment
@@ -61,4 +76,42 @@ class GYShopDetailTableCell: UITableViewCell {
     }
     
     
+}
+
+extension GYShopDetailTableCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        if collectionView == replyCommentCollectionView {
+//            return 2
+//        }
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shopDetailCVId, for: indexPath) as! GYShopDetailCommentCVCell
+//
+//        return cell
+
+        if collectionView == commentCollectionView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shopDetailCVId, for: indexPath) as! GYShopDetailCommentCVCell
+
+            return cell
+        }else{
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shopDetailReplyCVId, for: indexPath) as! GYShopDetailCommentCVCell
+
+            return cell
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+ 
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return  CGSize(width: self.commentCollectionView.height - 20, height: self.commentCollectionView.height - 20)
+    }
 }
