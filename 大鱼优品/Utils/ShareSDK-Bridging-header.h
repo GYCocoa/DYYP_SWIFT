@@ -25,6 +25,7 @@
 
 #import "CRSA.h"
 
+#import "XLPhotoBrowser.h"
 
 
 #endif /* ShareSDK_Bridging_header_h */

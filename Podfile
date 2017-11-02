@@ -15,6 +15,4 @@ pod 'MJRefresh'
 pod 'SDCycleScrollView', '~> 1.66'
 pod 'SwiftTheme'
 
-
-
 end

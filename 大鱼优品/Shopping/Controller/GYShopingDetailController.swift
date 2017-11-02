@@ -78,19 +78,22 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
     fileprivate func requestData() {
         GYShopNetwork.getShopDetailData(goodId: goodId!, completionHandler: { (response) in
 //            print(response)
+            self.commentArray.removeAllObjects()
             if GYNetworkTool.success(response: response) {
                 let data = response["data"] as? NSDictionary
                 if let productDetails = data!["productDetails"] {/// header
-                    let dict = productDetails as! NSDictionary
-                    self.headerView.dataDic = dict
+                    self.headerView.dataDic = productDetails as? NSDictionary
                 }
                 if let commentList = data!["commentList"] { /// comment
-                    let arr = commentList as! NSArray
-                    self.commentArray = arr
+                    let arr = (commentList as? NSArray)!
+                    print(arr)
+                    for (_,enums) in arr.enumerated() {
+                        let model = GYShopDetailComment.init(dict: enums as! [String : AnyObject])
+                        self.commentArray.add(model)
+                    }
                 }
                 if let productShopInfo = data!["productShopInfo"] { /// footer
-                    let dict = productShopInfo as! NSDictionary
-                    self.footerView.dataDic = dict
+                    self.footerView.dataDic = productShopInfo as? NSDictionary
                 }
             }else{
                 SVProgressHUD.show(withStatus: response["stateMsg"] as? String)
@@ -120,7 +123,7 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         return tableView
     }()
     fileprivate lazy var headerView: GYShopDetailHeaderView = {
-        var headerView = GYShopDetailHeaderView()
+        var headerView = GYShopDetailHeaderView.init(frame: CGRect(x: 0, y: 0, width: kWidth, height: kHeight - 150), superController: self)
         return headerView
     }()
     fileprivate lazy var footerView: GYShopDetailFooterView = {
@@ -132,8 +135,8 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         bottomView.frame = CGRect.init(x: 0, y: kHeight - kShopBottomHeight, width: kWidth, height: 50)
         return bottomView
     }()
-    fileprivate lazy var commentArray: NSArray = {
-        var commentArray = NSArray()
+    fileprivate lazy var commentArray: NSMutableArray = {
+        var commentArray = NSMutableArray()
         return commentArray
     }()
 }
@@ -149,17 +152,41 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYShopDetailTableCell.self), for: indexPath) as! GYShopDetailTableCell
         cell.selectionStyle = UITableViewCellSelectionStyle.none
-        cell.indexPathRow = indexPath.row
-        
+        if self.commentArray.count > 0 {
+            cell.model = self.commentArray[indexPath.row] as? GYShopDetailComment
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.row == 0 {
-            /// 原内容固定高度 + 自适应
-            return  65 + 10
+        if self.commentArray.count > 0 {
+            var imgH:CGFloat = 0
+            var replyImgH:CGFloat = 0
+            let model:GYShopDetailComment = self.commentArray[indexPath.row] as! GYShopDetailComment
+            print(model.imgs?.count)
+            if model.imgs != nil && model.imgs!.count > 0 {
+                imgH = 65 + 10 + (kWidth - 60)*1.2 / 6
+            }else{
+                imgH = 65 + 10
+            }
+            if model.appendCommentTime != nil {
+                if model.appendImgs != nil && model.appendImgs!.count > 0 {
+                    replyImgH = 45 + 10 + (kWidth - 60)*1.2 / 6
+                }else{
+                    replyImgH = 45 + 10
+                }
+            }else{
+                replyImgH = 0
+            }
+            return imgH + replyImgH
         }
-        /// 原内容固定高度 + 自适应 + 追评固定高度 + 自适应
-        return 65 + 10 + 45 + 10
+        return 0
+//        return 230
+//        if indexPath.row == 0 {
+//            /// 原内容固定高度 + 自适应
+//            return  65 + 10 + (kWidth - 60) / 6
+//        }
+//        /// 原内容固定高度 + 自适应 + 追评固定高度 + 自适应
+//        return 65 + 10 + 45 + 10 + (kWidth - 60) / 6 * 2
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.shopNav?.scrollContentOffSet(offSet: self.tableView.contentOffset.y)

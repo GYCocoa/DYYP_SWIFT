@@ -8,12 +8,13 @@
 
 import UIKit
 import SDCycleScrollView
+import SVProgressHUD
 
 protocol ShopDetailHeaderUpdateHeightDelegate:NSObjectProtocol {
     func updateShopDetailHeaderHeight(height:CGFloat)
 }
 
-class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
+class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate,XLPhotoBrowserDelegate, XLPhotoBrowserDatasource {
 
     var shopNameL:UILabel?
     var priceL:UILabel?
@@ -28,14 +29,16 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
     var bottomView:UIView?
     var delegate:ShopDetailHeaderUpdateHeightDelegate?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    var controller:UIViewController?
+    
+    var browser:XLPhotoBrowser?
+    
+    convenience init(frame: CGRect, superController: UIViewController) {
+        self.init(frame: frame)
+        superController.view.addSubview(self)
+        self.controller = superController
         
         setupSubviews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     fileprivate func setupSubviews() {
@@ -122,9 +125,38 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
             print(dataDic!)
             let model = GYShopDetailHeader.init(dict: dataDic as! [String : AnyObject])
             if model.productImages != nil {
-                cycleScrollView.imageURLStringsGroup = model.productImages as! [Any]
+                self.bannerImages = (model.productImages)!
+                cycleScrollView.imageURLStringsGroup = self.bannerImages as! [Any]
             }
-            print(model.Description!)
+            shopNameL?.text = model.productName
+            priceL?.text = "￥" + (model.groupPrice?.stringValue)!
+            let str = "￥" + (model.originalPrice?.stringValue)!
+            let attri = NSMutableAttributedString.init(string: str)
+            attri.addAttribute(NSStrikethroughStyleAttributeName, value: UInt8(NSUnderlineStyle.patternSolid.rawValue) | UInt8(NSUnderlineStyle.styleSingle.rawValue), range: NSRange(location: 0, length: str.characters.count))
+            attri.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.colorConversion(Color_Value: "#666666", alpha: 1), range: NSRange(location: 0, length: str.characters.count))
+            originalPriceL?.attributedText = attri
+            commentL?.text = "\(model.comments!)人评价"
+            cellCountL?.text = "累计销量：\(model.sales!)件"
+            descriptionL?.text = model.Description
+            if model.committed != nil {
+                self.committedArr = model.committed!
+            }
+            for view in (tipsView?.subviews)! {
+                view.removeFromSuperview()
+            }
+            for index in 0..<self.committedArr.count {
+                let button = UIButton.init(type: UIButtonType.custom)
+                button.setImage(UIImage.init(named: "au_duihao"), for: UIControlState.normal)
+                button.setTitle((self.committedArr[index] as! String), for: UIControlState.normal)
+                button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
+                button.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0)
+                button.setTitleColor(UIColor.colorConversion(Color_Value: "#666666", alpha: 1), for: UIControlState.normal)
+                let size:CGSize = NSObject.adaptiveSizeWithString(str: (button.titleLabel?.text)!, font: 12, reduce: 20)
+                button.frame = CGRect.init(x: CGFloat(index)*(size.width + 30) , y: 0, width: size.width + 30, height: 30)
+                tipsView?.addSubview(button)
+            }
+            
+            
             layoutConstraints()
         }
     }
@@ -162,7 +194,7 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
         commentL?.snp.makeConstraints({ (make) in
             make.top.equalTo(priceL!.snp.bottom).offset(10)
             make.left.equalTo(starView!.snp.right).offset(15)
-            make.width.equalTo(commentSize.width)
+            make.width.equalTo(commentSize.width + 5)
             make.height.equalTo(10)
         })
         cellCountL?.snp.makeConstraints({ (make) in
@@ -208,6 +240,23 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
     /// 轮播图点击事件
     func cycleScrollView(_ cycleScrollView: SDCycleScrollView!, didSelectItemAt index: Int) {
         print("第\(index+1)张轮播图");
+        self.browser = XLPhotoBrowser.show(withCurrentImageIndex: index, imageCount: UInt(self.bannerImages.count), datasource: self)
+        self.browser?.pageDotColor = UIColor.white
+        self.browser?.currentPageDotColor = UIColor.orange
+        self.browser?.pageControlStyle = XLPhotoBrowserPageControlStyle.classic
+        self.browser?.action(withTitle: "", delegate: self, cancelButtonTitle: "", deleteButtonTitle: "", otherButtonTitles: "保存图片")
+    }
+    func photoBrowser(_ browser: XLPhotoBrowser!, highQualityImageURLFor index: Int) -> URL! {
+        return NSURL.init(string: self.bannerImages[index] as! String)! as URL
+
+    }
+    func photoBrowser(_ browser: XLPhotoBrowser!, clickActionSheetIndex actionSheetindex: Int, currentImageIndex: Int) {
+        switch actionSheetindex {
+        case 0:
+            browser.saveCurrentShowImage()
+        default:
+            break
+        }
     }
     
     /// 无线轮播图
@@ -219,9 +268,13 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
         return cycleScrollView!
     }()
     
-    fileprivate lazy var bannerImages : NSMutableArray = { /// 轮播图
-        var bannerImages = NSMutableArray()
+    fileprivate lazy var bannerImages : NSArray = { /// 轮播图
+        var bannerImages = NSArray()
         return bannerImages
+    }()
+    fileprivate lazy var committedArr : NSArray = { /// 标签
+        var committedArr = NSArray()
+        return committedArr
     }()
     
 }

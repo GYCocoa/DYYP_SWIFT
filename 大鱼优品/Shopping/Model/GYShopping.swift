@@ -46,41 +46,43 @@ class GYSnapupModel: NSObject {
 
 class GYShopDetailComment: NSObject {
     
-    var anonymity:String?
+    var anonymity:Int?
     var appendComment:String?
     var appendCommentTime:String?
     var appendImgs:NSArray?
     
-    var attitude:String?
+    var attitude:Int?
     var content:String?
     var evaluateData:String?
     var imgs:NSArray?
 
-    var logistics:String?
-    var productId:String?
-    var score:String?
-    var shopId:String?
+    var logistics:Int?
+    var productId:Int?
+    var score:NSNumber?
+    var shopId:Int?
     var skuName:String?
-    var userId:String?
+    var userId:Int?
+    var userIcon:String?
     var userName:String?
     
     init(dict:[String:AnyObject]) {
-        anonymity = dict["anonymity"] as! String?
+        anonymity = dict["anonymity"] as! Int?
         appendComment = dict["appendComment"] as! String?
         appendCommentTime = dict["appendCommentTime"] as! String?
         appendImgs = dict["appendImgs"] as! NSArray?
         
-        attitude = dict["attitude"] as! String?
+        attitude = dict["attitude"] as! Int?
         content = dict["content"] as! String?
         evaluateData = dict["evaluateData"] as! String?
         imgs = dict["imgs"] as! NSArray?
         
-        logistics = dict["logistics"] as! String?
-        productId = dict["productId"] as! String?
-        score = dict["score"] as! String?
-        shopId = dict["shopId"] as! String?
+        logistics = dict["logistics"] as! Int?
+        productId = dict["productId"] as! Int?
+        score = dict["score"] as! NSNumber?
+        shopId = dict["shopId"] as! Int?
         skuName = dict["skuName"] as! String?
-        userId = dict["userId"] as! String?
+        userId = dict["userId"] as! Int?
+        userIcon = dict["userIcon"] as! String?
         userName = dict["userName"] as! String?
     }
     
@@ -100,7 +102,7 @@ class GYShopDetailHeader: NSObject {
     var productImages:NSArray?
     var productName:String?
     var sales:Int?
-    var score:Int?
+    var score:NSNumber?
     var sepPrice:NSNumber?
     var shareUrl:String?
     var userId:String?
@@ -118,7 +120,7 @@ class GYShopDetailHeader: NSObject {
         productImages = dict["productImages"] as! NSArray?
         productName = dict["productName"] as! String?
         sales = dict["sales"] as! Int?
-        score = dict["score"] as! Int?
+        score = dict["score"] as! NSNumber?
         sepPrice = dict["sepPrice"] as! NSNumber?
         shareUrl = dict["shareUrl"] as! String?
         userId = dict["userId"] as! String?
