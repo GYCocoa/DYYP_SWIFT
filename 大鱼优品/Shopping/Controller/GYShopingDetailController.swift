@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import MJRefresh
+import SVProgressHUD
 
 class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeightDelegate {
     
@@ -32,13 +33,9 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         if viewDid! {
             UIApplication.shared.statusBarStyle = .lightContent
         }
-
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         let traget = self.navigationController?.interactivePopGestureRecognizer?.delegate
         let pan = UIPanGestureRecognizer.init(target: traget, action: nil)
         self.view.addGestureRecognizer(pan)
@@ -58,7 +55,6 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     fileprivate func setupSubviews() {
         view.addSubview(tableView)
         self.shopNav = GYShopDetailNavigation.init(frame: CGRect(x: 0, y: 0, width: kWidth, height: kNavBarHeight), superController: self)        
@@ -79,14 +75,27 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         
         self.tableView.mj_header.endRefreshing()
     }
-    
     fileprivate func requestData() {
-        headerView.dataArray = []
-        footerView.dataArray = []
-        
         GYShopNetwork.getShopDetailData(goodId: goodId!, completionHandler: { (response) in
-            print(response)
-            
+//            print(response)
+            if GYNetworkTool.success(response: response) {
+                let data = response["data"] as? NSDictionary
+                if let productDetails = data!["productDetails"] {/// header
+                    let dict = productDetails as! NSDictionary
+                    self.headerView.dataDic = dict
+                }
+                if let commentList = data!["commentList"] { /// comment
+                    let arr = commentList as! NSArray
+                    self.commentArray = arr
+                }
+                if let productShopInfo = data!["productShopInfo"] { /// footer
+                    let dict = productShopInfo as! NSDictionary
+                    self.footerView.dataDic = dict
+                }
+            }else{
+                SVProgressHUD.show(withStatus: response["stateMsg"] as? String)
+            }
+            self.tableView.reloadData()
         }) { (error) in
             print(error)
         }
@@ -123,7 +132,10 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         bottomView.frame = CGRect.init(x: 0, y: kHeight - kShopBottomHeight, width: kWidth, height: 50)
         return bottomView
     }()
-    
+    fileprivate lazy var commentArray: NSArray = {
+        var commentArray = NSArray()
+        return commentArray
+    }()
 }
 
 extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
@@ -132,7 +144,7 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return self.commentArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYShopDetailTableCell.self), for: indexPath) as! GYShopDetailTableCell

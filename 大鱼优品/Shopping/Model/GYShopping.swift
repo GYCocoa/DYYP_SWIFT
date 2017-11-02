@@ -25,6 +25,7 @@ class GYShopping: NSObject {
         type = dict["type"] as! String?
     }
     
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 }
 
 class GYSnapupModel: NSObject {
@@ -40,8 +41,134 @@ class GYSnapupModel: NSObject {
         productImage = dict["productImage"] as! String?
         productName = dict["productName"] as! String?
     }
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+}
+
+class GYShopDetailComment: NSObject {
+    
+    var anonymity:String?
+    var appendComment:String?
+    var appendCommentTime:String?
+    var appendImgs:NSArray?
+    
+    var attitude:String?
+    var content:String?
+    var evaluateData:String?
+    var imgs:NSArray?
+
+    var logistics:String?
+    var productId:String?
+    var score:String?
+    var shopId:String?
+    var skuName:String?
+    var userId:String?
+    var userName:String?
+    
+    init(dict:[String:AnyObject]) {
+        anonymity = dict["anonymity"] as! String?
+        appendComment = dict["appendComment"] as! String?
+        appendCommentTime = dict["appendCommentTime"] as! String?
+        appendImgs = dict["appendImgs"] as! NSArray?
+        
+        attitude = dict["attitude"] as! String?
+        content = dict["content"] as! String?
+        evaluateData = dict["evaluateData"] as! String?
+        imgs = dict["imgs"] as! NSArray?
+        
+        logistics = dict["logistics"] as! String?
+        productId = dict["productId"] as! String?
+        score = dict["score"] as! String?
+        shopId = dict["shopId"] as! String?
+        skuName = dict["skuName"] as! String?
+        userId = dict["userId"] as! String?
+        userName = dict["userName"] as! String?
+    }
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+}
+
+class GYShopDetailHeader: NSObject {
+    
+    var comments:Int?
+    var committed:NSArray?
+    var Description:String?
+    var groupNum:Int?
+    var groupPrice:NSNumber?
+    var isCollect:Int?
+    var isSingle:Int?
+    var originalPrice:NSNumber?
+    var productImages:NSArray?
+    var productName:String?
+    var sales:Int?
+    var score:Int?
+    var sepPrice:NSNumber?
+    var shareUrl:String?
+    var userId:String?
+    var userName:String?
+    
+    init(dict:[String:AnyObject]) {
+        comments = dict["comments"] as! Int?
+        committed = dict["committed"] as! NSArray?
+        Description = dict["description"] as! String?
+        groupNum = dict["groupNum"] as! Int?
+        groupPrice = dict["groupPrice"] as! NSNumber?
+        isCollect = dict["isCollect"] as! Int?
+        isSingle = dict["isSingle"] as! Int?
+        originalPrice = dict["originalPrice"] as! NSNumber?
+        productImages = dict["productImages"] as! NSArray?
+        productName = dict["productName"] as! String?
+        sales = dict["sales"] as! Int?
+        score = dict["score"] as! Int?
+        sepPrice = dict["sepPrice"] as! NSNumber?
+        shareUrl = dict["shareUrl"] as! String?
+        userId = dict["userId"] as! String?
+        userName = dict["userName"] as! String?
+    }
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {}
     
+    override func setValue(_ value: Any?, forKey key: String) {
+        if key == "description" {
+            Description = value as? String
+        }
+    }
     
 }
+
+class GYShopDetailFooter: NSObject {
+    
+    var iconUrl:String?
+    var recommend:NSArray?
+    var price:String?
+    var productId:String?
+    var productImage:String?
+    var productName:String?
+    var sales:String?
+    var shopId:String?
+    var shopName:NSArray?
+    
+    init(dict:[String:AnyObject]) {
+        iconUrl = dict["iconUrl"] as! String?
+        recommend = dict["recommend"] as! NSArray?
+        price = dict["price"] as! String?
+        productId = dict["productId"] as! String?
+        productImage = dict["productImage"] as! String?
+        productName = dict["productName"] as! String?
+        sales = dict["sales"] as! String?
+        shopId = dict["shopId"] as! String?
+        shopName = dict["shopName"] as! NSArray?
+        productName = dict["productName"] as! String?
+    }
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+    
+}
+
+
+
+
+
+
+
+
+

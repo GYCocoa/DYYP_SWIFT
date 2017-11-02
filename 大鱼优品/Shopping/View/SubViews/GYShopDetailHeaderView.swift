@@ -40,8 +40,6 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
     
     fileprivate func setupSubviews() {
         self.addSubview(cycleScrollView)
-        cycleScrollView.imageURLStringsGroup = self.bannerImages as! [Any]
-        
         if shopNameL == nil {
             shopNameL = UILabel()
             shopNameL?.text = "新秀商务休闲双肩包简约轻便电脑书包手提旅游背包约轻便电脑书包手提旅游背包约轻便电脑书包手提旅游背包"
@@ -119,8 +117,14 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate {
         }
     }
 
-    var dataArray:NSArray? {
+    var dataDic:NSDictionary? {
         didSet {
+            print(dataDic!)
+            let model = GYShopDetailHeader.init(dict: dataDic as! [String : AnyObject])
+            if model.productImages != nil {
+                cycleScrollView.imageURLStringsGroup = model.productImages as! [Any]
+            }
+            print(model.Description!)
             layoutConstraints()
         }
     }
