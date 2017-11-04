@@ -8,20 +8,75 @@
 
 import UIKit
 
+fileprivate let ShopDetailCollectionCellId = "ShopDetailCollectionCellId"
+
 class GYShopDetailFooterView: UIView {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        
-    }
+    fileprivate var controller:UIViewController?
+    var headerImg:UIImageView?
+    var nickNameL:UILabel?
+    var shopButton:UIButton?
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
+    convenience init(frame: CGRect, superController: UIViewController) {
+        self.init(frame: frame)
+        superController.view.addSubview(self)
+
+        self.controller = superController
+        
+        setupSubviews()
+    }
+    fileprivate func setupSubviews() {
+        let topLine = UIView(frame: CGRect(x: 0, y: 0, width: kWidth, height: 6))
+        topLine.backgroundColor = UIColor.globalGrayColor()
+        self.addSubview(topLine)
+        
+        if headerImg == nil {
+            headerImg = UIImageView(image: UIImage(named: imageView_nodata))
+            headerImg?.frame = CGRect(x: 10, y: 16, width: 40, height: 40)
+            self.addSubview(headerImg!)
+        }
+        if nickNameL == nil {
+            nickNameL = UILabel.init(frame: CGRect.init(x: 60, y: 16, width: kWidth/2, height: 40))
+            nickNameL?.font = UIFont.systemFont(ofSize: 13)
+            nickNameL?.text = "卡卡西"
+            self.addSubview(nickNameL!)
+        }
+        if shopButton == nil {
+            shopButton = UIButton.init(type: UIButtonType.custom)
+            shopButton?.frame = CGRect.init(x: kWidth-85, y: 23, width: 75, height: 25)
+            shopButton?.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+            shopButton?.setImage(UIImage.init(named: "au_dianpu"), for: UIControlState.normal)
+            self.addSubview(shopButton!)
+        }
+        let bottemLine = UIView(frame: CGRect(x: 0, y: 66, width: kWidth, height: 0.5))
+        bottemLine.backgroundColor = UIColor.globalGrayColor()
+        self.addSubview(bottemLine)
+        
+        self.addSubview(reusableView)
+        self.addSubview(shopReusableView)
+
+    }
     var dataDic:NSDictionary? {
         didSet {
+            print(dataDic!)
+            if dataDic != nil {
+                let model = GYShopDetailModel.init(dict: dataDic as! [String : AnyObject])
+                if model.iconUrl != nil {
+                    headerImg?.sd_setImage(with: URL(string:(model.iconUrl)!), placeholderImage: UIImage(named:"image_noda"))
+                }
+                nickNameL?.text = model.shopName
+                
+                let arr = model.recommend
+                if arr!.count > 0 {
+                    self.dataArray.removeAllObjects()
+                    for (_,enums) in (arr?.enumerated())! {
+                        let detail = GYShopDetailModel.init(dict: enums as! [String : AnyObject])
+                        self.dataArray.add(detail)
+                    }
+                }
+                self.collectionView.reloadData()
+            }
             layoutConstraints()
         }
     }
@@ -29,5 +84,60 @@ class GYShopDetailFooterView: UIView {
     fileprivate func layoutConstraints() {
         
     }
+    
+    fileprivate lazy var reusableView: GYGoodDetailReusableView = {
+        var reusableView = GYGoodDetailReusableView.reusableView()
+        reusableView.frame = CGRect.init(x: 0, y: (kWidth-40) / 3 + 50 + 97, width: kWidth, height: 30)
+        return reusableView
+    }()
+    fileprivate lazy var shopReusableView: GYGoodShopReusableView = {
+        var shopReusableView = GYGoodShopReusableView.shopReusableView()
+        shopReusableView.frame = CGRect.init(x: 0, y: 67, width: kWidth, height: 30)
+        return shopReusableView
+    }()
+    fileprivate lazy var collectionView:UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        var collectionView = UICollectionView.init(frame: CGRect.init(x: 0, y: 97, width: kWidth, height: (kWidth-40) / 3 + 50), collectionViewLayout: layout)
+        collectionView.backgroundColor = UIColor.white
+        collectionView.showsHorizontalScrollIndicator = false
+        layout.itemSize = CGSize.init(width: (kWidth-40)/3, height: (kWidth-40) / 3 + 50)
+        layout.scrollDirection = .horizontal
+        collectionView.isScrollEnabled = true
+        layout.sectionInset = UIEdgeInsets.init(top: 0, left: 10, bottom: 0, right: 10)
+        collectionView.register(UINib.init(nibName: "GYHomeCollectionCell", bundle: nil), forCellWithReuseIdentifier: ShopDetailCollectionCellId)
+        collectionView.delegate = self
+        collectionView.dataSource = self
 
+        self.addSubview(collectionView)
+        
+        return collectionView
+    }()
+    fileprivate lazy var dataArray: NSMutableArray = {
+        var dataArray = NSMutableArray()
+        return dataArray
+    }()
+
+}
+
+extension GYShopDetailFooterView: UICollectionViewDelegate,UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.dataArray.count
+    }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShopDetailCollectionCellId, for: indexPath) as! GYHomeCollectionCell
+        if self.dataArray.count > 0 {
+            let model = self.dataArray[indexPath.row] as? GYShopDetailModel
+            cell.detailModel = model
+        }
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
 }

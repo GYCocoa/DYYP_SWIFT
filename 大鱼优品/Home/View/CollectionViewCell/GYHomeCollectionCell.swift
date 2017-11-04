@@ -59,6 +59,23 @@ class GYHomeCollectionCell: UICollectionViewCell {
         }
     }
     
+    /// 商品详情页面  推荐店铺
+    var detailModel : GYShopDetailModel? {
+        didSet {
+            if detailModel?.productImage != nil {
+                imgView.sd_setImage(with: URL(string:(detailModel?.productImage)!), placeholderImage: UIImage(named:imageView_nodata))
+            }
+            if detailModel?.productName != nil {
+                contentL.text = detailModel?.productName
+            }
+            if detailModel?.price != nil {
+                priceL.text = "￥" + (detailModel?.price?.stringValue)!
+            }
+        }
+    }
+    
+    
+    
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var contentL: UILabel!
     @IBOutlet weak var priceL: UILabel!

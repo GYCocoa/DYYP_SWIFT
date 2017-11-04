@@ -65,6 +65,10 @@
 		F53862E71FAB322B00681179 /* GYShopDetailCommentCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53862E51FAB322B00681179 /* GYShopDetailCommentCVCell.swift */; };
 		F53862E81FAB322B00681179 /* GYShopDetailCommentCVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F53862E61FAB322B00681179 /* GYShopDetailCommentCVCell.xib */; };
 		F53A265B1F79F6C1009A82F6 /* GYHomeBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53A265A1F79F6C1009A82F6 /* GYHomeBanner.swift */; };
+		F53F830C1FADB853002CC336 /* GYGoodDetailReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53F830B1FADB853002CC336 /* GYGoodDetailReusableView.swift */; };
+		F53F830E1FADB87A002CC336 /* GYGoodDetailReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F53F830D1FADB87A002CC336 /* GYGoodDetailReusableView.xib */; };
+		F53F83101FADBCAE002CC336 /* GYGoodShopReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53F830F1FADBCAE002CC336 /* GYGoodShopReusableView.swift */; };
+		F53F83121FADBCBA002CC336 /* GYGoodShopReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F53F83111FADBCBA002CC336 /* GYGoodShopReusableView.xib */; };
 		F5555E121F8DB8BF000034F7 /* GYCuttingBoxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5555E111F8DB8BF000034F7 /* GYCuttingBoxController.swift */; };
 		F5555E641F8DB8DB000034F7 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5555E161F8DB8DA000034F7 /* MOBFoundation.framework */; };
 		F5555E651F8DB8DB000034F7 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5555E181F8DB8DA000034F7 /* ShareSDK.framework */; };
@@ -280,6 +284,10 @@
 		F53862E51FAB322B00681179 /* GYShopDetailCommentCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopDetailCommentCVCell.swift; sourceTree = "<group>"; };
 		F53862E61FAB322B00681179 /* GYShopDetailCommentCVCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYShopDetailCommentCVCell.xib; sourceTree = "<group>"; };
 		F53A265A1F79F6C1009A82F6 /* GYHomeBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYHomeBanner.swift; sourceTree = "<group>"; };
+		F53F830B1FADB853002CC336 /* GYGoodDetailReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYGoodDetailReusableView.swift; sourceTree = "<group>"; };
+		F53F830D1FADB87A002CC336 /* GYGoodDetailReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYGoodDetailReusableView.xib; sourceTree = "<group>"; };
+		F53F830F1FADBCAE002CC336 /* GYGoodShopReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYGoodShopReusableView.swift; sourceTree = "<group>"; };
+		F53F83111FADBCBA002CC336 /* GYGoodShopReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYGoodShopReusableView.xib; sourceTree = "<group>"; };
 		F5555E111F8DB8BF000034F7 /* GYCuttingBoxController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCuttingBoxController.swift; sourceTree = "<group>"; };
 		F5555E161F8DB8DA000034F7 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		F5555E181F8DB8DA000034F7 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
@@ -1457,6 +1465,10 @@
 				F5A114CB1FA1DE0B0044BFD1 /* GYShopDetailBottomView.swift */,
 				F5A114CD1FA1DE160044BFD1 /* GYShopDetailBottomView.xib */,
 				F578256C1FA9B53000637634 /* GYShopDetailNavigation.swift */,
+				F53F830B1FADB853002CC336 /* GYGoodDetailReusableView.swift */,
+				F53F830D1FADB87A002CC336 /* GYGoodDetailReusableView.xib */,
+				F53F830F1FADBCAE002CC336 /* GYGoodShopReusableView.swift */,
+				F53F83111FADBCBA002CC336 /* GYGoodShopReusableView.xib */,
 			);
 			path = SubViews;
 			sourceTree = "<group>";
@@ -1575,6 +1587,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F53F83121FADBCBA002CC336 /* GYGoodShopReusableView.xib in Resources */,
 				F5AEF9C11F9EF10600B3D4B4 /* GYCommunityChooseCollectionCell.xib in Resources */,
 				F5BF9BDD1FA73BFE0030860E /* InfoPlist.strings in Resources */,
 				F5555E8C1F8DB8DB000034F7 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
@@ -1601,6 +1614,7 @@
 				F50269711F6FCBB4001CDA46 /* LaunchScreen.storyboard in Resources */,
 				F5555E921F8DB8DB000034F7 /* README.txt in Resources */,
 				F5BF9BE41FA73D440030860E /* Localizable.strings in Resources */,
+				F53F830E1FADB87A002CC336 /* GYGoodDetailReusableView.xib in Resources */,
 				F502696E1F6FCBB4001CDA46 /* Assets.xcassets in Resources */,
 				F502696C1F6FCBB4001CDA46 /* Main.storyboard in Resources */,
 				F525AECF1F8B4E29008D2819 /* GYResultCollectionCell.xib in Resources */,
@@ -1717,6 +1731,7 @@
 				F5DB172A1F725A9000A4C4E7 /* UIDevice+GYDevice.swift in Sources */,
 				F5555EFE1F8DF3CF000034F7 /* GYBindPhoneController.swift in Sources */,
 				F535B6571F7A347200907209 /* GYHomeRecommendCell.swift in Sources */,
+				F53F83101FADBCAE002CC336 /* GYGoodShopReusableView.swift in Sources */,
 				F5194AF61F7269FE008C5DBA /* GYUserModel.swift in Sources */,
 				F5AEF9B91F9EE33E00B3D4B4 /* GYCommunityChooseTableCell.swift in Sources */,
 				F5555EF91F8DD555000034F7 /* Base64.m in Sources */,
@@ -1750,6 +1765,7 @@
 				F50269C11F6FCE9B001CDA46 /* GYShoppingController.swift in Sources */,
 				F5555E121F8DB8BF000034F7 /* GYCuttingBoxController.swift in Sources */,
 				F507DDAF1FA33D9300EB0E1D /* GYShopDetailFooterView.swift in Sources */,
+				F53F830C1FADB853002CC336 /* GYGoodDetailReusableView.swift in Sources */,
 				F50269A31F6FCCBC001CDA46 /* AppDelegate.swift in Sources */,
 				F535B6581F7A347200907209 /* GYHomeShopRecommendCell.swift in Sources */,
 				F51BD4EC1F8B659600EEFB07 /* NSObject+GYObject.swift in Sources */,

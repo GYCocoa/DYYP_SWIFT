@@ -112,3 +112,31 @@ class GYShopModel: NSObject {
     
     override func setValue(_ value: Any?, forUndefinedKey key: String) {}
 }
+
+class GYShopDetailModel: NSObject {
+    var iconUrl :String?
+    var price :NSNumber?
+    var productId :NSNumber?
+    var productImage :String?
+    var productName :String?
+    var sales :NSNumber?
+    var  recommend:NSArray?
+    
+    var shopId :Int?
+    var shopName :String?
+    
+    init(dict:[String:AnyObject]) {
+        iconUrl = dict["iconUrl"] as! String?
+        price = dict["price"] as! NSNumber?
+        productId = dict["productId"] as! NSNumber?
+        productImage = dict["productImage"] as! String?
+        productName = dict["productName"] as! String?
+        sales = dict["sales"] as! NSNumber?
+        recommend = dict["recommend"] as! NSArray?
+
+        shopId = dict["shopId"] as! Int?
+        shopName = dict["shopName"] as! String?
+    }
+    
+    override func setValue(_ value: Any?, forUndefinedKey key: String) {}
+}

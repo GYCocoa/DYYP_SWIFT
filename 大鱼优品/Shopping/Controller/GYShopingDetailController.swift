@@ -39,7 +39,8 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         let traget = self.navigationController?.interactivePopGestureRecognizer?.delegate
         let pan = UIPanGestureRecognizer.init(target: traget, action: nil)
         self.view.addGestureRecognizer(pan)
-        
+        self.automaticallyAdjustsScrollViewInsets =  false
+
         self.navigationItem.title = "商品详情"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "au_bigshare"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(shareAction))
         setupSubviews()
@@ -64,7 +65,7 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         tableView.tableHeaderView = headerView
         self.setupFooterView()
         tableView.tableFooterView = footerView
-        footerView.backgroundColor = UIColor.orange
+        footerView.backgroundColor = UIColor.white
         self.view.addSubview(bottomView)
         let fresh = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(headerAction))
         self.tableView.mj_header = fresh
@@ -127,7 +128,7 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         return headerView
     }()
     fileprivate lazy var footerView: GYShopDetailFooterView = {
-        var footerView = GYShopDetailFooterView()
+        var footerView = GYShopDetailFooterView.init(frame: CGRect(x: 0, y: 0, width: kWidth, height: kHeight), superController: self)
         return footerView
     }()
     fileprivate lazy var bottomView: GYShopDetailBottomView = {
