@@ -158,21 +158,22 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 65 + 10 + 45 + 10 + (kWidth - 60) / 6 * 2
         if self.commentArray.count > 0 {
             var imgH:CGFloat = 0
             var replyImgH:CGFloat = 0
             let model:GYShopDetailComment = self.commentArray[indexPath.row] as! GYShopDetailComment
             if model.imgs != nil && model.imgs!.count > 0 {
-                imgH = 65 + 10 + (kWidth - 60)*1.2 / 6
+                imgH = 65 + 15 + (kWidth - 60)*1.2 / 6
             }else{
-                imgH = 65 + 10
+                /// 原内容固定高度 + 自适应
+                imgH = 65 + 15
             }
             if model.appendCommentTime != nil {
                 if model.appendImgs != nil && model.appendImgs!.count > 0 {
-                    replyImgH = 45 + 10 + (kWidth - 60)*1.2 / 6
+                    replyImgH = 45 + 15 + (kWidth - 60)*1.2 / 6
                 }else{
-                    replyImgH = 45 + 10
+                    /// 原内容固定高度 + 自适应
+                    replyImgH = 45 + 15
                 }
             }else{
                 replyImgH = 0
@@ -180,13 +181,6 @@ extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
             return imgH + replyImgH
         }
         return 0
-//        return 230
-//        if indexPath.row == 0 {
-//            /// 原内容固定高度 + 自适应
-//            return  65 + 10 + (kWidth - 60) / 6
-//        }
-//        /// 原内容固定高度 + 自适应 + 追评固定高度 + 自适应
-//        return 65 + 10 + 45 + 10 + (kWidth - 60) / 6 * 2
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.shopNav?.scrollContentOffSet(offSet: self.tableView.contentOffset.y)

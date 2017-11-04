@@ -51,7 +51,7 @@ class GYShopDetailComment: NSObject {
     var appendCommentTime:String?
     var appendImgs:NSArray?
     
-    var attitude:Int?
+    var attitude:NSNumber?
     var content:String?
     var evaluateData:String?
     var imgs:NSArray?
@@ -71,7 +71,7 @@ class GYShopDetailComment: NSObject {
         appendCommentTime = dict["appendCommentTime"] as! String?
         appendImgs = dict["appendImgs"] as! NSArray?
         
-        attitude = dict["attitude"] as! Int?
+        attitude = dict["attitude"] as! NSNumber?
         content = dict["content"] as! String?
         evaluateData = dict["evaluateData"] as! String?
         imgs = dict["imgs"] as! NSArray?

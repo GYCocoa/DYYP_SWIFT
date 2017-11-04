@@ -19,7 +19,7 @@ class GYShopDetailTableCell: UITableViewCell {
     @IBOutlet weak var timeL: UILabel!
     @IBOutlet weak var commentCollectionView: UICollectionView!
     @IBOutlet weak var commentCVLeft: NSLayoutConstraint!
-
+    
     @IBOutlet weak var replyView: UIView!
     @IBOutlet weak var commentTimeL: UILabel!
     @IBOutlet weak var replyContentL: UILabel!
@@ -58,7 +58,7 @@ class GYShopDetailTableCell: UITableViewCell {
             contentL.text = model?.content
             timeL.text = model?.evaluateData
             if model?.imgs?.count == 0 || model?.imgs == nil {
-                commentCVLeft.constant = kWidth/2
+                commentCVLeft.constant = kWidth - 20
                 commentCollectionView.isHidden = true
             }
             if model?.appendCommentTime == nil {
@@ -66,7 +66,7 @@ class GYShopDetailTableCell: UITableViewCell {
             }else{
                 replyView.isHidden = false
                 if model?.appendImgs?.count == 0 || model?.appendImgs == nil {
-                    replyCVLeft.constant = kWidth/2
+                    replyCVLeft.constant = kWidth - 70
                     replyCommentCollectionView.isHidden = true
                 }
                 commentTimeL.text = model?.appendCommentTime
@@ -74,8 +74,6 @@ class GYShopDetailTableCell: UITableViewCell {
             }
         }
     }
-    
-    
 }
 
 extension GYShopDetailTableCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
@@ -92,10 +90,6 @@ extension GYShopDetailTableCell: UICollectionViewDelegate,UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shopDetailCVId, for: indexPath) as! GYShopDetailCommentCVCell
-//
-//        return cell
-
         if collectionView == commentCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shopDetailCVId, for: indexPath) as! GYShopDetailCommentCVCell
 
@@ -109,9 +103,19 @@ extension GYShopDetailTableCell: UICollectionViewDelegate,UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
  
-        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return  CGSize(width: self.commentCollectionView.height - 20, height: self.commentCollectionView.height - 20)
+        var imgsMargin:CGFloat = 10
+        var appendImgsMargin:CGFloat = 10
+        if collectionView == commentCollectionView {
+            if model?.imgs?.count == 0 || model?.imgs == nil {
+                imgsMargin = 0
+            }
+            return  CGSize(width: self.commentCollectionView.height - imgsMargin, height: self.commentCollectionView.height - imgsMargin)
+        }
+        if model?.appendImgs?.count == 0 || model?.appendImgs == nil {
+            appendImgsMargin = 0
+        }
+        return  CGSize(width: self.replyCommentCollectionView.height - appendImgsMargin, height: self.replyCommentCollectionView.height - appendImgsMargin)
     }
 }
