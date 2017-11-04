@@ -7,8 +7,13 @@
 //
 
 import UIKit
+import WebKit
 
 fileprivate let ShopDetailCollectionCellId = "ShopDetailCollectionCellId"
+
+protocol ShopDetailFooterWebViewDelegate:NSObjectProtocol {
+    func shopDetailFooterWebView(height:CGFloat)
+}
 
 class GYShopDetailFooterView: UIView {
 
@@ -17,6 +22,10 @@ class GYShopDetailFooterView: UIView {
     var nickNameL:UILabel?
     var shopButton:UIButton?
     
+    var webView : WKWebView!
+    var urlString = "http://192.168.1.156/group1/M00/02/A3/wKgBnFj1wm6AUtNZAAAOPwRtPtU69.html"
+    var delegate:ShopDetailFooterWebViewDelegate?
+    var currentCount:NSInteger = 0
     
     convenience init(frame: CGRect, superController: UIViewController) {
         self.init(frame: frame)
@@ -56,6 +65,18 @@ class GYShopDetailFooterView: UIView {
         self.addSubview(reusableView)
         self.addSubview(shopReusableView)
 
+        let webConfiguratiojn = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguratiojn)
+        webView.uiDelegate = self
+        webView.navigationDelegate = self
+        self.addSubview(webView)
+        webView.frame = CGRect.init(x: 0, y: (kWidth-40) / 3 + 177, width: kWidth, height: kHeight)
+        let myURL = NSURL.init(string: urlString)
+        let myRequest = NSURLRequest.init(url: myURL! as URL)
+        webView.load(myRequest as URLRequest)
+
+        webView.scrollView.addObserver(self, forKeyPath: "contentSize", options: NSKeyValueObservingOptions.new, context: nil)
+
     }
     var dataDic:NSDictionary? {
         didSet {
@@ -87,7 +108,7 @@ class GYShopDetailFooterView: UIView {
     
     fileprivate lazy var reusableView: GYGoodDetailReusableView = {
         var reusableView = GYGoodDetailReusableView.reusableView()
-        reusableView.frame = CGRect.init(x: 0, y: (kWidth-40) / 3 + 50 + 97, width: kWidth, height: 30)
+        reusableView.frame = CGRect.init(x: 0, y: (kWidth-40) / 3 + 147, width: kWidth, height: 30)
         return reusableView
     }()
     fileprivate lazy var shopReusableView: GYGoodShopReusableView = {
@@ -139,5 +160,34 @@ extension GYShopDetailFooterView: UICollectionViewDelegate,UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
     }
+    
+}
+
+extension GYShopDetailFooterView: WKUIDelegate ,WKNavigationDelegate {
+    
+//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//        webView.evaluateJavaScript("document.body.offsetHeight") { (result, error) in
+//            let height = result as! CGFloat
+//            var frame:CGRect = webView.frame
+//            frame.size.height = height
+//            print(height)
+//            self.webView.frame = CGRect.init(x: 0, y: (kWidth-40) / 3 + 177, width: kWidth, height: height)
+//            }
+//    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "contentSize" {
+            let size = webView.sizeThatFits(CGSize.zero)
+            print(size)
+            currentCount += 1
+            webView.frame = CGRect.init(x: 0, y: (kWidth-40) / 3 + 177, width: size.width, height: size.height)
+            if currentCount <= 1 {
+                if self.delegate != nil {
+//                    self.delegate?.shopDetailFooterWebView(height: (kWidth-40) / 3 + 177 + size.height)
+                }
+            }
+        }
+    }
+    
     
 }

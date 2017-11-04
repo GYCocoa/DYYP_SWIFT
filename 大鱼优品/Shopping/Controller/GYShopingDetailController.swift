@@ -11,7 +11,7 @@ import SnapKit
 import MJRefresh
 import SVProgressHUD
 
-class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeightDelegate {
+class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeightDelegate,ShopDetailFooterWebViewDelegate {
     
     var goodId:Int?
     var shopNav:GYShopDetailNavigation?
@@ -108,6 +108,9 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
     func updateShopDetailHeaderHeight(height: CGFloat) {
         headerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: height)
     }
+    func shopDetailFooterWebView(height: CGFloat) {
+        footerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: height)
+    }
     fileprivate lazy var tableView:UITableView = {
         var tableView = UITableView.init(frame: CGRect.init(x: 0, y: -kNavStatusHeight, width: kWidth, height: kHeight - kShopBottomHeight + kNavStatusHeight), style: UITableViewStyle.grouped)
         tableView.backgroundColor = UIColor.globalBackgroundColor()
@@ -129,6 +132,7 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
     }()
     fileprivate lazy var footerView: GYShopDetailFooterView = {
         var footerView = GYShopDetailFooterView.init(frame: CGRect(x: 0, y: 0, width: kWidth, height: kHeight), superController: self)
+        footerView.delegate = self
         return footerView
     }()
     fileprivate lazy var bottomView: GYShopDetailBottomView = {
@@ -140,6 +144,7 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         var commentArray = NSMutableArray()
         return commentArray
     }()
+    
 }
 
 extension GYShopingDetailController: UITableViewDelegate,UITableViewDataSource {
@@ -225,7 +230,7 @@ extension GYShopingDetailController {
         headerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight - 150)
     }
     fileprivate func setupFooterView() {
-        footerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight)
+        footerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight*1.5)
     }
     
 }
