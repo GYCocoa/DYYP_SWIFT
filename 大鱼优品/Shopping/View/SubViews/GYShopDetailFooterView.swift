@@ -69,8 +69,9 @@ class GYShopDetailFooterView: UIView {
         webView = WKWebView(frame: .zero, configuration: webConfiguratiojn)
         webView.uiDelegate = self
         webView.navigationDelegate = self
+        webView.scrollView.isScrollEnabled = false
         self.addSubview(webView)
-        webView.frame = CGRect.init(x: 0, y: (kWidth-40) / 3 + 177, width: kWidth, height: kHeight)
+        webView.frame = CGRect.init(x: 0, y: (kWidth-40) / 3 + 177, width: kWidth, height: kHeight*2)
         let myURL = NSURL.init(string: urlString)
         let myRequest = NSURLRequest.init(url: myURL! as URL)
         webView.load(myRequest as URLRequest)
@@ -176,17 +177,17 @@ extension GYShopDetailFooterView: WKUIDelegate ,WKNavigationDelegate {
 //    }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == "contentSize" {
-            let size = webView.sizeThatFits(CGSize.zero)
-            print(size)
-            currentCount += 1
-            webView.frame = CGRect.init(x: 0, y: (kWidth-40) / 3 + 177, width: size.width, height: size.height)
-            if currentCount <= 1 {
-                if self.delegate != nil {
-//                    self.delegate?.shopDetailFooterWebView(height: (kWidth-40) / 3 + 177 + size.height)
-                }
-            }
-        }
+//        if keyPath == "contentSize" {
+//            let size = webView.sizeThatFits(CGSize.zero)
+//            print(size)
+//            currentCount += 1
+//            webView.frame = CGRect.init(x: 0, y: (kWidth-40) / 3 + 177, width: size.width, height: size.height)
+//            if currentCount <= 1 {
+//                if self.delegate != nil {
+////                    self.delegate?.shopDetailFooterWebView(height: (kWidth-40) / 3 + 177 + size.height)
+//                }
+//            }
+//        }
     }
     
     

@@ -59,13 +59,15 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
     fileprivate func setupSubviews() {
         view.addSubview(tableView)
         self.shopNav = GYShopDetailNavigation.init(frame: CGRect(x: 0, y: 0, width: kWidth, height: kNavBarHeight), superController: self)        
-        self.setupHeaderView()
         headerView.backgroundColor = UIColor.white
         headerView.delegate = self
         tableView.tableHeaderView = headerView
-        self.setupFooterView()
+        self.setupHeaderView()
+
         tableView.tableFooterView = footerView
         footerView.backgroundColor = UIColor.white
+        self.setupFooterView()
+
         self.view.addSubview(bottomView)
         let fresh = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(headerAction))
         self.tableView.mj_header = fresh
@@ -131,7 +133,7 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         return headerView
     }()
     fileprivate lazy var footerView: GYShopDetailFooterView = {
-        var footerView = GYShopDetailFooterView.init(frame: CGRect(x: 0, y: 0, width: kWidth, height: kHeight), superController: self)
+        var footerView = GYShopDetailFooterView.init(frame: CGRect(x: 0, y: 0, width: kWidth, height: kHeight*2), superController: self)
         footerView.delegate = self
         return footerView
     }()
@@ -230,7 +232,7 @@ extension GYShopingDetailController {
         headerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight - 150)
     }
     fileprivate func setupFooterView() {
-        footerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight*1.5)
+        footerView.frame = CGRect(x: 0, y: 0, width: kWidth, height: kHeight*2)
     }
     
 }
