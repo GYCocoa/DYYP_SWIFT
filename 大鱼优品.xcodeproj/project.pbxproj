@@ -69,6 +69,7 @@
 		F53F830E1FADB87A002CC336 /* GYGoodDetailReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F53F830D1FADB87A002CC336 /* GYGoodDetailReusableView.xib */; };
 		F53F83101FADBCAE002CC336 /* GYGoodShopReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F53F830F1FADBCAE002CC336 /* GYGoodShopReusableView.swift */; };
 		F53F83121FADBCBA002CC336 /* GYGoodShopReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F53F83111FADBCBA002CC336 /* GYGoodShopReusableView.xib */; };
+		F54C73CD1FB0631D003A59EF /* GYRuntimeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F54C73CC1FB0631D003A59EF /* GYRuntimeModel.swift */; };
 		F5555E121F8DB8BF000034F7 /* GYCuttingBoxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5555E111F8DB8BF000034F7 /* GYCuttingBoxController.swift */; };
 		F5555E641F8DB8DB000034F7 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5555E161F8DB8DA000034F7 /* MOBFoundation.framework */; };
 		F5555E651F8DB8DB000034F7 /* ShareSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5555E181F8DB8DA000034F7 /* ShareSDK.framework */; };
@@ -288,6 +289,7 @@
 		F53F830D1FADB87A002CC336 /* GYGoodDetailReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYGoodDetailReusableView.xib; sourceTree = "<group>"; };
 		F53F830F1FADBCAE002CC336 /* GYGoodShopReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYGoodShopReusableView.swift; sourceTree = "<group>"; };
 		F53F83111FADBCBA002CC336 /* GYGoodShopReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYGoodShopReusableView.xib; sourceTree = "<group>"; };
+		F54C73CC1FB0631D003A59EF /* GYRuntimeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYRuntimeModel.swift; sourceTree = "<group>"; };
 		F5555E111F8DB8BF000034F7 /* GYCuttingBoxController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYCuttingBoxController.swift; sourceTree = "<group>"; };
 		F5555E161F8DB8DA000034F7 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
 		F5555E181F8DB8DA000034F7 /* ShareSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ShareSDK.framework; sourceTree = "<group>"; };
@@ -1000,6 +1002,7 @@
 			isa = PBXGroup;
 			children = (
 				F5370F291F79077C009FE727 /* GYAlertView.swift */,
+				F54C73CC1FB0631D003A59EF /* GYRuntimeModel.swift */,
 			);
 			path = BaseTools;
 			sourceTree = "<group>";
@@ -1775,6 +1778,7 @@
 				F55D66F81F70C07100619ED9 /* UIView+GYExtension.swift in Sources */,
 				F525AECB1F8B2214008D2819 /* StickyHeadersFlowLayout.swift in Sources */,
 				F5A4AD921F7F989700812E85 /* GYCaremaCollectionCell.swift in Sources */,
+				F54C73CD1FB0631D003A59EF /* GYRuntimeModel.swift in Sources */,
 				F53862DE1FAADCE500681179 /* FSActionSheetConfig.m in Sources */,
 				F56505601F7CDC6D002651AA /* GYDisplayTableCell.swift in Sources */,
 				F5AA41A91F7B488F00B5740A /* TopicTitle.swift in Sources */,
