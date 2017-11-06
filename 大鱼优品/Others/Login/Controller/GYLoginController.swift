@@ -85,11 +85,17 @@ class GYLoginController: UIViewController {
                 let name = user?.nickname
                 let icon = user?.icon
                 let gender = user?.gender
+                let unionId:String = user?.rawData["unionid"] as! String
                 let os = NSObject.getDevice()
                 /// RSA 加密
                 let crsa = CRSA()
                 crsa.writePuk(withKey: PubKey)
-                let loginToken:String = crsa.encryptByRsa(with: "\(type)##\(openId)##\(token)", keyType: KeyTypePublic)
+                var loginToken:String = ""
+                if type == 3 {
+                    loginToken = crsa.encryptByRsa(with: "\(type)##\(openId)##\(token)##\(unionId)", keyType: KeyTypePublic)
+                }else{
+                    loginToken = crsa.encryptByRsa(with: "\(type)##\(openId)##\(token)", keyType: KeyTypePublic)
+                }
                 /// 登录参数
                 let params = ["loginToken":loginToken,
                               "name":name!,

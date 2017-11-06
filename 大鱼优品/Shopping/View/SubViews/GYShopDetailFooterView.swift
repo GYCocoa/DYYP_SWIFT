@@ -64,7 +64,7 @@ class GYShopDetailFooterView: UIView {
         
         self.addSubview(reusableView)
         self.addSubview(shopReusableView)
-
+        
         let webConfiguratiojn = WKWebViewConfiguration()
         webView = WKWebView(frame: .zero, configuration: webConfiguratiojn)
         webView.uiDelegate = self
