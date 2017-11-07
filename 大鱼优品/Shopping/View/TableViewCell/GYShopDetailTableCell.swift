@@ -60,7 +60,8 @@ class GYShopDetailTableCell: UITableViewCell {
             starViews.scoreCount = Float((model?.score)!)
             nickNameL.text = model?.userName
             contentL.text = model?.content
-            timeL.text = model?.evaluateData
+            let timeStamp = NSData.stringToTimeStamp(stringTime: (model?.evaluateData)!, second: true)
+            timeL.text = NSData.timeStampToString(timeStamp: timeStamp, second: false)
             if model?.imgs?.count == 0 || model?.imgs == nil {
                 commentCVLeft.constant = kWidth - 20
                 commentCollectionView.isHidden = true
@@ -73,7 +74,19 @@ class GYShopDetailTableCell: UITableViewCell {
                     replyCVLeft.constant = kWidth - 70
                     replyCommentCollectionView.isHidden = true
                 }
-                commentTimeL.text = model?.appendCommentTime
+                let timeStamp = NSData.stringToTimeStamp(stringTime: (model?.evaluateData)!, second: true)
+                let timeString = NSData.timeStampToString(timeStamp: timeStamp, second: false)
+                let timeArr = timeString.components(separatedBy: "-")
+
+                let appendTimeStamp = NSData.stringToTimeStamp(stringTime: (model?.appendCommentTime)!, second: true)
+                let appendTimeString = NSData.timeStampToString(timeStamp: appendTimeStamp, second: false)
+                let appendTimeArr = appendTimeString.components(separatedBy: "-")
+                
+                if timeArr[1] == appendTimeArr[1] {
+                    commentTimeL.text = "用户当天追评"
+                }else{
+                    commentTimeL.text = appendTimeString
+                }
                 replyContentL.text = model?.appendComment
             }
         }
