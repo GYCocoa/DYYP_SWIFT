@@ -155,6 +155,7 @@
 		F56505601F7CDC6D002651AA /* GYDisplayTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F565055E1F7CDC6D002651AA /* GYDisplayTableCell.swift */; };
 		F56505611F7CDC6D002651AA /* GYDisplayTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F565055F1F7CDC6D002651AA /* GYDisplayTableCell.xib */; };
 		F5655F7A1F98A02700065982 /* GYCommunityAncillaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5655F791F98A02700065982 /* GYCommunityAncillaryCell.swift */; };
+		F56C08681FB16E29004E2EDD /* GYStarRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C08671FB16E29004E2EDD /* GYStarRateView.swift */; };
 		F57825691FA984AD00637634 /* GYShopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = F57825681FA984AD00637634 /* GYShopping.swift */; };
 		F578256B1FA9859B00637634 /* GYShopNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = F578256A1FA9859B00637634 /* GYShopNetwork.swift */; };
 		F578256D1FA9B53000637634 /* GYShopDetailNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F578256C1FA9B53000637634 /* GYShopDetailNavigation.swift */; };
@@ -464,6 +465,7 @@
 		F565055E1F7CDC6D002651AA /* GYDisplayTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYDisplayTableCell.swift; sourceTree = "<group>"; };
 		F565055F1F7CDC6D002651AA /* GYDisplayTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYDisplayTableCell.xib; sourceTree = "<group>"; };
 		F5655F791F98A02700065982 /* GYCommunityAncillaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYCommunityAncillaryCell.swift; sourceTree = "<group>"; };
+		F56C08671FB16E29004E2EDD /* GYStarRateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYStarRateView.swift; sourceTree = "<group>"; };
 		F57825681FA984AD00637634 /* GYShopping.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GYShopping.swift; sourceTree = "<group>"; };
 		F578256A1FA9859B00637634 /* GYShopNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopNetwork.swift; sourceTree = "<group>"; };
 		F578256C1FA9B53000637634 /* GYShopDetailNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYShopDetailNavigation.swift; sourceTree = "<group>"; };
@@ -1003,6 +1005,7 @@
 			children = (
 				F5370F291F79077C009FE727 /* GYAlertView.swift */,
 				F54C73CC1FB0631D003A59EF /* GYRuntimeModel.swift */,
+				F56C08671FB16E29004E2EDD /* GYStarRateView.swift */,
 			);
 			path = BaseTools;
 			sourceTree = "<group>";
@@ -1697,6 +1700,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F5BF9BD61FA7256A0030860E /* Bundle+GYString.swift in Sources */,
+				F56C08681FB16E29004E2EDD /* GYStarRateView.swift in Sources */,
 				F535B65D1F7A352B00907209 /* GYHomeCollectionCell.swift in Sources */,
 				F56505541F7CC756002651AA /* HomePageView.swift in Sources */,
 				F525AED11F8B542E008D2819 /* GYResultTopView.swift in Sources */,

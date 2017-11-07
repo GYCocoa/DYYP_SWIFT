@@ -27,6 +27,7 @@ class GYShopDetailTableCell: UITableViewCell {
     @IBOutlet weak var replyCVLeft: NSLayoutConstraint!
     
     @IBOutlet weak var styleL: UILabel!
+    @IBOutlet weak var starViews: GYStarRateView!
     
     var commentLayout:UICollectionViewFlowLayout?
     var browser:XLPhotoBrowser?
@@ -56,6 +57,7 @@ class GYShopDetailTableCell: UITableViewCell {
             if model?.userIcon != nil {
                 headerImg?.sd_setImage(with: URL(string:(model?.userIcon)!), placeholderImage: UIImage(named:"image_noda"))
             }
+            starViews.scoreCount = Float((model?.score)!)
             nickNameL.text = model?.userName
             contentL.text = model?.content
             timeL.text = model?.evaluateData

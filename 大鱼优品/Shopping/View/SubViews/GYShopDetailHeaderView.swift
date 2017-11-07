@@ -19,7 +19,7 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate,XLPhotoBrowserDel
     var shopNameL:UILabel?
     var priceL:UILabel?
     var originalPriceL:UILabel?
-    var starView:UIView?
+    var starView:GYStarRateView?
     var commentL:UILabel?
     var cellCountL:UILabel?
     var descriptionL:UILabel?
@@ -70,8 +70,7 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate,XLPhotoBrowserDel
             originalPriceL?.attributedText = attri
         }
         if starView == nil {
-            starView = UIView()
-            starView?.backgroundColor = UIColor.cyan
+            starView = GYStarRateView.init(frame: CGRect(x: 20,y: 60,width: 65,height: 10), starCount: 5, score: 0)
             self.addSubview(starView!)
         }
         if commentL == nil {
@@ -130,6 +129,7 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate,XLPhotoBrowserDel
             }
             shopNameL?.text = model.productName
             priceL?.text = "￥" + (model.groupPrice?.stringValue)!
+            starView?.initScoreReload(score: model.score as! Float)
             let str = "￥" + (model.originalPrice?.stringValue)!
             let attri = NSMutableAttributedString.init(string: str)
             attri.addAttribute(NSStrikethroughStyleAttributeName, value: UInt8(NSUnderlineStyle.patternSolid.rawValue) | UInt8(NSUnderlineStyle.styleSingle.rawValue), range: NSRange(location: 0, length: str.characters.count))
@@ -188,7 +188,7 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate,XLPhotoBrowserDel
         starView?.snp.makeConstraints({ (make) in
             make.top.equalTo(priceL!.snp.bottom).offset(10)
             make.left.equalTo(10)
-            make.width.equalTo(100)
+            make.width.equalTo(65)
             make.height.equalTo(10)
         })
         commentL?.snp.makeConstraints({ (make) in
