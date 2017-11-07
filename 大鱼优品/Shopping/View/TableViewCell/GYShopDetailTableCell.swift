@@ -29,6 +29,8 @@ class GYShopDetailTableCell: UITableViewCell {
     @IBOutlet weak var styleL: UILabel!
     
     var commentLayout:UICollectionViewFlowLayout?
+    var browser:XLPhotoBrowser?
+    var currentCollectuinView:UICollectionView?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -76,34 +78,75 @@ class GYShopDetailTableCell: UITableViewCell {
     }
 }
 
-extension GYShopDetailTableCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout {
+extension GYShopDetailTableCell: UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,XLPhotoBrowserDelegate, XLPhotoBrowserDatasource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if collectionView == replyCommentCollectionView {
-//            return 2
-//        }
-        return 4
+        if collectionView == commentCollectionView {
+            if model?.imgs != nil && model?.imgs?.count != 0  {
+                return (model?.imgs?.count)!
+            }
+            return 0
+        }
+        if model?.appendImgs != nil && model?.appendImgs?.count != 0 {
+            return (model?.appendImgs?.count)!
+        }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == commentCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shopDetailCVId, for: indexPath) as! GYShopDetailCommentCVCell
-
+            if model?.imgs != nil && model?.imgs?.count != 0  {
+                cell.imageString = model?.imgs![indexPath.row] as? String
+            }
             return cell
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shopDetailReplyCVId, for: indexPath) as! GYShopDetailCommentCVCell
-
+            if model?.appendImgs != nil && model?.appendImgs?.count != 0 {
+                cell.imageString = model?.appendImgs![indexPath.row] as? String
+            }
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
- 
+        var array = NSArray()
+        if collectionView == commentCollectionView {
+            currentCollectuinView = commentCollectionView
+            array = model!.imgs!
+        }else{
+            currentCollectuinView = replyCommentCollectionView
+            array = model!.appendImgs!
+        }
+        self.browser = XLPhotoBrowser.show(withCurrentImageIndex: indexPath.row, imageCount: UInt(array.count), datasource: self)
+        self.browser?.pageDotColor = UIColor.white
+        self.browser?.currentPageDotColor = UIColor.orange
+        self.browser?.pageControlStyle = XLPhotoBrowserPageControlStyle.classic
+        self.browser?.action(withTitle: "", delegate: self, cancelButtonTitle: "", deleteButtonTitle: "", otherButtonTitles: "保存图片")
     }
+    func photoBrowser(_ browser: XLPhotoBrowser!, highQualityImageURLFor index: Int) -> URL! {
+        var array = NSArray()
+        if currentCollectuinView == commentCollectionView {
+            array = model!.imgs!
+        }else{
+            array = model!.appendImgs!
+        }
+        return NSURL.init(string: array[index] as! String)! as URL
+        
+    }
+    func photoBrowser(_ browser: XLPhotoBrowser!, clickActionSheetIndex actionSheetindex: Int, currentImageIndex: Int) {
+        switch actionSheetindex {
+        case 0:
+            browser.saveCurrentShowImage()
+        default:
+            break
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         var imgsMargin:CGFloat = 10
         var appendImgsMargin:CGFloat = 10

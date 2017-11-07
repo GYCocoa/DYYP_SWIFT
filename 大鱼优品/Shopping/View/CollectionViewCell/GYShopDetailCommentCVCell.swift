@@ -19,5 +19,14 @@ class GYShopDetailCommentCVCell: UICollectionViewCell {
     @IBOutlet weak var imgView: UIImageView!
     
     
+    var imageString:String? {
+        didSet {
+            if imageString != nil {
+                imgView.sd_setImage(with: NSURL(string: imageString!) as URL?, placeholderImage: UIImage(named: imageView_nodata))
+            }
+        }
+    }
+    
+    
     
 }

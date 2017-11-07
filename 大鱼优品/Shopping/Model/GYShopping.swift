@@ -56,7 +56,7 @@ class GYShopDetailComment: NSObject {
     var evaluateData:String?
     var imgs:NSArray?
 
-    var logistics:Int?
+    var logistics:NSNumber?
     var productId:Int?
     var score:NSNumber?
     var shopId:Int?
@@ -76,7 +76,7 @@ class GYShopDetailComment: NSObject {
         evaluateData = dict["evaluateData"] as! String?
         imgs = dict["imgs"] as! NSArray?
         
-        logistics = dict["logistics"] as! Int?
+        logistics = dict["logistics"] as! NSNumber?
         productId = dict["productId"] as! Int?
         score = dict["score"] as! NSNumber?
         shopId = dict["shopId"] as! Int?

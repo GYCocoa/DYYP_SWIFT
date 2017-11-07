@@ -107,6 +107,7 @@
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="czQ-Fh-cKZ">
                                 <rect key="frame" x="0.0" y="44" width="344" height="68.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="czQ-Fh-cKZ" secondAttribute="height" multiplier="6:1.2" id="TcN-gb-KAp"/>
                                 </constraints>
