@@ -25,6 +25,27 @@ class GYBaseViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    override func viewSafeAreaInsetsDidChange() {
+        if #available(iOS 11.0, *) {
+            super.viewSafeAreaInsetsDidChange()
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        updateOrientation()
+    }
+    
+    fileprivate func updateOrientation() {
+//        var frame = self.view.frame
+        if #available(iOS 11.0, *) {
+//            frame.origin.x = self.view.safeAreaInsets.left
+//            frame.size.width = self.view.frame.size.width - self.view.safeAreaInsets.left - self.view.safeAreaInsets.right
+//            frame.size.height = self.view.frame.size.height - self.view.safeAreaInsets.bottom
+//            self.view.frame = frame
+        } else {
+            // Fallback on earlier versions
+        }
+    }
     
     lazy var reloadButton: UIButton = {
         var reloadButton = UIButton(type: UIButtonType.custom)

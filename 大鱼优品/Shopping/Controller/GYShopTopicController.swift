@@ -19,7 +19,7 @@ protocol ScrollTopicTitleDelegate:NSObjectProtocol {
     func scrollTopicTitle(height:CGFloat)
 }
 
-class GYShopTopicController: UIViewController {
+class GYShopTopicController: GYBaseViewController {
 
     var topicTitle: TopicTitle?
     var delegate:ScrollTopicTitleDelegate?
