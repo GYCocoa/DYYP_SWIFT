@@ -62,8 +62,21 @@ let kShopBottomHeight: CGFloat = is_IPhoneX ? 83 :50
 let kNavBar_Bg_Image    =   (is_IPhoneX ? "iphoneX_nav_bg_image" :"nav_background_image")
 /// 状态栏高度
 let kNavOr_BarHeight = UIApplication.shared.statusBarFrame.size.height
-
-
+/// 适配iOS 11.0以后和iPhoneX底部
+func IOS11_OR_LATER_SPACE(par:CGFloat)->CGFloat {
+    var space:CGFloat = 0
+    if #available(iOS 11.0, *) {
+        space = par
+    }
+    return space
+}
+let JF_KEY_WINDOW = UIApplication.shared.keyWindow
+@available(iOS 11.0, *)
+let JF_TOP_SPACE = IOS11_OR_LATER_SPACE(par: CGFloat(JF_KEY_WINDOW!.safeAreaInsets.top))
+@available(iOS 11.0, *)
+let JF_TOP_ACTIVE_SPACE = IOS11_OR_LATER_SPACE(par:CGFloat(JF_KEY_WINDOW!.safeAreaInsets.top-20))
+@available(iOS 11.0, *)
+let JF_BOTTOM_SPACE = IOS11_OR_LATER_SPACE(par: CGFloat(JF_KEY_WINDOW!.safeAreaInsets.bottom))
 
 
 

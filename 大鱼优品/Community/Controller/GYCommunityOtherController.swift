@@ -27,7 +27,7 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor.randomColor()
+//        view.backgroundColor = UIColor.randomColor()
         view.addSubview(tableView)
 
         if topicTitle?.cname == "推荐" {
@@ -61,7 +61,7 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
     /// 获取精选数据
     fileprivate func requestChooseData() {
         GYCommunityView.getCommunityChooseData(cId: (topicTitle?.cid)!, pageId: choosePageId, completionHandler: { (response) in
-            print(response)
+//            print(response)
             self.chooseArray.removeAllObjects()
             if GYNetworkTool.success(response: response) {
                 if let data = response["data"] {
@@ -132,7 +132,7 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
                      "type":"1"]
         }
         GYCommunityView.getCommunityRecommendData(url: url, pageId: self.pageId, param:param, isRecomment: isRecomment, completionHandler: { (response) in
-            print(response)
+//            print(response)
             self.tableView.mj_header.endRefreshing()
             self.tableView.mj_footer.endRefreshing()
             if self.pageId == 1 {
@@ -179,7 +179,7 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
                     }
                 }
             }
-            print(self.dataArray.count)
+//            print(self.dataArray.count)
             self.tableView.reloadData()
         }) { (error) in
             self.tableView.mj_header.endRefreshing()
@@ -406,7 +406,18 @@ extension GYCommunityOtherController:UITableViewDelegate,UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let detailController = GYCommunityDetailController()
+        if topicTitle?.cname == "推荐" {
+            if indexPath.section == 0 || indexPath.section == 2 {
+                detailController.weiboId = 1
+                self.navigationController?.pushViewController(detailController, animated: true)
+            }
+        }else{
+            if indexPath.section == 2 || indexPath.section == 4 {
+                detailController.weiboId = 1
+                self.navigationController?.pushViewController(detailController, animated: true)
+            }
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

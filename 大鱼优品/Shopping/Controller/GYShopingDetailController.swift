@@ -33,13 +33,20 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
         if viewDid! {
             UIApplication.shared.statusBarStyle = .lightContent
         }
+        var frame = self.bottomView.frame
+        if #available(iOS 11.0, *) {
+            frame.origin.y = self.view.bounds.size.height - frame.size.height - JF_BOTTOM_SPACE
+        } else {
+            // Fallback on earlier versions
+        }
+        self.bottomView.frame = frame
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         let traget = self.navigationController?.interactivePopGestureRecognizer?.delegate
         let pan = UIPanGestureRecognizer.init(target: traget, action: nil)
         self.view.addGestureRecognizer(pan)
-        self.automaticallyAdjustsScrollViewInsets =  false
+//        self.automaticallyAdjustsScrollViewInsets =  false
 
         self.navigationItem.title = "商品详情"
         self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "au_bigshare"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(shareAction))

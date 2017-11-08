@@ -29,7 +29,7 @@ class GYShopTopicController: GYBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.randomColor()
+//        view.backgroundColor = UIColor.randomColor()
         view.addSubview(tableView)
         setupControllerFresh()
     }

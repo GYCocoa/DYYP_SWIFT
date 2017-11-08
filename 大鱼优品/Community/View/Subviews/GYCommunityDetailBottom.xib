@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GYCommunityDetailBottom" customModule="大鱼优品" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XBp-gr-AK7">
+                    <rect key="frame" x="225" y="0.0" width="150" height="40"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XZA-nc-yNv">
+                            <rect key="frame" x="100" y="0.0" width="50" height="40"/>
+                            <state key="normal" image="bottom_share"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VwS-BY-B9C">
+                            <rect key="frame" x="50" y="0.0" width="50" height="40"/>
+                            <state key="normal" image="bottom_forwarding"/>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xJJ-zn-wkE">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
+                            <state key="normal" image="bottom_praise"/>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="VwS-BY-B9C" secondAttribute="bottom" id="CCk-tz-8ul"/>
+                        <constraint firstItem="VwS-BY-B9C" firstAttribute="top" secondItem="XBp-gr-AK7" secondAttribute="top" id="EiY-RH-o4G"/>
+                        <constraint firstAttribute="trailing" secondItem="XZA-nc-yNv" secondAttribute="trailing" id="IJm-mB-qit"/>
+                        <constraint firstAttribute="bottom" secondItem="XZA-nc-yNv" secondAttribute="bottom" id="OiH-p8-IAO"/>
+                        <constraint firstItem="xJJ-zn-wkE" firstAttribute="leading" secondItem="XBp-gr-AK7" secondAttribute="leading" id="T3h-fg-xfH"/>
+                        <constraint firstAttribute="bottom" secondItem="xJJ-zn-wkE" secondAttribute="bottom" id="Vvy-z2-mAY"/>
+                        <constraint firstItem="VwS-BY-B9C" firstAttribute="width" secondItem="XBp-gr-AK7" secondAttribute="width" multiplier="1/3" id="d4e-Oo-ncN"/>
+                        <constraint firstItem="VwS-BY-B9C" firstAttribute="leading" secondItem="xJJ-zn-wkE" secondAttribute="trailing" id="eF7-Nc-ZJs"/>
+                        <constraint firstItem="VwS-BY-B9C" firstAttribute="centerX" secondItem="XBp-gr-AK7" secondAttribute="centerX" id="nVX-mM-PdU"/>
+                        <constraint firstItem="xJJ-zn-wkE" firstAttribute="top" secondItem="XBp-gr-AK7" secondAttribute="top" id="qSR-id-dZq"/>
+                        <constraint firstItem="XZA-nc-yNv" firstAttribute="leading" secondItem="VwS-BY-B9C" secondAttribute="trailing" id="tPc-sa-eKH"/>
+                        <constraint firstItem="VwS-BY-B9C" firstAttribute="centerY" secondItem="XBp-gr-AK7" secondAttribute="centerY" id="xLa-NU-pBL"/>
+                        <constraint firstItem="XZA-nc-yNv" firstAttribute="top" secondItem="XBp-gr-AK7" secondAttribute="top" id="zKe-fM-XZP"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9QP-0E-2JU">
+                    <rect key="frame" x="10" y="5" width="215" height="30"/>
+                    <subviews>
+                        <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="添加评论..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rCM-Lk-HHM">
+                            <rect key="frame" x="10" y="0.0" width="205" height="30"/>
+                            <nil key="textColor"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="rCM-Lk-HHM" secondAttribute="trailing" id="Hoa-fw-2Fx"/>
+                        <constraint firstItem="rCM-Lk-HHM" firstAttribute="top" secondItem="9QP-0E-2JU" secondAttribute="top" id="JiU-48-pq6"/>
+                        <constraint firstItem="rCM-Lk-HHM" firstAttribute="leading" secondItem="9QP-0E-2JU" secondAttribute="leading" constant="10" id="Zq5-ky-2Zw"/>
+                        <constraint firstAttribute="bottom" secondItem="rCM-Lk-HHM" secondAttribute="bottom" id="etX-OW-LkE"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="XBp-gr-AK7" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="2/5" id="I2M-iZ-QbM"/>
+                <constraint firstItem="XBp-gr-AK7" firstAttribute="bottomMargin" secondItem="vUN-kp-3ea" secondAttribute="bottom" constant="-8" id="Nkr-ZP-MiT"/>
+                <constraint firstItem="XBp-gr-AK7" firstAttribute="topMargin" secondItem="vUN-kp-3ea" secondAttribute="top" constant="8" id="PZQ-BB-iZt"/>
+                <constraint firstItem="9QP-0E-2JU" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="V2v-wQ-dLN"/>
+                <constraint firstItem="XBp-gr-AK7" firstAttribute="leading" secondItem="9QP-0E-2JU" secondAttribute="trailing" id="cZo-T9-gYg"/>
+                <constraint firstItem="9QP-0E-2JU" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="5" id="fep-sx-AQa"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XBp-gr-AK7" secondAttribute="trailing" id="fgl-Xk-nOw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="9QP-0E-2JU" secondAttribute="bottom" constant="5" id="grz-JT-dMa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-22.5" y="60"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="bottom_forwarding" width="22" height="20"/>
+        <image name="bottom_praise" width="22" height="22"/>
+        <image name="bottom_share" width="22" height="22"/>
+    </resources>
+</document>
