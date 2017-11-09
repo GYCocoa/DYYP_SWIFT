@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GYNavigationController: UINavigationController {
+class GYNavigationController: GYBaseNavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +31,7 @@ class GYNavigationController: UINavigationController {
 
         
         // 创建全局手势
-        initGlobalPan()
+//        initGlobalPan()
     }
     
     override func didReceiveMemoryWarning() {
@@ -51,11 +51,7 @@ class GYNavigationController: UINavigationController {
     @objc private func navigationBack() {
         popViewController(animated: true)
     }
-}
-
-// 全局手势返回
-extension GYNavigationController:UIGestureRecognizerDelegate {
-    /// 全局拖拽手势
+    
     fileprivate func initGlobalPan(){
         // 1.创建Pan手势
         let target = interactivePopGestureRecognizer?.delegate
@@ -68,13 +64,37 @@ extension GYNavigationController:UIGestureRecognizerDelegate {
     }
     /// 什么时候支持全屏手势
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-//        return false
+        //        return false
         return self.childViewControllers.count != 1
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return UIStatusBarStyle.lightContent
     }
-    
 }
+
+//// 全局手势返回
+//extension GYNavigationController:UIGestureRecognizerDelegate {
+//    /// 全局拖拽手势
+//    fileprivate func initGlobalPan(){
+//        // 1.创建Pan手势
+//        let target = interactivePopGestureRecognizer?.delegate
+//        let globalPan = UIPanGestureRecognizer(target: target, action: Selector(("handleNavigationTransition:")))
+//        globalPan.delegate = self
+//        self.view.addGestureRecognizer(globalPan)
+//        // 2.禁止系统的手势
+//        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+//
+//    }
+//    /// 什么时候支持全屏手势
+//    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+////        return false
+//        return self.childViewControllers.count != 1
+//    }
+//
+//    override var preferredStatusBarStyle: UIStatusBarStyle{
+//        return UIStatusBarStyle.lightContent
+//    }
+//
+//}
 

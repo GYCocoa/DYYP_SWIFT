@@ -43,6 +43,8 @@
 		F535B65D1F7A352B00907209 /* GYHomeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535B65B1F7A352B00907209 /* GYHomeCollectionCell.swift */; };
 		F535B65E1F7A352B00907209 /* GYHomeCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F535B65C1F7A352B00907209 /* GYHomeCollectionCell.xib */; };
 		F535B6601F7A3C9C00907209 /* GYHomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535B65F1F7A3C9C00907209 /* GYHomeModel.swift */; };
+		F535CF2B1FB3EA5E0008E326 /* GYAnimationContoller.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535CF2A1FB3EA5E0008E326 /* GYAnimationContoller.swift */; };
+		F535CF2D1FB3F6A30008E326 /* GYBaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F535CF2C1FB3F6A30008E326 /* GYBaseNavigationController.swift */; };
 		F5370F121F78A915009FE727 /* GYMineHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5370F111F78A915009FE727 /* GYMineHeaderView.swift */; };
 		F5370F151F78AB71009FE727 /* GYMineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5370F131F78AB71009FE727 /* GYMineCell.swift */; };
 		F5370F161F78AB71009FE727 /* GYMineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5370F141F78AB71009FE727 /* GYMineCell.xib */; };
@@ -258,6 +260,8 @@
 		F535B65B1F7A352B00907209 /* GYHomeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYHomeCollectionCell.swift; sourceTree = "<group>"; };
 		F535B65C1F7A352B00907209 /* GYHomeCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYHomeCollectionCell.xib; sourceTree = "<group>"; };
 		F535B65F1F7A3C9C00907209 /* GYHomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYHomeModel.swift; sourceTree = "<group>"; };
+		F535CF2A1FB3EA5E0008E326 /* GYAnimationContoller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYAnimationContoller.swift; sourceTree = "<group>"; };
+		F535CF2C1FB3F6A30008E326 /* GYBaseNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYBaseNavigationController.swift; sourceTree = "<group>"; };
 		F5370F111F78A915009FE727 /* GYMineHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYMineHeaderView.swift; sourceTree = "<group>"; };
 		F5370F131F78AB71009FE727 /* GYMineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GYMineCell.swift; sourceTree = "<group>"; };
 		F5370F141F78AB71009FE727 /* GYMineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GYMineCell.xib; sourceTree = "<group>"; };
@@ -785,6 +789,8 @@
 				F50269CA1F6FCF0E001CDA46 /* GYNavigationController.swift */,
 				F50269C81F6FCEF2001CDA46 /* GYTabbarController.swift */,
 				F50269D21F6FDCAC001CDA46 /* GYTabbar.swift */,
+				F535CF2A1FB3EA5E0008E326 /* GYAnimationContoller.swift */,
+				F535CF2C1FB3F6A30008E326 /* GYBaseNavigationController.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1740,6 +1746,7 @@
 				F56C08681FB16E29004E2EDD /* GYStarRateView.swift in Sources */,
 				F535B65D1F7A352B00907209 /* GYHomeCollectionCell.swift in Sources */,
 				F56505541F7CC756002651AA /* HomePageView.swift in Sources */,
+				F535CF2D1FB3F6A30008E326 /* GYBaseNavigationController.swift in Sources */,
 				F525AED11F8B542E008D2819 /* GYResultTopView.swift in Sources */,
 				F51296881F9704EF00EB78E6 /* GYCommunityView.swift in Sources */,
 				F5DB17261F7222BC00A4C4E7 /* NSObject+GYValidation.swift in Sources */,
@@ -1749,6 +1756,7 @@
 				F59A91841FB2B5740098746B /* GYCommunityTopicCollectionCell.swift in Sources */,
 				F53862DA1FAADCE500681179 /* UIImage+XLExtension.m in Sources */,
 				F51BD4EE1F8B77F300EEFB07 /* GYCaremaResult.swift in Sources */,
+				F535CF2B1FB3EA5E0008E326 /* GYAnimationContoller.swift in Sources */,
 				F5A114CC1FA1DE0B0044BFD1 /* GYShopDetailBottomView.swift in Sources */,
 				F53862DC1FAADCE500681179 /* FSActionSheet.m in Sources */,
 				F55D67031F70C16800619ED9 /* GYRegisterController.swift in Sources */,

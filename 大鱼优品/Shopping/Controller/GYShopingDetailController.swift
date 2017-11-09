@@ -43,9 +43,9 @@ class GYShopingDetailController: GYBaseViewController,ShopDetailHeaderUpdateHeig
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        let traget = self.navigationController?.interactivePopGestureRecognizer?.delegate
-        let pan = UIPanGestureRecognizer.init(target: traget, action: nil)
-        self.view.addGestureRecognizer(pan)
+//        let traget = self.navigationController?.interactivePopGestureRecognizer?.delegate
+//        let pan = UIPanGestureRecognizer.init(target: traget, action: nil)
+//        self.view.addGestureRecognizer(pan)
 //        self.automaticallyAdjustsScrollViewInsets =  false
 
         self.navigationItem.title = "商品详情"
