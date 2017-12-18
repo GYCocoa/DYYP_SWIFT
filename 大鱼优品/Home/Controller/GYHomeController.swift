@@ -30,6 +30,7 @@ class GYHomeController: GYBaseViewController,UITableViewDelegate,UITableViewData
         setupSubviews()
 //        loadAdvertising()
     }
+    
     fileprivate func loadAdvertising() {
         let window = UIApplication.shared.keyWindow
         let advert = UIView.init(frame: (window?.bounds)!)
@@ -59,6 +60,7 @@ class GYHomeController: GYBaseViewController,UITableViewDelegate,UITableViewData
     }
     @objc fileprivate func homeleftAction() {
         print("home category")
+        self.navigationController?.pushViewController(GYNodeServerController(), animated: true)
     }
     @objc fileprivate func newRewardsAction() {
         print("home newRewards")

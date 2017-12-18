@@ -30,6 +30,13 @@ class GYCommunityController: GYBaseViewController,UITabBarControllerDelegate {
     }
     @objc fileprivate func categorySearchAction() {
         print("category search")
+        let model:GYUserModel = GYUserModel.account()
+        if let token = model.autoToken {
+            
+        }else{
+
+        }
+        self.navigationController?.pushViewController(GYCommunityPostedController(), animated: true)
     }
     @objc fileprivate func categoryPostAction() {
         print("category post")
