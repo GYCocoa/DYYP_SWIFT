@@ -129,7 +129,9 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate,XLPhotoBrowserDel
             }
             shopNameL?.text = model.productName
             priceL?.text = "￥" + (model.groupPrice?.stringValue)!
-            starView?.initScoreReload(score: model.score as! Float)
+            if (model.score != nil) {
+                starView?.initScoreReload(score: model.score as! Float)
+            }
             let str = "￥" + (model.originalPrice?.stringValue)!
             let attri = NSMutableAttributedString.init(string: str)
             attri.addAttribute(NSStrikethroughStyleAttributeName, value: UInt8(NSUnderlineStyle.patternSolid.rawValue) | UInt8(NSUnderlineStyle.styleSingle.rawValue), range: NSRange(location: 0, length: str.characters.count))

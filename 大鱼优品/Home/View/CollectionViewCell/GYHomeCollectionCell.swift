@@ -17,9 +17,9 @@ class GYHomeCollectionCell: UICollectionViewCell {
     /// 全网首页
     var model : GYHomeModel? {
         didSet {
-            if model?.pfromImage != nil {
-                let image = IMAGEURL + (model?.pfromImage)!
-                imgView.sd_setImage(with: URL(string:image), placeholderImage: UIImage(named:imageView_nodata))
+            if model?.image != nil {
+                let image = model?.image
+                imgView.sd_setImage(with: URL(string:image!), placeholderImage: UIImage(named:imageView_nodata))
             }
             if model?.Description != nil {
                 contentL.text = model?.pname

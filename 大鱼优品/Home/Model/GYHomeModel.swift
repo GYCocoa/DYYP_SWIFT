@@ -66,7 +66,7 @@ class GYHomeSpecial: NSObject {
     var type :String?
 
     init(dict:[String:AnyObject]) {
-        content = dict["content"] as! String?
+//        content = dict["content"] as! String?
         Description = dict["Description"] as! String?
         image = dict["image"] as! String?
         type = dict["type"] as! String?
