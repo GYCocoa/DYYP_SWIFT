@@ -13,7 +13,7 @@ extension NSObject {
     
     /// 手机号验证
     class func isPhoneNumber(phoneNumber:String) -> Bool {
-        if phoneNumber.characters.count == 0 {
+        if phoneNumber.count == 0 {
             return false
         }
         let mobile = "^(13[0-9]|15[0-9]|18[0-9]|17[0-9]|147)\\d{8}$"
@@ -27,7 +27,7 @@ extension NSObject {
     }
     /// 邮箱号码验证
     class func isZipCodeNumber(zipCodeNumber:String) -> Bool {
-        if zipCodeNumber.characters.count == 0 {
+        if zipCodeNumber.count == 0 {
             return false
         }
         let zipCodeNumber = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"

@@ -93,7 +93,7 @@ class GYCaremaController: UIViewController {
             if index == 1 { /// 获取到闪光灯按钮
                 self.flashButtoon = button as? UIButton
             }
-            (button as AnyObject).addTarget(self, action: #selector(caremaButtonAction), for: UIControlEvents.touchUpInside)
+            (button as AnyObject).addTarget(self, action: #selector(caremaButtonAction), for: UIControl.Event.touchUpInside)
         }
     }
     @objc fileprivate func caremaButtonAction(sender:UIButton) {
@@ -122,7 +122,7 @@ class GYCaremaController: UIViewController {
             sender.isEnabled = false
             return
         }
-        if currentDevice?.torchMode == AVCaptureTorchMode.off{
+        if currentDevice?.torchMode == AVCaptureDevice.TorchMode.off{
             do {
                 try currentDevice?.lockForConfiguration()
             } catch {
@@ -131,7 +131,7 @@ class GYCaremaController: UIViewController {
             currentDevice?.torchMode = .on
             currentDevice?.unlockForConfiguration()
             sender.isSelected = true
-            sender.setImage(UIImage(named: "ic_sreach_on_03"), for: UIControlState.normal)
+            sender.setImage(UIImage(named: "ic_sreach_on_03"), for: UIControl.State.normal)
         }else {
             do {
                 try currentDevice?.lockForConfiguration()
@@ -141,7 +141,7 @@ class GYCaremaController: UIViewController {
             currentDevice?.torchMode = .off
             currentDevice?.unlockForConfiguration()
             sender.isSelected = false
-            sender.setImage(UIImage(named: "ic_sreach_03"), for: UIControlState.normal)
+            sender.setImage(UIImage(named: "ic_sreach_03"), for: UIControl.State.normal)
         }
     }
     override func didReceiveMemoryWarning() {
@@ -151,14 +151,14 @@ class GYCaremaController: UIViewController {
     //MARK: - 获取设备,创建自定义视图
     func CreateUI(){
         // 将音视频采集会话的预设设置为高分辨率照片--选择照片分辨率
-        self.captureSession.sessionPreset = AVCaptureSessionPreset1280x720
+        self.captureSession.sessionPreset = AVCaptureSession.Preset.hd1280x720
         // 获取设备
-        let devices = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo) as! [AVCaptureDevice]
+        let devices = AVCaptureDevice.devices(for: AVMediaType.video) 
         for device in devices {
-            if device.position == AVCaptureDevicePosition.back {
+            if device.position == AVCaptureDevice.Position.back {
                 self.backFacingCamera = device
             }
-            else if device.position == AVCaptureDevicePosition.front {
+            else if device.position == AVCaptureDevice.Position.front {
                 self.frontFacingCamera = device
             }
         }
@@ -166,12 +166,12 @@ class GYCaremaController: UIViewController {
         self.currentDevice = self.backFacingCamera
         do {
             // 当前设备输入端
-            let captureDeviceInput = try AVCaptureDeviceInput(device: currentDevice)
+            let captureDeviceInput = try AVCaptureDeviceInput(device: currentDevice!)
             self.stillImageOutput = AVCaptureStillImageOutput()
             // 输出图像格式设置
             self.stillImageOutput?.outputSettings = [AVVideoCodecKey: AVVideoCodecJPEG]
             self.captureSession.addInput(captureDeviceInput)
-            self.captureSession.addOutput(self.stillImageOutput)
+            self.captureSession.addOutput(self.stillImageOutput!)
         }
         catch {
             print(error)
@@ -180,7 +180,7 @@ class GYCaremaController: UIViewController {
         // 创建预览图层
         self.cameraPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         self.view.layer.addSublayer(cameraPreviewLayer!)
-        self.cameraPreviewLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+        self.cameraPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
 //        self.cameraPreviewLayer?.frame = view.layer.frame
         self.cameraPreviewLayer?.frame = CGRect.init(x: 0, y: 64, width: kWidth, height: kHeight-200*scaleH)
         // 启动音视频采集的会话
@@ -204,12 +204,12 @@ class GYCaremaController: UIViewController {
     func createPhotoBtn(){
         //创建照相按钮
         self.photoBtn = UIButton.init(frame: CGRect.init(x: WIDTH/2 - 30, y: HEIGHT - 250*scaleH, width: 60, height: 60))
-        self.photoBtn.setImage(UIImage(named: "ic_sreach_15"), for: UIControlState.normal)
+        self.photoBtn.setImage(UIImage(named: "ic_sreach_15"), for: UIControl.State.normal)
         self.view.addSubview(self.photoBtn)
-        self.view.bringSubview(toFront: self.photoBtn)
+        self.view.bringSubviewToFront(self.photoBtn)
         // 创建预览照片视图
         self.photoImageview = UIImageView.init(frame: CGRect.init(x: 0, y: 64, width: kWidth, height: kHeight-200*scaleH))
-        self.photoImageview.contentMode = UIViewContentMode.scaleAspectFill
+        self.photoImageview.contentMode = UIView.ContentMode.scaleAspectFill
         self.photoImageview.clipsToBounds = true
         self.view.addSubview(self.photoImageview)
         self.photoImageview.isHidden = true
@@ -246,16 +246,16 @@ class GYCaremaController: UIViewController {
         self.currentDevice?.torchMode = .off
         self.currentDevice?.unlockForConfiguration()
         self.flashButtoon?.isSelected = false
-        self.flashButtoon?.setImage(UIImage(named: "ic_sreach_03"), for: UIControlState.normal)
+        self.flashButtoon?.setImage(UIImage(named: "ic_sreach_03"), for: UIControl.State.normal)
     }
     //照相按钮
     @objc fileprivate func photoAction(){
         // 获得音视频采集设备的连接
-        let videoConnection = stillImageOutput?.connection(withMediaType: AVMediaTypeVideo)
+        let videoConnection = stillImageOutput?.connection(with: AVMediaType.video)
         // 输出端以异步方式采集静态图像
-        stillImageOutput?.captureStillImageAsynchronously(from: videoConnection, completionHandler: { (imageDataSampleBuffer, error) -> Void in
+        stillImageOutput?.captureStillImageAsynchronously(from: videoConnection!, completionHandler: { (imageDataSampleBuffer, error) -> Void in
             // 获得采样缓冲区中的数据
-            let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer)
+            let imageData = AVCaptureStillImageOutput.jpegStillImageNSDataRepresentation(imageDataSampleBuffer!)
             // 将数据转换成UIImage
             if let stillImage = UIImage(data: imageData!) {
                 //显示当前拍摄照片
@@ -291,7 +291,7 @@ class GYCaremaController: UIViewController {
         return img
     }
     //取消按钮／重拍
-    func cancelAction(){
+    @objc func cancelAction(){
         //隐藏Imageview
         self.photoImageview.isHidden = true
     }
@@ -304,7 +304,7 @@ class GYCaremaController: UIViewController {
         self.collectionView.reloadData()
     }
     //保存图片
-    func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject)
+    @objc func image(image: UIImage, didFinishSavingWithError: NSError?, contextInfo: AnyObject)
     {
         if didFinishSavingWithError != nil {
             print("保存失败")
@@ -323,7 +323,7 @@ class GYCaremaController: UIViewController {
         //只获取图片
         allPhotosOptions.predicate = NSPredicate(format: "mediaType = %d",
                                                  PHAssetMediaType.image.rawValue)
-        assetsFetchResults = PHAsset.fetchAssets(with: PHAssetMediaType.image,options: allPhotosOptions) as! PHFetchResult<AnyObject>
+        assetsFetchResults = (PHAsset.fetchAssets(with: PHAssetMediaType.image,options: allPhotosOptions) as! PHFetchResult<AnyObject>)
         
         // 初始化和重置缓存
         self.imageManager = PHCachingImageManager()
@@ -359,14 +359,14 @@ class GYCaremaController: UIViewController {
         collectionView.register(UINib.init(nibName: "GYCaremaCollectionCell", bundle: nil), forCellWithReuseIdentifier: caremaCollectionCellId)
         // 设定header的大小
         self.collectionViewLayout?.headerReferenceSize = CGSize(width: kWidth, height: 30)
-        collectionView.register(GYCaremaCollectionHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerIdentifier)
+        collectionView.register(GYCaremaCollectionHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerIdentifier)
         return collectionView
     }()
 }
 
 extension GYCaremaController{
     //MARK: - 放大方法
-    func zoomIn() {
+    @objc func zoomIn() {
         if let zoomFactor = currentDevice?.videoZoomFactor {
             if zoomFactor < 5.0 {
                 let newZoomFactor = min(zoomFactor + 1.0, 5.0)
@@ -382,7 +382,7 @@ extension GYCaremaController{
         }
     }
     //MARK: - 缩小方法
-    func zoomOut() {
+    @objc func zoomOut() {
         if let zoomFactor = currentDevice?.videoZoomFactor {
             if zoomFactor > 1.0 {
                 let newZoomFactor = max(zoomFactor - 1.0, 1.0)
@@ -401,7 +401,7 @@ extension GYCaremaController{
     func toggleCamera() {
         captureSession.beginConfiguration()
         // 在前置和后置之间切换摄像头
-        let newDevice = (currentDevice?.position == AVCaptureDevicePosition.back) ? frontFacingCamera : backFacingCamera
+        let newDevice = (currentDevice?.position == AVCaptureDevice.Position.back) ? frontFacingCamera : backFacingCamera
         // 移除之前所有的输入会话
         for input in captureSession.inputs {
             captureSession.removeInput(input as! AVCaptureDeviceInput)
@@ -409,7 +409,7 @@ extension GYCaremaController{
         // 将输入端切换到新的采集设备
         let cameraInput: AVCaptureDeviceInput
         do {
-            cameraInput = try AVCaptureDeviceInput(device: newDevice)
+            cameraInput = try AVCaptureDeviceInput(device: newDevice!)
         }
         catch {
             print(error)
@@ -464,12 +464,12 @@ extension GYCaremaController: UICollectionViewDelegate,UICollectionViewDataSourc
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView
     {
         var reusableview:GYCaremaCollectionHeader!
-        if kind == UICollectionElementKindSectionHeader{
-            reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! GYCaremaCollectionHeader
+        if kind == UICollectionView.elementKindSectionHeader{
+            reusableview = (collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: headerIdentifier, for: indexPath) as! GYCaremaCollectionHeader)
             reusableview.backgroundColor = UIColor.black
-            reusableview.button.addTarget(self, action: #selector(headerButtonAction), for: UIControlEvents.touchUpInside)
+            reusableview.button.addTarget(self, action: #selector(headerButtonAction), for: UIControl.Event.touchUpInside)
             
-        }else if kind == UICollectionElementKindSectionFooter {
+        }else if kind == UICollectionView.elementKindSectionFooter {
 
         }
         
@@ -479,13 +479,13 @@ extension GYCaremaController: UICollectionViewDelegate,UICollectionViewDataSourc
     @objc fileprivate func headerButtonAction(sender:UIButton) {
         sender.isSelected = !sender.isSelected
         if !sender.isSelected {
-            sender.setImage(UIImage.init(named: "ic_sreach_up"), for: UIControlState.normal)
+            sender.setImage(UIImage.init(named: "ic_sreach_up"), for: UIControl.State.normal)
             UIView.animate(withDuration: 0.3, animations: {
                 self.collectionView.frame = CGRect.init(x: 0, y: kHeight-175*scaleH, width: kWidth, height: 250*scaleH)
                 self.collectionView.isScrollEnabled = false
             })
         }else{
-            sender.setImage(UIImage.init(named: "ic_sreach_down"), for: UIControlState.normal)
+            sender.setImage(UIImage.init(named: "ic_sreach_down"), for: UIControl.State.normal)
             UIView.animate(withDuration: 0.3, animations: {
                 self.collectionView.frame = CGRect.init(x: 0, y: kHeight-250*scaleH, width: kWidth, height: 250*scaleH)
                 self.collectionView.isScrollEnabled = true

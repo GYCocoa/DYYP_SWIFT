@@ -25,8 +25,8 @@ class GYCaremaResultController: GYBaseViewController,searchImgViewDelegate {
 
         // Do any additional setup after loading the view.
         self.navigationItem.title = "一搜一世界"
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "au_bigback"), style: UIBarButtonItemStyle.done, target: self, action: #selector(cancelAction))
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "more"), style: UIBarButtonItemStyle.done, target: self, action: #selector(screeningAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "au_bigback"), style: UIBarButtonItem.Style.done, target: self, action: #selector(cancelAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "more"), style: UIBarButtonItem.Style.done, target: self, action: #selector(screeningAction))
         self.view.addSubview(self.collectionView)
         self.topView = GYResultTopView(frame: CGRect(x: 0, y: 64, width: kWidth, height: 60))
         self.topView?.delegate = self
@@ -43,7 +43,7 @@ class GYCaremaResultController: GYBaseViewController,searchImgViewDelegate {
     }
     fileprivate func requestImageRestultData() {
         let array = NSMutableArray()
-        let data = UIImagePNGRepresentation(self.clickImage!)
+        let data = self.clickImage!.pngData()
         array.add(data!)
         SVProgressHUD.show(withStatus: "加载中...")
         GYNetworkTool.upLoadImageRequest(urlString: CAREMA_REAULT, data: array as! [Data], success: { (response) in

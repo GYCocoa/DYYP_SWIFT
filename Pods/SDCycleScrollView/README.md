@@ -2,16 +2,16 @@
 ## ☆☆☆ “iOS图片、文字轮播器” ☆☆☆
 
 ### 支持pod导入
-pod 'SDCycleScrollView','~> 1.73'
+pod 'SDCycleScrollView','~> 1.75'
 
  如果发现pod search SDCycleScrollView 搜索出来的不是最新版本，需要在终端执行cd转换文件路径命令退回到desktop，然后执行pod setup命令更新本地spec缓存（可能需要几分钟），然后再搜索就可以了
- 
-### 我的公众号
-主要用于编程经验分享+SD系列开源库答疑解惑，有需要的请关注！
- ![](https://github.com/gsdios/SDCycleScrollView/blob/master/qrcode_for_gh_a69e5c4e13c4_430.jpg?raw=true)
 
 
 ### 更改记录：
+
+2017.11.26 -- 增加滚动到指定index接口
+
+2017.10.28 -- 更新对SDWebImage的版本依赖
 
 2017.06.23 -- 1.增加支持轮播自定义cell的代理方法 2.增加禁止拖动手势api
 

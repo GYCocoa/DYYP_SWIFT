@@ -16,7 +16,7 @@ class GYCaremaCollectionHeader: UICollectionReusableView {
         super.init(frame: frame)
         
         self.button = UIButton.init(frame: self.bounds)
-        self.button.setImage(UIImage.init(named: "ic_sreach_up"), for: UIControlState.normal)
+        self.button.setImage(UIImage.init(named: "ic_sreach_up"), for: UIControl.State.normal)
         self.addSubview(self.button)
         
     }

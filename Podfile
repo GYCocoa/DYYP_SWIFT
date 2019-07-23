@@ -6,13 +6,23 @@ target '大鱼优品' do
   use_frameworks!
 
 
-pod 'SnapKit', '~> 3.2.0' # 同masonry
-pod 'Alamofire', '~> 4.5.0' # 同AFN
-pod 'Kingfisher', '~> 3.10.4' #SDwebImage
-pod 'SwiftyJSON', '~> 3.1.4' 
-pod 'SVProgressHUD', '~> 2.1.2'
-pod 'MJRefresh' 
-pod 'SDCycleScrollView', '~> 1.66'
+pod 'SnapKit' # 同masonry
+pod 'Alamofire' # 同AFN
+pod 'Kingfisher' #SDwebImage
+pod 'SwiftyJSON'
+pod 'SVProgressHUD'
+pod 'MJRefresh'
 pod 'SwiftTheme'
+pod 'SDCycleScrollView'
+
+#  target '大鱼优品Tests' do
+#    inherit! :search_paths
+#    # Pods for testing
+#  end
+#
+#  target '大鱼优品UITests' do
+#    inherit! :search_paths
+#    # Pods for testing
+#  end
 
 end

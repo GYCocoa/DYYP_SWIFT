@@ -50,7 +50,7 @@ class GYBaseNavigationController: UINavigationController,UIGestureRecognizerDele
     }
     
     // 监听手势的方法,只要是有手势就会执行
-    func panGestureRecAction(panGestureRec:UIScreenEdgePanGestureRecognizer){
+    @objc func panGestureRecAction(panGestureRec:UIScreenEdgePanGestureRecognizer){
         // 如果当前显示的控制器已经是根控制器了，不需要做任何切换动画,直接返回
         if self.visibleViewController == self.viewControllers[0] {
             return
@@ -165,7 +165,7 @@ class GYBaseNavigationController: UINavigationController,UIGestureRecognizerDele
         // Dispose of any resources that can be recreated.
     }
     
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         self.animationController.navigationOperation = operation
         self.animationController.navigationController = self
         return self.animationController
@@ -238,7 +238,7 @@ class GYBaseNavigationController: UINavigationController,UIGestureRecognizerDele
         let snapshot = UIGraphicsGetImageFromCurrentImageContext()
         // 添加截取好的图片到图片数组
         if (snapshot != nil) {
-            screenshotImgs?.add(from: snapshot!)
+            screenshotImgs?.add(snapshot!)
         }
         // 千万记得,结束上下文(移除栈顶的基于当前位图的图形上下文)
         UIGraphicsEndImageContext()

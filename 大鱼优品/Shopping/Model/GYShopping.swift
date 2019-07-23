@@ -18,7 +18,7 @@ class GYShopping: NSObject {
     var type:String?
 
     init(dict:[String:AnyObject]) {
-        content = dict["content"] as! String?
+//        content = dict["content"] as! String?
         id = dict["id"] as! Int?
         image = dict["image"] as! String?
         title = dict["title"] as! String?

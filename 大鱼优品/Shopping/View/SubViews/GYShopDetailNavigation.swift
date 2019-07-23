@@ -35,14 +35,14 @@ class GYShopDetailNavigation: UIView {
     func scrollContentOffSet(offSet:CGFloat) {
         if offSet <= 90 {
             UIApplication.shared.statusBarStyle = .default
-            backItem?.setImage(UIImage.init(named: "au_fanhui"), for: UIControlState.normal)
-            shareItem?.setImage(UIImage.init(named: "au_fenxiang"), for: UIControlState.normal)
+            backItem?.setImage(UIImage.init(named: "au_fanhui"), for: UIControl.State.normal)
+            shareItem?.setImage(UIImage.init(named: "au_fenxiang"), for: UIControl.State.normal)
             backgroundColor = UIColor.colorConversion(Color_Value: "#ffffff", alpha: offSet/90)
             itemName?.isHidden = true
         }else{
             UIApplication.shared.statusBarStyle = .lightContent
-            backItem?.setImage(UIImage.init(named: "au_bigback"), for: UIControlState.normal)
-            shareItem?.setImage(UIImage.init(named: "au_bigshare"), for: UIControlState.normal)
+            backItem?.setImage(UIImage.init(named: "au_bigback"), for: UIControl.State.normal)
+            shareItem?.setImage(UIImage.init(named: "au_bigshare"), for: UIControl.State.normal)
             backgroundColor = UIColor.colorConversion(Color_Value: "#ffffff", alpha: 1)
             itemName?.isHidden = false
         }
@@ -50,18 +50,18 @@ class GYShopDetailNavigation: UIView {
     
     fileprivate func setupSubviews() {
         if backItem == nil {
-            backItem = UIButton(type: UIButtonType.custom)
-            backItem?.setImage(UIImage(named: "au_fanhui"), for: UIControlState.normal)
+            backItem = UIButton(type: UIButton.ButtonType.custom)
+            backItem?.setImage(UIImage(named: "au_fanhui"), for: UIControl.State.normal)
             self.addSubview(backItem!)
             backItem?.tag = 100
-            backItem?.addTarget(self, action: #selector(buttonAction), for: UIControlEvents.touchUpInside)
+            backItem?.addTarget(self, action: #selector(buttonAction), for: UIControl.Event.touchUpInside)
         }
         if shareItem == nil {
-            shareItem = UIButton(type: UIButtonType.custom)
-            shareItem?.setImage(UIImage(named: "au_fenxiang"), for: UIControlState.normal)
+            shareItem = UIButton(type: UIButton.ButtonType.custom)
+            shareItem?.setImage(UIImage(named: "au_fenxiang"), for: UIControl.State.normal)
             self.addSubview(shareItem!)
             shareItem?.tag = 101
-            shareItem?.addTarget(self, action: #selector(buttonAction), for: UIControlEvents.touchUpInside)
+            shareItem?.addTarget(self, action: #selector(buttonAction), for: UIControl.Event.touchUpInside)
         }
         if itemName == nil {
             itemName = UILabel()

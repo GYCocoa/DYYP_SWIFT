@@ -197,7 +197,6 @@
 		F5DB17261F7222BC00A4C4E7 /* NSObject+GYValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB17251F7222BC00A4C4E7 /* NSObject+GYValidation.swift */; };
 		F5DB172A1F725A9000A4C4E7 /* UIDevice+GYDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DB17291F725A9000A4C4E7 /* UIDevice+GYDevice.swift */; };
 		F5DE93A21F7E398200F5E314 /* GYCommunityOtherController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5DE93A11F7E398200F5E314 /* GYCommunityOtherController.swift */; };
-		F673D3C71DCBFD23EA001242 /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3AB8D182FF7D661CE6D1FD /* Pods_____.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -563,7 +562,6 @@
 				F5555E8A1F8DB8DB000034F7 /* MPShareSDK.framework in Frameworks */,
 				F5555E751F8DB8DB000034F7 /* LineConnector.framework in Frameworks */,
 				F5555E681F8DB8DB000034F7 /* ShareSDKExtension.framework in Frameworks */,
-				F673D3C71DCBFD23EA001242 /* Pods_____.framework in Frameworks */,
 				F5555E8E1F8DB8DB000034F7 /* RennSDK.framework in Frameworks */,
 				F5555E891F8DB8DB000034F7 /* LineSDK.framework in Frameworks */,
 				F5555E701F8DB8DB000034F7 /* FacebookConnector.framework in Frameworks */,
@@ -1550,7 +1548,6 @@
 				F50269601F6FCBB4001CDA46 /* Frameworks */,
 				F50269611F6FCBB4001CDA46 /* Resources */,
 				437920F707DC31E477F4CDB4 /* [CP] Embed Pods Frameworks */,
-				CB756CEF5C0C19C0C939B309 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1630,6 +1627,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 				"zh-Hant",
@@ -1713,13 +1711,32 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-大鱼优品/Pods-大鱼优品-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/SDCycleScrollView/SDCycleScrollView.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftTheme/SwiftTheme.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDCycleScrollView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftTheme.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-大鱼优品/Pods-大鱼优品-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-大鱼优品/Pods-大鱼优品-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		974B378E63B305AF669D5B29 /* [CP] Check Pods Manifest.lock */ = {
@@ -1728,28 +1745,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-大鱼优品-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		CB756CEF5C0C19C0C939B309 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-大鱼优品/Pods-大鱼优品-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -2096,7 +2101,7 @@
 				PROVISIONING_PROFILE = "e425e696-0880-4b04-b41c-9c8f97eff710";
 				PROVISIONING_PROFILE_SPECIFIER = development;
 				SWIFT_OBJC_BRIDGING_HEADER = "大鱼优品/Utils/ShareSDK-Bridging-header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -2157,7 +2162,7 @@
 				PROVISIONING_PROFILE = "e425e696-0880-4b04-b41c-9c8f97eff710";
 				PROVISIONING_PROFILE_SPECIFIER = development;
 				SWIFT_OBJC_BRIDGING_HEADER = "大鱼优品/Utils/ShareSDK-Bridging-header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -2170,7 +2175,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GY.Z.----Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/大鱼优品.app/大鱼优品";
 			};
 			name = Debug;
@@ -2184,7 +2189,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GY.Z.----Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/大鱼优品.app/大鱼优品";
 			};
 			name = Release;
@@ -2197,7 +2202,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GY.Z.----UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "大鱼优品";
 			};
 			name = Debug;
@@ -2210,7 +2215,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GY.Z.----UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TEST_TARGET_NAME = "大鱼优品";
 			};
 			name = Release;

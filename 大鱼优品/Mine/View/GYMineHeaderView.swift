@@ -36,20 +36,20 @@ class GYMineHeaderView: UIView {
         
         headerImage.layer.cornerRadius = headerImage.width/2
         
-        daifukuan?.titleEdgeInsets = UIEdgeInsetsMake((daifukuan?.imageView?.frame.size.height)! ,-(daifukuan?.imageView?.frame.size.width)!, 0,0)
-        daifukuan?.imageEdgeInsets = UIEdgeInsetsMake(-15,0, 0,-(daifukuan?.imageView?.frame.size.width)!)
+        daifukuan?.titleEdgeInsets = UIEdgeInsets(top: (daifukuan?.imageView?.frame.size.height)! ,left: -(daifukuan?.imageView?.frame.size.width)!, bottom: 0,right: 0)
+        daifukuan?.imageEdgeInsets = UIEdgeInsets(top: -15,left: 0, bottom: 0,right: -(daifukuan?.imageView?.frame.size.width)!)
         
-        daichengtuan?.titleEdgeInsets = UIEdgeInsetsMake((daichengtuan?.imageView?.frame.size.height)! ,-(daichengtuan?.imageView?.frame.size.width)!, 0,0)
-        daichengtuan?.imageEdgeInsets = UIEdgeInsetsMake(-15,0, 0,-(daichengtuan?.imageView?.frame.size.width)!)
+        daichengtuan?.titleEdgeInsets = UIEdgeInsets(top: (daichengtuan?.imageView?.frame.size.height)! ,left: -(daichengtuan?.imageView?.frame.size.width)!, bottom: 0,right: 0)
+        daichengtuan?.imageEdgeInsets = UIEdgeInsets(top: -15,left: 0, bottom: 0,right: -(daichengtuan?.imageView?.frame.size.width)!)
         
-        daifahuo?.titleEdgeInsets = UIEdgeInsetsMake((daifahuo?.imageView?.frame.size.height)! ,-(daifahuo?.imageView?.frame.size.width)!, 0,0)
-        daifahuo?.imageEdgeInsets = UIEdgeInsetsMake(-15,0, 0,-(daifahuo?.imageView?.frame.size.width)!)
+        daifahuo?.titleEdgeInsets = UIEdgeInsets(top: (daifahuo?.imageView?.frame.size.height)! ,left: -(daifahuo?.imageView?.frame.size.width)!, bottom: 0,right: 0)
+        daifahuo?.imageEdgeInsets = UIEdgeInsets(top: -15,left: 0, bottom: 0,right: -(daifahuo?.imageView?.frame.size.width)!)
         
-        daishouhuo?.titleEdgeInsets = UIEdgeInsetsMake((daishouhuo?.imageView?.frame.size.height)! ,-(daishouhuo?.imageView?.frame.size.width)!, 0,0)
-        daishouhuo?.imageEdgeInsets = UIEdgeInsetsMake(-15,0, 0,-(daishouhuo?.imageView?.frame.size.width)!)
+        daishouhuo?.titleEdgeInsets = UIEdgeInsets(top: (daishouhuo?.imageView?.frame.size.height)! ,left: -(daishouhuo?.imageView?.frame.size.width)!, bottom: 0,right: 0)
+        daishouhuo?.imageEdgeInsets = UIEdgeInsets(top: -15,left: 0, bottom: 0,right: -(daishouhuo?.imageView?.frame.size.width)!)
         
-        daipingjia?.titleEdgeInsets = UIEdgeInsetsMake((daipingjia?.imageView?.frame.size.height)! ,-(daipingjia?.imageView?.frame.size.width)!, 0,0)
-        daipingjia?.imageEdgeInsets = UIEdgeInsetsMake(-15,0, 0,-(daipingjia?.imageView?.frame.size.width)!)
+        daipingjia?.titleEdgeInsets = UIEdgeInsets(top: (daipingjia?.imageView?.frame.size.height)! ,left: -(daipingjia?.imageView?.frame.size.width)!, bottom: 0,right: 0)
+        daipingjia?.imageEdgeInsets = UIEdgeInsets(top: -15,left: 0, bottom: 0,right: -(daipingjia?.imageView?.frame.size.width)!)
         
         self.shake()
     }

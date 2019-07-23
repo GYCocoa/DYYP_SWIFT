@@ -25,7 +25,7 @@ class GYCommunityAncillaryCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         self.contentView.backgroundColor = UIColor.white
@@ -38,11 +38,11 @@ class GYCommunityAncillaryCell: UITableViewCell {
         }
         if showAllBtn == nil {
             showAllBtn = UIButton.init(frame: CGRect.init(x: kWidth/3*2, y: 0, width: kWidth/3-16, height: 40))
-            showAllBtn?.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+            showAllBtn?.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
             showAllBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-            showAllBtn?.setTitle("显示全部", for: UIControlState.normal)
-            showAllBtn?.setTitleColor(UIColor.black, for: UIControlState.normal)
-            showAllBtn?.addTarget(self, action: #selector(showAllAction), for: UIControlEvents.touchUpInside)
+            showAllBtn?.setTitle("显示全部", for: UIControl.State.normal)
+            showAllBtn?.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            showAllBtn?.addTarget(self, action: #selector(showAllAction), for: UIControl.Event.touchUpInside)
             self.contentView.addSubview(showAllBtn!)
         }
         

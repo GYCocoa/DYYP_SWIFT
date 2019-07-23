@@ -10,7 +10,7 @@ import Foundation
 
 
 //MARK: -------------------------- 登录基础URL -------------------------
-let BASE_LOGIN               = "http://api.deepbaytech.com/mobile/api/v0.0.1/conf/"
+let BASE_LOGIN               = "http://api.deepbaytech.com/mobile/api/v1.0.1/conf/"
 /// 三方登录
 let LOGIN_THIRD             = BASE_LOGIN + "third-login"
 /// 获取验证码
@@ -27,7 +27,7 @@ let LOGIN_THIRDPARTY   =                     BASE_LOGIN + "third-login"
 let LOGIN_THIRDPARTY_BINDPHONE       =      BASE_LOGIN + "bindPhone"
 
 //MARK: -------------------------- 全网基础URL -------------------------
-let   BASEURL = "http://api.deepbaytech.com/mobile/api/v0.0.1/"
+let   BASEURL = "http://api.deepbaytech.com/mobile/api/v1.0.1/"
 /// 图片域名
 let IMAGEURL = "http://redirect.deepbaytech.com/img?url="
 
@@ -41,7 +41,7 @@ let HOME_SHOP_RECOMMEND =                                          "\(BASEURL)gr
 
 
 //MARK: -------------------------- 商城基础URL -------------------------
-let SHOPING_BASE      =                                                            "http://api.deepbaytech.com/shop/api/v0.0.1/"
+let SHOPING_BASE      =                                                            "http://api.deepbaytech.com/shop/api/v1.0.1/"
 let AU_HOME_CATEGORY  =                                                   SHOPING_BASE + "primaryCategory"
 let AU_BANNER   =                                                                     SHOPING_BASE + "carousel-figure"
 /// 限时秒杀

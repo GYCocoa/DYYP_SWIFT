@@ -19,12 +19,12 @@ class GYTabbar: UITabBar {
         super.init(frame: frame)
         
         button = UIButton()
-        button?.setImage(UIImage.init(named: "tabbar_camera_icon_click"), for: UIControlState.normal)
-        button?.setBackgroundImage(UIImage.init(named: "tabbar_camera_icon"), for: UIControlState.normal)
+        button?.setImage(UIImage.init(named: "tabbar_camera_icon_click"), for: UIControl.State.normal)
+        button?.setBackgroundImage(UIImage.init(named: "tabbar_camera_icon"), for: UIControl.State.normal)
         button?.sizeToFit()
         button?.frame.size = (button?.currentBackgroundImage?.size)!
         self.addSubview(button!)
-        button?.addTarget(self, action: #selector(buttonAction), for: UIControlEvents.touchUpInside)
+        button?.addTarget(self, action: #selector(buttonAction), for: UIControl.Event.touchUpInside)
         button?.adjustsImageWhenHighlighted = false
         
         self.backgroundImage = UIImage()
@@ -76,11 +76,11 @@ class GYTabbar: UITabBar {
          if (authStatus == AVAuthorizationStatusRestricted || authStatus ==AVAuthorizationStatusDenied)
          {
          */
-        let authStatus:AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+        let authStatus:AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: AVMediaType.video)
         if authStatus == AVAuthorizationStatus.restricted || authStatus == AVAuthorizationStatus.denied {
             let alert = GYAlertView.alertOriginalViewWithTitle(title: "请打开相机权限", cancel: "取消", sure: "打开", cancelClick: {
             }, sureClick: {
-                UIApplication.shared.openURL(NSURL(string: UIApplicationOpenSettingsURLString)! as URL)
+                UIApplication.shared.openURL(NSURL(string: UIApplication.openSettingsURLString)! as URL)
             })
             UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
             return

@@ -33,8 +33,8 @@ class GYMineController: UIViewController,UITableViewDelegate,UITableViewDataSour
         }
     }
     private func setupSubviews() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "set"), style: UIBarButtonItemStyle.done, target: self, action: #selector(ItemAction))
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "message"), style: UIBarButtonItemStyle.done, target: self, action: #selector(ItemAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "set"), style: UIBarButtonItem.Style.done, target: self, action: #selector(ItemAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "message"), style: UIBarButtonItem.Style.done, target: self, action: #selector(ItemAction))
         self.navigationItem.leftBarButtonItem?.tag = 100;
         self.navigationItem.rightBarButtonItem?.tag = 101;
         view.addSubview(tableView)
@@ -69,9 +69,9 @@ class GYMineController: UIViewController,UITableViewDelegate,UITableViewDataSour
 
             self.headerView.headerImage.sd_setImage(with: URL.init(string: (data!["icon"] as? String)!))
             self.headerView.nameL.text = data!["nickname"] as? String
-            self.headerView.tieziBtn.setTitle(keeps.stringValue, for: UIControlState.normal)
-            self.headerView.followBtn.setTitle(follows.stringValue, for: UIControlState.normal)
-            self.headerView.fansBtn.setTitle(fans.stringValue, for: UIControlState.normal)
+            self.headerView.tieziBtn.setTitle(keeps.stringValue, for: UIControl.State.normal)
+            self.headerView.followBtn.setTitle(follows.stringValue, for: UIControl.State.normal)
+            self.headerView.fansBtn.setTitle(fans.stringValue, for: UIControl.State.normal)
             if let profile = data!["profile"] {
                 self.headerView.profileL.text = profile as? String
             }else{
@@ -101,7 +101,7 @@ class GYMineController: UIViewController,UITableViewDelegate,UITableViewDataSour
         let index = dataSources[indexPath.row] as! NSArray
         cell.iconNameL.text = index[0] as? String
         cell.iconContentL.text = index[1] as? String
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         
         return cell
     }
@@ -125,7 +125,7 @@ class GYMineController: UIViewController,UITableViewDelegate,UITableViewDataSour
         tableView.tableHeaderView = self.headerView
         tableView.tableFooterView = UIView()
         tableView.register(UINib(nibName: String(describing: GYMineCell.self), bundle: nil), forCellReuseIdentifier: String(describing: GYMineCell.self))
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.showsVerticalScrollIndicator = false
         
         return tableView

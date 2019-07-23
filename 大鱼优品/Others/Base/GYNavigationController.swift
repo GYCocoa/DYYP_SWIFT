@@ -17,15 +17,15 @@ class GYNavigationController: GYBaseNavigationController {
         let navBar = UINavigationBar.appearance()
         navBar.barTintColor = UIColor.white
         navBar.tintColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.7);
-        navBar.titleTextAttributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 15)]
+        navBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 15)]
         navBar.setBackgroundImage(UIImage(named: kNavBar_Bg_Image), for: UIBarMetrics.default)
         navBar.shadowImage = UIImage()
          
         let navItem = UIBarButtonItem.appearance()
         let itemDict = NSMutableDictionary.init()
-        itemDict[NSFontAttributeName] = UIFont.systemFont(ofSize: 13)
-        itemDict[NSForegroundColorAttributeName] = UIColor.black
-        navItem.setTitleTextAttributes(itemDict as? [String : Any], for: UIControlState.normal)
+        itemDict[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 13)
+        itemDict[NSAttributedString.Key.foregroundColor] = UIColor.black
+        navItem.setTitleTextAttributes(itemDict as? [NSAttributedString.Key : Any], for: UIControl.State.normal)
 
         UIApplication.shared.statusBarStyle = .lightContent
 
@@ -43,7 +43,7 @@ class GYNavigationController: GYBaseNavigationController {
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if viewControllers.count > 0 {
             viewController.hidesBottomBarWhenPushed = true
-            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "au_bigback")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItemStyle.done, target: self, action: #selector(navigationBack))
+            viewController.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "au_bigback")?.withRenderingMode(.alwaysOriginal), style: UIBarButtonItem.Style.done, target: self, action: #selector(navigationBack))
         }
         super.pushViewController(viewController, animated: true)
     }
@@ -65,7 +65,7 @@ class GYNavigationController: GYBaseNavigationController {
     /// 什么时候支持全屏手势
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         //        return false
-        return self.childViewControllers.count != 1
+        return self.children.count != 1
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle{

@@ -26,7 +26,7 @@ class GYCommunityDetailController: GYBaseViewController {
     }
 
     fileprivate func setupButtonItems() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "cycle_point"), style: UIBarButtonItemStyle.done, target: self, action: #selector(rightAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "cycle_point"), style: UIBarButtonItem.Style.done, target: self, action: #selector(rightAction))
         self.detailBottom.backgroundColor = UIColor.white
     }
     @objc fileprivate func rightAction() {

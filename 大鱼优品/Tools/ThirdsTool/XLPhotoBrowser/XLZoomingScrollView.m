@@ -9,8 +9,8 @@
 #import "XLZoomingScrollView.h"
 #import "XLProgressView.h"
 
-#import "UIImageView+WebCache.h"
-#import "SDImageCache.h"
+#import "SDWebImage/UIImageView+WebCache.h"
+#import "SDWebImage/SDImageCache.h"
 
 @interface XLZoomingScrollView () <UIScrollViewDelegate>
 
@@ -280,45 +280,20 @@
     self.progress = 0.01;
     [self addSubview:self.progressView];;
     self.progressView.mode = XLProgressViewProgressMode;
-    [weakSelf.photoImageView sd_setImageWithPreviousCachedImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed| SDWebImageLowPriority| SDWebImageHandleCookies progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
-        if (expectedSize>0) {
-            // 修改进度
-            weakSelf.progress = (CGFloat)receivedSize / expectedSize ;
-        }
-        [self resetZoomScale];
-    } completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
-        [self.progressView removeFromSuperview];
-        if (error) {
-            [self setMaxAndMinZoomScales];
-            [weakSelf addSubview:weakSelf.stateLabel];
-            //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            //                [weakSelf.stateLabel removeFromSuperview];
-            //            });
-            XLFormatLog(@"加载图片失败 , 图片链接imageURL = %@ , 检查是否开启允许HTTP请求",imageURL);
-        } else {
-            [weakSelf.stateLabel removeFromSuperview];
-            weakSelf.photoImageView.image = image;
-            [weakSelf.photoImageView setNeedsDisplay];
-            [UIView animateWithDuration:0.25 animations:^{
-                [weakSelf setMaxAndMinZoomScales];
-            }];
-        }
-    }];
-//    [weakSelf.photoImageView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed| SDWebImageLowPriority| SDWebImageHandleCookies progress:^(NSInteger receivedSize, NSInteger expectedSize) {
+//    [weakSelf.photoImageView sd_setImageWithPreviousCachedImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed| SDWebImageLowPriority| SDWebImageHandleCookies progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
 //        if (expectedSize>0) {
 //            // 修改进度
 //            weakSelf.progress = (CGFloat)receivedSize / expectedSize ;
 //        }
 //        [self resetZoomScale];
-//        
-//    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+//    } completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
 //        [self.progressView removeFromSuperview];
 //        if (error) {
 //            [self setMaxAndMinZoomScales];
 //            [weakSelf addSubview:weakSelf.stateLabel];
-////            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-////                [weakSelf.stateLabel removeFromSuperview];
-////            });
+//            //            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            //                [weakSelf.stateLabel removeFromSuperview];
+//            //            });
 //            XLFormatLog(@"加载图片失败 , 图片链接imageURL = %@ , 检查是否开启允许HTTP请求",imageURL);
 //        } else {
 //            [weakSelf.stateLabel removeFromSuperview];
@@ -329,6 +304,31 @@
 //            }];
 //        }
 //    }];
+    [weakSelf.photoImageView sd_setImageWithURL:url placeholderImage:placeholder options:SDWebImageRetryFailed| SDWebImageLowPriority| SDWebImageHandleCookies progress:^(NSInteger receivedSize, NSInteger expectedSize, NSURL * _Nullable targetURL) {
+        if (expectedSize>0) {
+            // 修改进度
+            weakSelf.progress = (CGFloat)receivedSize / expectedSize ;
+        }
+        [self resetZoomScale];
+        
+    } completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        [self.progressView removeFromSuperview];
+        if (error) {
+            [self setMaxAndMinZoomScales];
+            [weakSelf addSubview:weakSelf.stateLabel];
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                [weakSelf.stateLabel removeFromSuperview];
+//            });
+            XLFormatLog(@"加载图片失败 , 图片链接imageURL = %@ , 检查是否开启允许HTTP请求",imageURL);
+        } else {
+            [weakSelf.stateLabel removeFromSuperview];
+            weakSelf.photoImageView.image = image;
+            [weakSelf.photoImageView setNeedsDisplay];
+            [UIView animateWithDuration:0.25 animations:^{
+                [weakSelf setMaxAndMinZoomScales];
+            }];
+        }
+    }];
 }
 
 /**

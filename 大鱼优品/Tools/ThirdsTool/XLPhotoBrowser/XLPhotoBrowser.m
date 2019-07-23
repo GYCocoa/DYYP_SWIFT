@@ -8,7 +8,7 @@
 
 #import "XLPhotoBrowser.h"
 #import "XLZoomingScrollView.h"
-#import "TAPageControl.h"
+#import "SDCycleScrollView/TAPageControl.h"
 #import "FSActionSheetConfig.h"
 #import "FSActionSheet.h"
 

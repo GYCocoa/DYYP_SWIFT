@@ -65,8 +65,8 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate,XLPhotoBrowserDel
             self.addSubview(originalPriceL!)
             let str = "￥100  "
             let attri = NSMutableAttributedString.init(string: str)
-            attri.addAttribute(NSStrikethroughStyleAttributeName, value: UInt8(NSUnderlineStyle.patternSolid.rawValue) | UInt8(NSUnderlineStyle.styleSingle.rawValue), range: NSRange(location: 0, length: str.characters.count))
-            attri.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.colorConversion(Color_Value: "#666666", alpha: 1), range: NSRange(location: 0, length: str.characters.count))
+            attri.addAttribute(NSAttributedString.Key.strikethroughStyle, value: UInt8(NSUnderlineStyle.single.rawValue), range: NSRange(location: 0, length: str.count))
+            attri.addAttribute(NSAttributedString.Key.strikethroughColor, value: UIColor.colorConversion(Color_Value: "#666666", alpha: 1), range: NSRange(location: 0, length: str.count))
             originalPriceL?.attributedText = attri
         }
         if starView == nil {
@@ -125,7 +125,7 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate,XLPhotoBrowserDel
             let model = GYShopDetailHeader.init(dict: dataDic as! [String : AnyObject])
             if model.productImages != nil {
                 self.bannerImages = (model.productImages)!
-                cycleScrollView.imageURLStringsGroup = self.bannerImages as! [Any]
+                cycleScrollView.imageURLStringsGroup = self.bannerImages as? [Any]
             }
             shopNameL?.text = model.productName
             priceL?.text = "￥" + (model.groupPrice?.stringValue)!
@@ -134,8 +134,8 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate,XLPhotoBrowserDel
             }
             let str = "￥" + (model.originalPrice?.stringValue)!
             let attri = NSMutableAttributedString.init(string: str)
-            attri.addAttribute(NSStrikethroughStyleAttributeName, value: UInt8(NSUnderlineStyle.patternSolid.rawValue) | UInt8(NSUnderlineStyle.styleSingle.rawValue), range: NSRange(location: 0, length: str.characters.count))
-            attri.addAttribute(NSStrikethroughColorAttributeName, value: UIColor.colorConversion(Color_Value: "#666666", alpha: 1), range: NSRange(location: 0, length: str.characters.count))
+            attri.addAttribute(NSAttributedString.Key.strikethroughStyle, value: UInt8(NSUnderlineStyle.single.rawValue), range: NSRange(location: 0, length: str.count))
+            attri.addAttribute(NSAttributedString.Key.strikethroughColor, value: UIColor.colorConversion(Color_Value: "#666666", alpha: 1), range: NSRange(location: 0, length: str.count))
             originalPriceL?.attributedText = attri
             commentL?.text = "\(model.comments!)人评价"
             cellCountL?.text = "累计销量：\(model.sales!)件"
@@ -147,12 +147,12 @@ class GYShopDetailHeaderView: UIView,SDCycleScrollViewDelegate,XLPhotoBrowserDel
                 view.removeFromSuperview()
             }
             for index in 0..<self.committedArr.count {
-                let button = UIButton.init(type: UIButtonType.custom)
-                button.setImage(UIImage.init(named: "au_duihao"), for: UIControlState.normal)
-                button.setTitle((self.committedArr[index] as! String), for: UIControlState.normal)
+                let button = UIButton.init(type: UIButton.ButtonType.custom)
+                button.setImage(UIImage.init(named: "au_duihao"), for: UIControl.State.normal)
+                button.setTitle((self.committedArr[index] as! String), for: UIControl.State.normal)
                 button.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-                button.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0)
-                button.setTitleColor(UIColor.colorConversion(Color_Value: "#666666", alpha: 1), for: UIControlState.normal)
+                button.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
+                button.setTitleColor(UIColor.colorConversion(Color_Value: "#666666", alpha: 1), for: UIControl.State.normal)
                 let size:CGSize = NSObject.adaptiveSizeWithString(str: (button.titleLabel?.text)!, font: 12, reduce: 20)
                 button.frame = CGRect.init(x: CGFloat(index)*(size.width + 30) , y: 0, width: size.width + 30, height: 30)
                 tipsView?.addSubview(button)

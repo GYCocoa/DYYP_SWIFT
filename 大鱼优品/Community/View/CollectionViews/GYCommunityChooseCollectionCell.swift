@@ -33,12 +33,12 @@ class GYCommunityChooseCollectionCell: UICollectionViewCell {
                 contentL.text = model?.tname
             }
             if model!.comments != nil {
-                commentBtn.setTitle("\(model!.comments!)", for: UIControlState.normal)
+                commentBtn.setTitle("\(model!.comments!)", for: UIControl.State.normal)
             }
             if model?.isLike == 0 { // not praise
-                parseBtn.setImage(UIImage.init(named: "zan"), for: UIControlState.normal)
+                parseBtn.setImage(UIImage.init(named: "zan"), for: UIControl.State.normal)
             }else{
-                parseBtn.setImage(UIImage.init(named: "inzan"), for: UIControlState.normal)
+                parseBtn.setImage(UIImage.init(named: "inzan"), for: UIControl.State.normal)
             }
         }
     }

@@ -35,7 +35,7 @@ class GYSettingController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SETTINGCELLID) as! GYSettingCell
-        cell.selectionStyle = UITableViewCellSelectionStyle.none
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
         let array = dataSources[indexPath.section] as! NSArray
         let rows = array[indexPath.row] as! NSArray
         cell.itemNameL?.text = rows[0] as? String
@@ -115,7 +115,7 @@ class GYSettingController: UIViewController,UITableViewDelegate,UITableViewDataS
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
         tableView.register(GYSettingCell.self, forCellReuseIdentifier: SETTINGCELLID)
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.showsVerticalScrollIndicator = false
         tableView.bounces = false
         

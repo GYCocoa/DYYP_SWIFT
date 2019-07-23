@@ -37,7 +37,7 @@ class GYBindLoginView: UIView,UITextFieldDelegate {
         
         if headerImgView == nil {
             headerImgView = UIImageView()
-            headerImgView?.contentMode = UIViewContentMode.scaleToFill
+            headerImgView?.contentMode = UIView.ContentMode.scaleToFill
             self.addSubview(headerImgView!)
         }
         if nickNameL == nil {
@@ -59,10 +59,10 @@ class GYBindLoginView: UIView,UITextFieldDelegate {
             phoneTF = UITextField.init()
             phoneTF?.placeholder = "请输入手机号"
             phoneTF?.font = UIFont.systemFont(ofSize: 14)
-            phoneTF?.clearButtonMode = UITextFieldViewMode.whileEditing
+            phoneTF?.clearButtonMode = UITextField.ViewMode.whileEditing
             phoneTF?.keyboardType = UIKeyboardType.numberPad
             phoneTF?.delegate = self
-            phoneTF?.addTarget(self, action: #selector(textFieldExchange), for: UIControlEvents.editingChanged)
+            phoneTF?.addTarget(self, action: #selector(textFieldExchange), for: UIControl.Event.editingChanged)
             self.addSubview(phoneTF!)
         }
         if pwdTF == nil {
@@ -71,28 +71,28 @@ class GYBindLoginView: UIView,UITextFieldDelegate {
             pwdTF?.font = UIFont.systemFont(ofSize: 14)
             pwdTF?.keyboardType = UIKeyboardType.numberPad
             pwdTF?.delegate = self
-            pwdTF?.addTarget(self, action: #selector(textFieldExchange), for: UIControlEvents.editingChanged)
+            pwdTF?.addTarget(self, action: #selector(textFieldExchange), for: UIControl.Event.editingChanged)
             self.addSubview(pwdTF!)
         }
         if (codeButton == nil) {
-            codeButton = UIButton.init(type: UIButtonType.custom)
-            codeButton?.setTitle("获取验证码", for: UIControlState.normal)
+            codeButton = UIButton.init(type: UIButton.ButtonType.custom)
+            codeButton?.setTitle("获取验证码", for: UIControl.State.normal)
             codeButton?.titleLabel?.font = UIFont.systemFont(ofSize: 14)
-            codeButton?.setTitleColor(UIColor.black, for: UIControlState.normal)
-            codeButton?.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+            codeButton?.setTitleColor(UIColor.black, for: UIControl.State.normal)
+            codeButton?.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
             codeButton?.tag = 100
             self.addSubview(codeButton!)
-            codeButton?.addTarget(self, action: #selector(buttonAction), for: UIControlEvents.touchUpInside)
+            codeButton?.addTarget(self, action: #selector(buttonAction), for: UIControl.Event.touchUpInside)
         }
         if (sureButton == nil) {
-            sureButton = UIButton.init(type: UIButtonType.custom)
-            sureButton?.setTitle("确定", for: UIControlState.normal)
+            sureButton = UIButton.init(type: UIButton.ButtonType.custom)
+            sureButton?.setTitle("确定", for: UIControl.State.normal)
             sureButton?.titleLabel?.font = UIFont.systemFont(ofSize: 15)
             sureButton?.backgroundColor = UIColor.colorConversion(Color_Value: "#999999", alpha: 0.8)
             sureButton?.tag = 101
             sureButton?.layer.cornerRadius = 2
             self.addSubview(sureButton!)
-            sureButton?.addTarget(self, action: #selector(buttonAction), for: UIControlEvents.touchUpInside)
+            sureButton?.addTarget(self, action: #selector(buttonAction), for: UIControl.Event.touchUpInside)
         }
         autolayoutSubviews()
     }
@@ -110,16 +110,16 @@ class GYBindLoginView: UIView,UITextFieldDelegate {
     }
     @objc private func textFieldExchange(textField:UITextField) { /// 监听输入框
         if textField == pwdTF {
-            if (pwdTF?.text?.characters.count)! >= 4 {
+            if (pwdTF?.text?.count)! >= 4 {
                 sureButton?.backgroundColor = UIColor.RGBColor(r: 253, g: 99, b: 99, a: 1)
             }else{
                 sureButton?.backgroundColor = UIColor.colorConversion(Color_Value: "#999999", alpha: 0.8)
             }
         }else if textField == phoneTF {
-            if (phoneTF?.text?.characters.count)! >= 11 {
-                codeButton?.setTitleColor(UIColor.RGBColor(r: 253, g: 99, b: 99, a: 1), for: UIControlState.normal)
+            if (phoneTF?.text?.count)! >= 11 {
+                codeButton?.setTitleColor(UIColor.RGBColor(r: 253, g: 99, b: 99, a: 1), for: UIControl.State.normal)
             }else{
-                codeButton?.setTitleColor(UIColor.black, for: UIControlState.normal)
+                codeButton?.setTitleColor(UIColor.black, for: UIControl.State.normal)
             }
         }
     }
@@ -171,7 +171,7 @@ class GYBindLoginView: UIView,UITextFieldDelegate {
             SVProgressHUD.showInfo(withStatus: "请输入正确的手机号")
             return
         }
-        guard (pwdTF?.text?.characters.count)! >= 4 else {
+        guard (pwdTF?.text?.count)! >= 4 else {
             SVProgressHUD.showInfo(withStatus: "请输入正确的验证码")
             return
         }

@@ -25,16 +25,16 @@ class GYCaremaTopView: UIView {
     }
     
     fileprivate func setupSubviews() {
-        cancel = UIButton(type: UIButtonType.custom)
-        cancel?.setImage(UIImage(named: "ic_sreach_09"), for: UIControlState.normal)
+        cancel = UIButton(type: UIButton.ButtonType.custom)
+        cancel?.setImage(UIImage(named: "ic_sreach_09"), for: UIControl.State.normal)
         cancel?.tag = 100
         self.addSubview(cancel!)
-        flash = UIButton(type: UIButtonType.custom)
-        flash?.setImage(UIImage(named: "ic_sreach_03"), for: UIControlState.normal)
+        flash = UIButton(type: UIButton.ButtonType.custom)
+        flash?.setImage(UIImage(named: "ic_sreach_03"), for: UIControl.State.normal)
         flash?.tag = 101
         self.addSubview(flash!)
-        cycle = UIButton(type: UIButtonType.custom)
-        cycle?.setImage(UIImage(named: "ic_sreach_06"), for: UIControlState.normal)
+        cycle = UIButton(type: UIButton.ButtonType.custom)
+        cycle?.setImage(UIImage(named: "ic_sreach_06"), for: UIControl.State.normal)
         cycle?.tag = 102
         self.addSubview(cycle!)
         

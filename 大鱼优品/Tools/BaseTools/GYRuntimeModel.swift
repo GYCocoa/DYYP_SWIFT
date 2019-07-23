@@ -16,7 +16,7 @@ class GYRuntimeModel: NSObject {
         let ivars = class_copyIvarList(GYRuntimeModel.self, &count)
         for i in 0..<count {
             let ivar = ivars![Int(i)]
-            let key = String.init(utf8String: ivar_getName(ivar))
+            let key = String.init(utf8String: ivar_getName(ivar)!)
             aCoder.encode(self.value(forKey: key!), forKey: key!)
         }
     }
@@ -29,7 +29,7 @@ class GYRuntimeModel: NSObject {
         let ivars = class_copyIvarList(GYRuntimeModel.self, &count)
         for i in 0..<count {
             let ivar = ivars![Int(i)]
-            let key = String.init(utf8String: ivar_getName(ivar))
+            let key = String.init(utf8String: ivar_getName(ivar)!)
             let value = aDecoder.decodeObject(forKey: key!)
             self.setValue(value, forKey: key!)
         }

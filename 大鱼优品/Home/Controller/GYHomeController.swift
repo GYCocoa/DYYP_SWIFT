@@ -37,11 +37,11 @@ class GYHomeController: GYBaseViewController,UITableViewDelegate,UITableViewData
         advert.backgroundColor = UIColor.gray
         advert.alpha = 0.5
         advert.tag = 0x186A1
-        let button = UIButton.init(type: UIButtonType.custom)
+        let button = UIButton.init(type: UIButton.ButtonType.custom)
         button.frame = CGRect.init(x: kWidth/2-50, y: kHeight/2-20, width: 100, height: 40)
-        button.setTitle("关闭", for: UIControlState.normal)
-        button.setTitleColor(UIColor.colorConversion(Color_Value: "fd6363", alpha: 1), for: UIControlState.normal)
-        button.addTarget(self, action: #selector(buttonAction), for: UIControlEvents.touchUpInside)
+        button.setTitle("关闭", for: UIControl.State.normal)
+        button.setTitleColor(UIColor.colorConversion(Color_Value: "fd6363", alpha: 1), for: UIControl.State.normal)
+        button.addTarget(self, action: #selector(buttonAction), for: UIControl.Event.touchUpInside)
         advert.addSubview(button)
         window?.addSubview(advert)
     }
@@ -51,9 +51,9 @@ class GYHomeController: GYBaseViewController,UITableViewDelegate,UITableViewData
     fileprivate func setupNavigationBar() {
         self.titleView.frame = CGRect.init(x: 0, y: 0, width: kWidth, height: 30)
         self.navigationItem.titleView = self.titleView
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "home_fenlei")?.withRenderingMode(UIImageRenderingMode.alwaysOriginal), style: UIBarButtonItemStyle.done, target: self, action: #selector(homeleftAction))
-        self.titleView.addTarget(self, action: #selector(homeSearchAction), for: UIControlEvents.touchUpInside)
-        self.newRewards.addTarget(self, action: #selector(newRewardsAction), for: UIControlEvents.touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "home_fenlei")?.withRenderingMode(UIImage.RenderingMode.alwaysOriginal), style: UIBarButtonItem.Style.done, target: self, action: #selector(homeleftAction))
+        self.titleView.addTarget(self, action: #selector(homeSearchAction), for: UIControl.Event.touchUpInside)
+        self.newRewards.addTarget(self, action: #selector(newRewardsAction), for: UIControl.Event.touchUpInside)
     }
     @objc fileprivate func homeSearchAction() {
         print("home search")
@@ -99,7 +99,7 @@ class GYHomeController: GYBaseViewController,UITableViewDelegate,UITableViewData
                     self.bannerImages.addObjects(from: [model.image as Any])
                 }
                 /// 给轮播图赋值
-                self.cycleScrollView.imageURLStringsGroup = self.bannerImages as! [Any]
+                self.cycleScrollView.imageURLStringsGroup = self.bannerImages as? [Any]
             }
         }) { (error) in
             print(error)
@@ -206,11 +206,11 @@ class GYHomeController: GYBaseViewController,UITableViewDelegate,UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: GYHomeRecommendCellId) as! GYHomeRecommendCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             return cell
         }else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: GYHomeSpecialCellId) as! GYHomeSpecialCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             if self.specialArr.count > 0 {
                 let model = self.specialArr[indexPath.row] as? GYHomeSpecial
                 cell.special = model
@@ -218,7 +218,7 @@ class GYHomeController: GYBaseViewController,UITableViewDelegate,UITableViewData
             return cell
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYHomeShopRecommendCell.self), for: indexPath) as! GYHomeShopRecommendCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             if self.shopRecommendArr.count > 0 {
                 let model = self.shopRecommendArr[indexPath.row] as? GYShopModel
                 cell.shop = model
@@ -232,12 +232,12 @@ class GYHomeController: GYBaseViewController,UITableViewDelegate,UITableViewData
         print("第\(index+1)张轮播图");
     }
     fileprivate lazy var tableView:UITableView = {
-        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: kNavBarHeight, width: kWidth, height: kHeight), style: UITableViewStyle.grouped)
+        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: kNavBarHeight, width: kWidth, height: kHeight), style: UITableView.Style.grouped)
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none; /// 去掉cell下划线
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none; /// 去掉cell下划线
         tableView.tableFooterView = UIView() /// 去掉cell多余的下划线
         tableView.register(GYHomeRecommendCell.self, forCellReuseIdentifier: GYHomeRecommendCellId)
         tableView.register(GYHomeSpecialCell.self, forCellReuseIdentifier: GYHomeSpecialCellId)
@@ -260,14 +260,14 @@ class GYHomeController: GYBaseViewController,UITableViewDelegate,UITableViewData
     }()
     fileprivate lazy var titleView: UIButton = {
         var titleView = UIButton()
-        titleView.setBackgroundImage(UIImage.init(named: "first"), for: UIControlState.normal)
+        titleView.setBackgroundImage(UIImage.init(named: "first"), for: UIControl.State.normal)
         titleView.adjustsImageWhenHighlighted = false
         return titleView
     }()
     fileprivate lazy var newRewards: UIButton = {
         var newRewards = UIButton()
         newRewards.frame = CGRect.init(x: 0, y: 160*scaleH, width: kWidth, height: 80*scaleH)
-        newRewards.setImage(UIImage.init(named: "new_user_rewards"), for: UIControlState.normal)
+        newRewards.setImage(UIImage.init(named: "new_user_rewards"), for: UIControl.State.normal)
         newRewards.adjustsImageWhenHighlighted = false
         return newRewards
     }()

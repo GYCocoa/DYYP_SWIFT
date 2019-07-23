@@ -81,12 +81,12 @@ class GYShopTopicController: GYBaseViewController {
         return dataArray
     }()
     fileprivate lazy var tableView:UITableView = {
-        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: kHeight-kNavBarHeight-kTabBarHeight), style: UITableViewStyle.grouped)
+        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: kHeight-kNavBarHeight-kTabBarHeight), style: UITableView.Style.grouped)
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none; /// 去掉cell下划线
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none; /// 去掉cell下划线
         tableView.tableFooterView = UIView() /// 去掉cell多余的下划线
         tableView.estimatedRowHeight = 0
         tableView.estimatedSectionHeaderHeight = 0
@@ -121,17 +121,17 @@ extension GYShopTopicController: UITableViewDelegate,UITableViewDataSource{
         if topicTitle?.categoryName == "首页" {
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYSnapUpTableCell.self), for: indexPath) as! GYSnapUpTableCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.superController = self
                 return cell
             }else if indexPath.section == 1 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYRecommendTableCell.self), for: indexPath) as! GYRecommendTableCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 cell.superController = self
                 return cell
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYDisplayTableCell.self), for: indexPath) as! GYDisplayTableCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 if self.dataArray.count > 0 {
                     cell.homeModel = self.dataArray[indexPath.row] as? CategoryModel
                     if (isTopScroll)!{
@@ -145,7 +145,7 @@ extension GYShopTopicController: UITableViewDelegate,UITableViewDataSource{
             }
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYDisplayTableCell.self), for: indexPath) as! GYDisplayTableCell
-            cell.selectionStyle = UITableViewCellSelectionStyle.none
+            cell.selectionStyle = UITableViewCell.SelectionStyle.none
             if self.dataArray.count > 0 {
                 cell.categoryModel = self.dataArray[indexPath.row] as? CategoryModel
                 if (isTopScroll)!{
@@ -201,14 +201,14 @@ extension GYShopTopicController: UITableViewDelegate,UITableViewDataSource{
             if section == 2 {
                 let view = UIView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: 40))
                 view.backgroundColor = UIColor.white
-                let button = UIButton(type: UIButtonType.custom)
+                let button = UIButton(type: UIButton.ButtonType.custom)
                 button.frame = CGRect.init(x: 10, y: 0, width: kWidth/3, height: 40)
                 button.isUserInteractionEnabled = false
-                button.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
-                button.setImage(UIImage(named:"au_hot"), for: UIControlState.normal)
-                button.setTitle("精品推荐", for: UIControlState.normal)
+                button.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
+                button.setImage(UIImage(named:"au_hot"), for: UIControl.State.normal)
+                button.setTitle("精品推荐", for: UIControl.State.normal)
                 button.titleLabel?.font = UIFont.systemFont(ofSize: 13)
-                button.setTitleColor(UIColor.colorConversion(Color_Value: "fd6363", alpha: 1), for: UIControlState.normal)
+                button.setTitleColor(UIColor.colorConversion(Color_Value: "fd6363", alpha: 1), for: UIControl.State.normal)
                 view.addSubview(button)
                 return view
             }

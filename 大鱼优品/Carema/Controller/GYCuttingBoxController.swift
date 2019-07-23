@@ -26,12 +26,12 @@ class GYCuttingBoxController: GYBaseViewController {
     fileprivate func setupFunction() {
         
         self.bgImageView = UIImageView.init(frame: self.view.bounds)
-        self.bgImageView?.contentMode = UIViewContentMode.scaleAspectFit
+        self.bgImageView?.contentMode = UIView.ContentMode.scaleAspectFit
         self.bgImageView?.image = cuttingImg
         self.view.addSubview(self.bgImageView!)
         
-        let cancel = UIButton(type: UIButtonType.custom)
-        cancel.setImage(UIImage(named: "ic_sreach_09"), for: UIControlState.normal)
+        let cancel = UIButton(type: UIButton.ButtonType.custom)
+        cancel.setImage(UIImage(named: "ic_sreach_09"), for: UIControl.State.normal)
         self.view.addSubview(cancel)
         
         cancel.snp.makeConstraints({ (make) in
@@ -39,7 +39,7 @@ class GYCuttingBoxController: GYBaseViewController {
             make.left.equalTo(10)
             make.width.height.equalTo(44)
         })
-        cancel.addTarget(self, action: #selector(cancelAction), for: UIControlEvents.touchUpInside)
+        cancel.addTarget(self, action: #selector(cancelAction), for: UIControl.Event.touchUpInside)
 
     }
     

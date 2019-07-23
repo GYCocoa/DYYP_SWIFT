@@ -111,7 +111,7 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
                         self.bannerArray.add(dict!["image"] as! String)
                     }
                 }
-                self.cycleScrollView.imageURLStringsGroup = self.bannerArray as! [Any]
+                self.cycleScrollView.imageURLStringsGroup = self.bannerArray as? [Any]
             }else{
                 SVProgressHUD.showError(withStatus: response["stateMsg"] as? String)
             }
@@ -231,12 +231,12 @@ class GYCommunityOtherController: GYBaseViewController,SDCycleScrollViewDelegate
         return chooseArray
     }()
     lazy var tableView:UITableView = {
-        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: kHeight-kNavBarHeight-kTabBarHeight - 40), style: UITableViewStyle.grouped)
+        var tableView = UITableView.init(frame: CGRect.init(x: 0, y: 0, width: kWidth, height: kHeight-kNavBarHeight-kTabBarHeight - 40), style: UITableView.Style.grouped)
         tableView.backgroundColor = UIColor.globalBackgroundColor()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.showsVerticalScrollIndicator = false
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none; /// 去掉cell下划线
+        tableView.separatorStyle = UITableViewCell.SeparatorStyle.none; /// 去掉cell下划线
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: kWidth, height: 0.01)) /// 去掉cell多余的下划线
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: kWidth, height: 0.01))
         tableView.estimatedRowHeight = 0
@@ -288,7 +288,7 @@ extension GYCommunityOtherController:UITableViewDelegate,UITableViewDataSource {
         if topicTitle?.cname == "推荐" {
             if indexPath.section == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYCommunityHomeTableCell.self), for: indexPath) as! GYCommunityHomeTableCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 let model = self.dataArray.subarray(with: NSRange(location: 0, length: self.currentIndex))[indexPath.row] as? GYCommunityModel
                 cell.communityModel = model
                 if (isTopScroll)!{
@@ -300,12 +300,12 @@ extension GYCommunityOtherController:UITableViewDelegate,UITableViewDataSource {
                 return cell
             }else if indexPath.section == 1{
                 let homeSpecial = tableView.dequeueReusableCell(withIdentifier: GYHomeAncillaryCellId) as! GYCommunityAncillaryCell
-                homeSpecial.selectionStyle = UITableViewCellSelectionStyle.none
+                homeSpecial.selectionStyle = UITableViewCell.SelectionStyle.none
                 homeSpecial.dataArray = self.recommendUsers
                 return homeSpecial
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYCommunityHomeTableCell.self), for: indexPath) as! GYCommunityHomeTableCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 let model = self.dataArray.subarray(with: NSRange(location: self.currentIndex, length: self.dataArray.count-self.currentIndex))[indexPath.row] as? GYCommunityModel
                 if (isTopScroll)!{
                     if ((indexPath.row-(self.pageId-1)*10) == 0 || (indexPath.row-(self.pageId-1)*10) == 1 || self.pageId == 1) {
@@ -319,17 +319,17 @@ extension GYCommunityOtherController:UITableViewDelegate,UITableViewDataSource {
         }else{
             if indexPath.section == 0 {
                 let topic = tableView.dequeueReusableCell(withIdentifier: GYCommunityTopicTableCellId) as! GYCommunityTopicTableCell
-                topic.selectionStyle = UITableViewCellSelectionStyle.none
+                topic.selectionStyle = UITableViewCell.SelectionStyle.none
                 topic.dataArray = self.topicArray
                 return topic
             }else if indexPath.section == 1 {
                 let choose = tableView.dequeueReusableCell(withIdentifier: GYCommunityChooseTableCellId) as! GYCommunityChooseTableCell
-                choose.selectionStyle = UITableViewCellSelectionStyle.none
+                choose.selectionStyle = UITableViewCell.SelectionStyle.none
                 choose.dataArray = self.chooseArray
                 return choose
             }else if indexPath.section == 2 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYCommunityHomeTableCell.self), for: indexPath) as! GYCommunityHomeTableCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 let model = self.dataArray.subarray(with: NSRange(location: 0, length: self.currentIndex))[indexPath.row] as? GYCommunityModel
                 cell.communityModel = model
                 if (isTopScroll)!{
@@ -341,12 +341,12 @@ extension GYCommunityOtherController:UITableViewDelegate,UITableViewDataSource {
                 return cell
             }else if indexPath.section == 3 {
                 let anc = tableView.dequeueReusableCell(withIdentifier: GYHomeAncillaryCellId) as! GYCommunityAncillaryCell
-                anc.selectionStyle = UITableViewCellSelectionStyle.none
+                anc.selectionStyle = UITableViewCell.SelectionStyle.none
                 anc.dataArray = self.recommendUsers
                 return anc
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: GYCommunityHomeTableCell.self), for: indexPath) as! GYCommunityHomeTableCell
-                cell.selectionStyle = UITableViewCellSelectionStyle.none
+                cell.selectionStyle = UITableViewCell.SelectionStyle.none
                 let model = self.dataArray.subarray(with: NSRange(location: self.currentIndex, length: self.dataArray.count-self.currentIndex))[indexPath.row] as? GYCommunityModel
                 cell.communityModel = model
                 if (isTopScroll)!{

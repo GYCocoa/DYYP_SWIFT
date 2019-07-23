@@ -39,12 +39,12 @@ class StickyHeadersFlowLayout: UICollectionViewFlowLayout {
                 let indexPath = IndexPath(item: 0, section: section)
                 //添加头部布局属性
                 if let headerAttributes = self.layoutAttributesForSupplementaryView(ofKind:
-                    UICollectionElementKindSectionHeader, at: indexPath) {
+                    UICollectionView.elementKindSectionHeader, at: indexPath) {
                     newLayoutAttributes.append(headerAttributes)
                 }
                 //添加尾部布局属性
                 if let footerAttributes = self.layoutAttributesForSupplementaryView(ofKind:
-                    UICollectionElementKindSectionFooter, at: indexPath) {
+                    UICollectionView.elementKindSectionFooter, at: indexPath) {
                     newLayoutAttributes.append(footerAttributes)
                 }
             }
@@ -56,7 +56,7 @@ class StickyHeadersFlowLayout: UICollectionViewFlowLayout {
         guard let layoutAttributes = super.layoutAttributesForSupplementaryView(ofKind:
             elementKind, at: indexPath) else { return nil }
         //如果不是头部视图则直接返回
-        if elementKind != UICollectionElementKindSectionHeader {
+        if elementKind != UICollectionView.elementKindSectionHeader {
             return layoutAttributes
         }
         //根据section索引，获取对应的边界范围

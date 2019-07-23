@@ -52,10 +52,10 @@ class GYShopDetailFooterView: UIView {
             self.addSubview(nickNameL!)
         }
         if shopButton == nil {
-            shopButton = UIButton.init(type: UIButtonType.custom)
+            shopButton = UIButton.init(type: UIButton.ButtonType.custom)
             shopButton?.frame = CGRect.init(x: kWidth-85, y: 23, width: 75, height: 25)
-            shopButton?.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
-            shopButton?.setImage(UIImage.init(named: "au_dianpu"), for: UIControlState.normal)
+            shopButton?.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
+            shopButton?.setImage(UIImage.init(named: "au_dianpu"), for: UIControl.State.normal)
             self.addSubview(shopButton!)
         }
         let bottemLine = UIView(frame: CGRect(x: 0, y: 66, width: kWidth, height: 0.5))

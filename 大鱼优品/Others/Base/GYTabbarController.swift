@@ -48,7 +48,7 @@ class GYTabbarController: UITabBarController {
         childController.tabBarItem.image = UIImage(named:imageNamed)
         childController.tabBarItem.selectedImage = UIImage(named:selectImageNamed)
         let nav = GYNavigationController.init(rootViewController: childController)
-        addChildViewController(nav)
+        addChild(nav)
     }
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {

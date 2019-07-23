@@ -32,15 +32,15 @@ class GYHomeShopRecommendCell: UITableViewCell {
                 nameL.text = shop?.title
             }
             if shop?.price != nil {
-                let price:Int = (shop?.price)!
+                let price = (shop?.price)!
                 priceL.text = "￥\(String(price))"
             }
             if shop?.platform != nil  {
-                scaleL.setTitle(shop?.platform, for: UIControlState.normal)
+                scaleL.setTitle(shop?.platform, for: UIControl.State.normal)
             }
             if shop?.fromat != nil {
                 scaleL.isHidden = false
-                scaleL.setTitle(shop?.fromat, for: UIControlState.normal)
+                scaleL.setTitle(shop?.fromat, for: UIControl.State.normal)
             }else{
                 scaleL.isHidden = true
             }

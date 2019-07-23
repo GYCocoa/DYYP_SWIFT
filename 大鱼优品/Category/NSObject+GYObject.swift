@@ -17,7 +17,7 @@ extension NSObject {
      * @param reduce: 最大宽度减少的大小
      */
     class func adaptiveSizeWithString(str:String,font:CGFloat,reduce:CGFloat)->(CGSize) {
-        let attributes = [NSFontAttributeName:UIFont.systemFont(ofSize: font)]
+        let attributes = [NSAttributedString.Key.font:UIFont.systemFont(ofSize: font)]
         var rect = CGRect()
         rect = str.boundingRect(with: CGSize.init(width: kWidth-reduce, height: CGFloat(INT_MAX)), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attributes , context: nil)
         return rect.size
@@ -29,7 +29,7 @@ extension NSObject {
         let shareParames = NSMutableDictionary()
         shareParames.ssdkSetupShareParams(byText: content,
                                           images : UIImage(named: imageUrl),
-                                          url : NSURL(string:shareUrl) as URL!,
+                                          url : NSURL(string:shareUrl) as URL?,
                                           title : title,
                                           type : SSDKContentType.image)
         //2.进行分享

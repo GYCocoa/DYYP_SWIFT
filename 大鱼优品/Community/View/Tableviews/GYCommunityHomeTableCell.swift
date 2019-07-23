@@ -60,7 +60,7 @@ class GYCommunityHomeTableCell: UITableViewCell {
             let attri = NSMutableAttributedString.init(string: content as String)
             let s = NSString(string: "#\(tn!)#")
             let range = content.range(of: s as String)
-            attri.addAttribute(NSForegroundColorAttributeName, value: UIColor.globalMainColor(), range: range)
+            attri.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.globalMainColor(), range: range)
             contentL.attributedText = attri
             
             if communityModel?.icon != nil {
@@ -72,17 +72,17 @@ class GYCommunityHomeTableCell: UITableViewCell {
                 let url = arr["imgUrl"] as? String
                 bodyImgView.sd_setImage(with: NSURL(string: url!) as URL?, placeholderImage: UIImage.init(named: imageView_nodata))
             }
-            commentBtn.setTitle("\(communityModel!.comments!)", for: UIControlState.normal)
-            pariseBtn.setTitle("\(communityModel!.likes!)", for: UIControlState.normal)
+            commentBtn.setTitle("\(communityModel!.comments!)", for: UIControl.State.normal)
+            pariseBtn.setTitle("\(communityModel!.likes!)", for: UIControl.State.normal)
             if communityModel?.isKeep == 0 { // not colletion
-                collectionBtn.setImage(UIImage.init(named: "commond_love"), for: UIControlState.normal)
+                collectionBtn.setImage(UIImage.init(named: "commond_love"), for: UIControl.State.normal)
             }else{
-                collectionBtn.setImage(UIImage.init(named: "commond_inlove"), for: UIControlState.normal)
+                collectionBtn.setImage(UIImage.init(named: "commond_inlove"), for: UIControl.State.normal)
             }
             if communityModel?.isLike == 0 { // not praise
-                pariseBtn.setImage(UIImage.init(named: "blackzan"), for: UIControlState.normal)
+                pariseBtn.setImage(UIImage.init(named: "blackzan"), for: UIControl.State.normal)
             }else{
-                pariseBtn.setImage(UIImage.init(named: "bigzan"), for: UIControlState.normal)
+                pariseBtn.setImage(UIImage.init(named: "bigzan"), for: UIControl.State.normal)
             }
         }
     }

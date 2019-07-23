@@ -11,11 +11,11 @@ import UIKit
 class GYAlertView: NSObject {
 
     class func alertOriginalViewWithTitle(title: String,cancel:String,sure:String,cancelClick:@escaping()->(),sureClick:@escaping()->())->UIAlertController {
-        let alertController = UIAlertController.init(title: title, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        let cancelAction = UIAlertAction.init(title: cancel, style: UIAlertActionStyle.cancel) { (action) in
+        let alertController = UIAlertController.init(title: title, message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+        let cancelAction = UIAlertAction.init(title: cancel, style: UIAlertAction.Style.cancel) { (action) in
             cancelClick()
         }
-        let sureAction = UIAlertAction.init(title: sure, style: UIAlertActionStyle.destructive) { (action) in
+        let sureAction = UIAlertAction.init(title: sure, style: UIAlertAction.Style.destructive) { (action) in
             sureClick()
         }
         alertController.addAction(cancelAction)
@@ -24,11 +24,11 @@ class GYAlertView: NSObject {
     }
     
     class func alertDoubleViewWithTitle(title: String,cancel:String,sure:String,cancelClick:@escaping()->(),sureClick:@escaping()->())->UIAlertController {
-        let alertController = UIAlertController.init(title: title, message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        let cancelAction = UIAlertAction.init(title: cancel, style: UIAlertActionStyle.cancel) { (action) in
+        let alertController = UIAlertController.init(title: title, message: nil, preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction.init(title: cancel, style: UIAlertAction.Style.cancel) { (action) in
             cancelClick()
         }
-        let sureAction = UIAlertAction.init(title: sure, style: UIAlertActionStyle.destructive) { (action) in
+        let sureAction = UIAlertAction.init(title: sure, style: UIAlertAction.Style.destructive) { (action) in
             sureClick()
         }
         alertController.addAction(cancelAction)
@@ -37,8 +37,8 @@ class GYAlertView: NSObject {
     }
     
     class func alertSingleViewWithTitle(title: String,sure:String,sureClick:@escaping()->())->UIAlertController {
-        let alertController = UIAlertController.init(title: title, message: nil, preferredStyle: UIAlertControllerStyle.alert)
-        let sureAction = UIAlertAction.init(title: sure, style: UIAlertActionStyle.default) { (action) in
+        let alertController = UIAlertController.init(title: title, message: nil, preferredStyle: UIAlertController.Style.alert)
+        let sureAction = UIAlertAction.init(title: sure, style: UIAlertAction.Style.default) { (action) in
             sureClick()
         }
         alertController.addAction(sureAction)

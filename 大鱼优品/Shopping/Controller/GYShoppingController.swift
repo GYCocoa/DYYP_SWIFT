@@ -57,7 +57,7 @@ class GYShoppingController: GYBaseViewController,ScrollTopicTitleDelegate,SDCycl
                     self.shopBannerArr.addObjects(from: [model.image as Any])
                 }
                 /// 给轮播图赋值
-                self.cycleScrollView.imageURLStringsGroup = self.shopBannerArr as! [Any]
+                self.cycleScrollView.imageURLStringsGroup = (self.shopBannerArr as! [Any])
             }
         }) { (error) in
             print("error = \(error)")
@@ -65,17 +65,17 @@ class GYShoppingController: GYBaseViewController,ScrollTopicTitleDelegate,SDCycl
         /// 获取标题数据
         GYNetworkTool.getShoppingTitlesData(fromViewController: String(describing:GYShoppingController.self), completionHandler: { (topicTitles, topicVCs) in
             self.reloadButton.isHidden = true
-            for child in self.childViewControllers {
-                child.removeFromParentViewController()
+            for child in self.children {
+                child.removeFromParent()
             }
             // 将所有子控制器添加到父控制器中
             for childVc in topicVCs {
                 childVc.delegate = self
-                self.addChildViewController(childVc)
+                self.addChild(childVc)
             }
             self.setupUI()
             self.pageView.titles = topicTitles
-            self.pageView.childVcs = self.childViewControllers as? [GYShopTopicController]
+            self.pageView.childVcs = self.children as? [GYShopTopicController]
         }) { (error) in
             print("error = \(error)")
             self.reloadButton.isHidden = false
@@ -118,15 +118,15 @@ class GYShoppingController: GYBaseViewController,ScrollTopicTitleDelegate,SDCycl
     }()
 
     fileprivate lazy var searchBar: UIButton = {
-        var searchBar = UIButton(type: UIButtonType.custom)
+        var searchBar = UIButton(type: UIButton.ButtonType.custom)
         searchBar.frame = CGRect.init(x: 10, y: 5, width: kWidth, height: 30)
-        searchBar.setImage(UIImage(named:"au_search"), for: UIControlState.normal)
-        searchBar.setTitle("搜索好物", for: UIControlState.normal)
-        searchBar.setTitleColor(UIColor.colorConversion(Color_Value: "bfbfbf", alpha: 1), for: UIControlState.normal)
+        searchBar.setImage(UIImage(named:"au_search"), for: UIControl.State.normal)
+        searchBar.setTitle("搜索好物", for: UIControl.State.normal)
+        searchBar.setTitleColor(UIColor.colorConversion(Color_Value: "bfbfbf", alpha: 1), for: UIControl.State.normal)
         searchBar.backgroundColor = UIColor.colorConversion(Color_Value: "ffffff", alpha: 0.85)
         searchBar.titleLabel?.font = UIFont.systemFont(ofSize: 13)
         searchBar.layer.cornerRadius = 14
-        searchBar.contentHorizontalAlignment = UIControlContentHorizontalAlignment.left
+        searchBar.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
         searchBar.titleEdgeInsets = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 0)
         searchBar.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0)
         searchBar.adjustsImageWhenHighlighted = false

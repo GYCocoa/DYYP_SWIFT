@@ -89,7 +89,7 @@ class GYShopModel: NSObject {
     var picUrl :String?
     var platform :String?
     var platformCount :NSNumber?
-    var price :Int?
+    var price :String?
     var shopCount :Int?
     var title :String?
     var type :Int?
@@ -103,7 +103,7 @@ class GYShopModel: NSObject {
         picUrl = dict["picUrl"] as! String?
         platform = dict["platform"] as! String?
         platformCount = dict["platformCount"] as! NSNumber?
-        price = dict["price"] as! Int?
+        price = dict["price"] as! String?
         shopCount = dict["shopCount"] as! Int?
         title = dict["title"] as! String?
         type = dict["type"] as! Int?

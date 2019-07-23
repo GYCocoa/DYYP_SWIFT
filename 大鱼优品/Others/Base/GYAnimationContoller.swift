@@ -12,19 +12,19 @@ class GYAnimationContoller: NSObject,UIViewControllerAnimatedTransitioning {
     
     var isTabbarExist:Bool?
 //    var navigationController:UINavigationController?
-    var navigationOperation:UINavigationControllerOperation?
+    var navigationOperation:UINavigationController.Operation?
     /**
      导航栏Pop时删除了多少张截图（调用PopToViewController时，计算要删除的截图的数量）
      */
     var removeCount:NSInteger = 0
     
-    func AnimationControllerWithOperation(operation:UINavigationControllerOperation,navigationController:UINavigationController) ->Any {
+    func AnimationControllerWithOperation(operation:UINavigationController.Operation,navigationController:UINavigationController) ->Any {
         let ac = GYAnimationContoller()
         ac.navigationController = navigationController
         return ac
     }
     
-    func AnimationControllerWithOperation(operation:UINavigationControllerOperation) ->Any {
+    func AnimationControllerWithOperation(operation:UINavigationController.Operation) ->Any {
         let ac = GYAnimationContoller()
         ac.navigationOperation = operation
         return ac
@@ -64,7 +64,7 @@ class GYAnimationContoller: NSObject,UIViewControllerAnimatedTransitioning {
         
         let containerView = transitionContext.containerView
         
-        if self.navigationOperation == UINavigationControllerOperation.push {
+        if self.navigationOperation == UINavigationController.Operation.push {
             self.screenShotArray.add(screenImg)
             //这句非常重要，没有这句，就无法正常Push和Pop出对应的界面
             containerView.addSubview(toView!)
@@ -92,7 +92,7 @@ class GYAnimationContoller: NSObject,UIViewControllerAnimatedTransitioning {
             
         }
         
-        if self.navigationOperation == UINavigationControllerOperation.pop {
+        if self.navigationOperation == UINavigationController.Operation.pop {
             fromViewStartFrame.origin.x = 0
             containerView.addSubview(toView!)
             

@@ -25,7 +25,7 @@ class GYCommunityChooseTableCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
         contentView.backgroundColor = UIColor.white
@@ -40,13 +40,13 @@ class GYCommunityChooseTableCell: UITableViewCell {
         }
         if changeBtn == nil {
             changeBtn = UIButton.init(frame: CGRect.init(x: kWidth/3*2, y: 0, width: kWidth/3-16, height: 40))
-            changeBtn?.contentHorizontalAlignment = UIControlContentHorizontalAlignment.right
+            changeBtn?.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.right
             changeBtn?.titleLabel?.font = UIFont.systemFont(ofSize: 12)
-            changeBtn?.setTitle("换一批", for: UIControlState.normal)
-            changeBtn?.setImage(UIImage.init(named: "change"), for: UIControlState.normal)
-            changeBtn?.setTitleColor(UIColor.globalMainColor(), for: UIControlState.normal)
-            changeBtn?.addTarget(self, action: #selector(changeAction), for: UIControlEvents.touchUpInside)
-            changeBtn?.titleEdgeInsets = UIEdgeInsetsMake(0, 5, 0, -5)
+            changeBtn?.setTitle("换一批", for: UIControl.State.normal)
+            changeBtn?.setImage(UIImage.init(named: "change"), for: UIControl.State.normal)
+            changeBtn?.setTitleColor(UIColor.globalMainColor(), for: UIControl.State.normal)
+            changeBtn?.addTarget(self, action: #selector(changeAction), for: UIControl.Event.touchUpInside)
+            changeBtn?.titleEdgeInsets = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: -5)
             self.contentView.addSubview(changeBtn!)
         }
         self.collectionView.reloadData()

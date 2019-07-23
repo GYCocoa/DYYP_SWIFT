@@ -19,7 +19,7 @@ class GYLoginController: UIViewController {
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.white
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString("close", comment: "close"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(cancelAction))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(title: NSLocalizedString("close", comment: "close"), style: UIBarButtonItem.Style.plain, target: self, action: #selector(cancelAction))
         createSubviews()
     }
     
@@ -31,7 +31,7 @@ class GYLoginController: UIViewController {
     private func createSubviews() {
         loginView = GYLoginView(frame: view.frame, superView: view)
         for button in (loginView?.buttonSources)! {
-            (button as AnyObject).addTarget(self, action: #selector(buttonAction), for: UIControlEvents.touchUpInside)
+            (button as AnyObject).addTarget(self, action: #selector(buttonAction), for: UIControl.Event.touchUpInside)
         }
     }
     

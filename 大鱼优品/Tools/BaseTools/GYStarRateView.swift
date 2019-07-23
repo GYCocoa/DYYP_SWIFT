@@ -109,7 +109,7 @@ import UIKit
         return starView
     }
     //滑动评分
-    func starPan(_ recognizer:UIPanGestureRecognizer) -> () {
+    @objc func starPan(_ recognizer:UIPanGestureRecognizer) -> () {
         var OffX:CGFloat = 0
         if recognizer.state == .began{
             OffX = recognizer.location(in: self).x
@@ -123,7 +123,7 @@ import UIKit
         backSorce()
     }
     //点击评分
-    func starTap(_ recognizer:UIPanGestureRecognizer) -> () {
+    @objc func starTap(_ recognizer:UIPanGestureRecognizer) -> () {
         let OffX = recognizer.location(in: self).x
         self.score = Float(OffX) / Float(self.bounds.width) * Float(self.count)
         showStarRate()
